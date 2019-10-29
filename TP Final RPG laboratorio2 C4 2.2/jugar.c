@@ -64,7 +64,7 @@ void jugar(nodoListaUsu*jugador,nodoArbolDesa*desafio){
                                 jugar(jugador,desafio->izquierda);
                             }
                         }else{
-                                printf("\n\nCarlos Menem se siente debilitado y huye un un cohete a la estratosfera...\n\n---------GANASTE---------\n\n");
+                                printf("\n\nSaliste del dungeon!...\n\n---------GANASTE---------\n\n");
                         }
                         break;
                     case 'M':
@@ -72,7 +72,7 @@ void jugar(nodoListaUsu*jugador,nodoArbolDesa*desafio){
                         return;
                         break;
                     case 'H':
-                        printf("Huiste cagon\n");
+                        printf("La partida a finalizado.\n");
                         return;
                         break;
                 }

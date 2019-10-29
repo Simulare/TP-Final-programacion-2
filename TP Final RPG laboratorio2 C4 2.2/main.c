@@ -29,7 +29,7 @@ int main()
     /// --- OJOOO, desafios harcodeados -----
     desafio.idDesafio=4;
     desafio.tipoDesafio='P';
-    strcpy(desafio.descripcionDesafio,"Te toca pelear contra el socialismo...\n");
+    strcpy(desafio.descripcionDesafio,"Un goblin salvaje se acerca!...\n");
     desafio.puntosDesafio=50;
     desafio.vidaBase=200;
     desafio.ataqueBase=10;
@@ -40,7 +40,7 @@ int main()
 
     desafio.idDesafio=2;
     desafio.tipoDesafio='P';
-    strcpy(desafio.descripcionDesafio,"Te toca pelear contra el comunismo...\n");
+    strcpy(desafio.descripcionDesafio,"Te encontras con un ghoul...\n");
     desafio.puntosDesafio=50;
     desafio.vidaBase=200;
     desafio.ataqueBase=10;
@@ -51,7 +51,7 @@ int main()
 
     desafio.idDesafio=1;
     desafio.tipoDesafio='P';
-    strcpy(desafio.descripcionDesafio,"Te toca pelear contra Carlos Menem (Final Boss)...\n");
+    strcpy(desafio.descripcionDesafio,"Encontraste el final boss!, el dragon rojo...\n");
     desafio.puntosDesafio=50;
     desafio.vidaBase=500;
     desafio.ataqueBase=15;
@@ -62,7 +62,7 @@ int main()
 
     desafio.idDesafio=3;
     desafio.tipoDesafio='P';
-    strcpy(desafio.descripcionDesafio,"Te toca pelear contra Carlos Menem (Final Boss)...\n");
+    strcpy(desafio.descripcionDesafio,"Encontraste el final boss!, el dragon rojo...\n");
     desafio.puntosDesafio=50;
     desafio.vidaBase=500;
     desafio.ataqueBase=15;
@@ -73,7 +73,7 @@ int main()
 
     desafio.idDesafio=6;
     desafio.tipoDesafio='P';
-    strcpy(desafio.descripcionDesafio,"Te toca pelear contra el comunismo...\n");
+    strcpy(desafio.descripcionDesafio,"Te encontras con un ghoul...\n");
     desafio.puntosDesafio=50;
     desafio.vidaBase=200;
     desafio.ataqueBase=10;
@@ -84,7 +84,7 @@ int main()
 
     desafio.idDesafio=5;
     desafio.tipoDesafio='P';
-    strcpy(desafio.descripcionDesafio,"Te toca pelear contra Carlos Menem (Final Boss)...\n");
+    strcpy(desafio.descripcionDesafio,"Encontraste el final boss!, el dragon rojo...\n");
     desafio.puntosDesafio=50;
     desafio.vidaBase=500;
     desafio.ataqueBase=15;
@@ -95,7 +95,7 @@ int main()
 
     desafio.idDesafio=7;
     desafio.tipoDesafio='P';
-    strcpy(desafio.descripcionDesafio,"Te toca pelear contra Carlos Menem (Final Boss)...\n");
+    strcpy(desafio.descripcionDesafio,"Encontraste el final boss!, el dragon rojo...\n");
     desafio.puntosDesafio=50;
     desafio.vidaBase=500;
     desafio.ataqueBase=15;
