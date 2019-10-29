@@ -64,7 +64,7 @@ void jugar(nodoListaUsu*jugador,nodoArbolDesa*desafio){
                                 jugar(jugador,desafio->izquierda);
                             }
                         }else{
-                                printf("\n\nSaliste del dungeon!...\n\n---------GANASTE---------\n\n");
+                                printf("\n\nSaliste del dungeon...\n\n---------GANASTE---------\n\n");
                         }
                         break;
                     case 'M':
