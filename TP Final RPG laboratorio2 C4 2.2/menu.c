@@ -1,8 +1,5 @@
 #include "menu.h"
 
-
-//jueguen rol
-
 usuario nuevoUsuario(nodoListaUsu* lista, nodoArbolDesa* arbol){
     usuario aux;
     char nombre[30];
