@@ -1,0 +1,227 @@
+# depslib dependency file v1.0
+1572125771 source:d:\proyectos cpp\tp final rpg laboratorio2 c4\usuarios.c
+	"usuarios.h"
+
+1572125771 d:\proyectos cpp\tp final rpg laboratorio2 c4\usuarios.h
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+
+1572127068 source:d:\proyectos cpp\tp final rpg laboratorio2 c4\desafios.c
+	"desafios.h"
+
+1572127068 d:\proyectos cpp\tp final rpg laboratorio2 c4\desafios.h
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+
+1572127068 source:d:\proyectos cpp\tp final rpg laboratorio2 c4\main.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	"usuarios.h"
+	"desafios.h"
+
+1572127621 source:d:\proyectos cpp\tp final rpg laboratorio2 c4\historialdejugadas.c
+	"historialDeJugadas.h"
+
+1572127566 d:\proyectos cpp\tp final rpg laboratorio2 c4\historialdejugadas.h
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+
+1572225120 source:c:\users\noelia\desktop\tp final rpg laboratorio2 c4\desafios.c
+	"desafios.h"
+
+1572225120 c:\users\noelia\desktop\tp final rpg laboratorio2 c4\desafios.h
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+
+1572127621 source:c:\users\noelia\desktop\tp final rpg laboratorio2 c4\historialdejugadas.c
+	"historialDeJugadas.h"
+
+1572127566 c:\users\noelia\desktop\tp final rpg laboratorio2 c4\historialdejugadas.h
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+
+1572234023 source:c:\users\noelia\desktop\tp final rpg laboratorio2 c4\usuarios.c
+	"usuarios.h"
+
+1572237507 c:\users\noelia\desktop\tp final rpg laboratorio2 c4\usuarios.h
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+
+1572237264 source:c:\users\noelia\desktop\tp final rpg laboratorio2 c4\main.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	"usuarios.h"
+	"desafios.h"
+
+1572237251 source:c:\users\noelia\desktop\tp final rpg laboratorio2 c4\menu.c
+	"menu.h"
+
+1572237507 c:\users\noelia\desktop\tp final rpg laboratorio2 c4\menu.h
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	"desafios.h"
+	"historialDeJugadas.h"
+	"usuarios.h"
+
+1572223310 source:d:\proyectos cpp\tp final rpg laboratorio2 c4 2.1\desafios.c
+	"desafios.h"
+
+1572223312 d:\proyectos cpp\tp final rpg laboratorio2 c4 2.1\desafios.h
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+
+1572223312 source:d:\proyectos cpp\tp final rpg laboratorio2 c4 2.1\historialdejugadas.c
+	"historialDeJugadas.h"
+
+1572223312 d:\proyectos cpp\tp final rpg laboratorio2 c4 2.1\historialdejugadas.h
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+
+1572223312 source:d:\proyectos cpp\tp final rpg laboratorio2 c4 2.1\menu.c
+	"menu.h"
+
+1572223312 d:\proyectos cpp\tp final rpg laboratorio2 c4 2.1\menu.h
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	"desafios.h"
+	"historialDeJugadas.h"
+	"usuarios.h"
+
+1572306168 d:\proyectos cpp\tp final rpg laboratorio2 c4 2.1\usuarios.h
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+
+1572306168 source:d:\proyectos cpp\tp final rpg laboratorio2 c4 2.1\usuarios.c
+	"usuarios.h"
+
+1572307805 source:d:\proyectos cpp\tp final rpg laboratorio2 c4 2.1\jugar.c
+	"jugar.h"
+
+1572307805 d:\proyectos cpp\tp final rpg laboratorio2 c4 2.1\jugar.h
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	"usuarios.h"
+	"desafios.h"
+
+1572307957 source:d:\proyectos cpp\tp final rpg laboratorio2 c4 2.1\main.c
+	<stdio.h>
+	<stdlib.h>
+	"jugar.h"
+	"usuarios.h"
+
+1572223312 source:c:\users\noelia\desktop\tp final rpg laboratorio2 c4 2.2\tp final rpg laboratorio2 c4 2.2\historialdejugadas.c
+	"historialDeJugadas.h"
+
+1572223312 c:\users\noelia\desktop\tp final rpg laboratorio2 c4 2.2\tp final rpg laboratorio2 c4 2.2\historialdejugadas.h
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+
+1572307805 source:c:\users\noelia\desktop\tp final rpg laboratorio2 c4 2.2\tp final rpg laboratorio2 c4 2.2\jugar.c
+	"jugar.h"
+
+1572307805 c:\users\noelia\desktop\tp final rpg laboratorio2 c4 2.2\tp final rpg laboratorio2 c4 2.2\jugar.h
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	"usuarios.h"
+	"desafios.h"
+
+1572306168 c:\users\noelia\desktop\tp final rpg laboratorio2 c4 2.2\tp final rpg laboratorio2 c4 2.2\usuarios.h
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+
+1572312508 c:\users\noelia\desktop\tp final rpg laboratorio2 c4 2.2\tp final rpg laboratorio2 c4 2.2\desafios.h
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+
+1572309181 source:c:\users\noelia\desktop\tp final rpg laboratorio2 c4 2.2\tp final rpg laboratorio2 c4 2.2\main.c
+	<stdio.h>
+	<stdlib.h>
+	"jugar.h"
+	"usuarios.h"
+
+1572306168 source:c:\users\noelia\desktop\tp final rpg laboratorio2 c4 2.2\tp final rpg laboratorio2 c4 2.2\usuarios.c
+	"usuarios.h"
+
+1572312556 source:c:\users\noelia\desktop\tp final rpg laboratorio2 c4 2.2\tp final rpg laboratorio2 c4 2.2\desafios.c
+	"desafios.h"
+
+1572318757 source:c:\users\noelia\desktop\tp final rpg laboratorio2 c4 2.2\tp final rpg laboratorio2 c4 2.2\menu.c
+	"menu.h"
+
+1572312448 c:\users\noelia\desktop\tp final rpg laboratorio2 c4 2.2\tp final rpg laboratorio2 c4 2.2\menu.h
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	"desafios.h"
+	"historialDeJugadas.h"
+	"usuarios.h"
+
+1572304648 source:c:\users\usuario\downloads\tp final rpg laboratorio2 c4 2.2\desafios.c
+	"desafios.h"
+
+1572304648 c:\users\usuario\downloads\tp final rpg laboratorio2 c4 2.2\desafios.h
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+
+1572304648 source:c:\users\usuario\downloads\tp final rpg laboratorio2 c4 2.2\historialdejugadas.c
+	"historialDeJugadas.h"
+
+1572304648 c:\users\usuario\downloads\tp final rpg laboratorio2 c4 2.2\historialdejugadas.h
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+
+1572304648 source:c:\users\usuario\downloads\tp final rpg laboratorio2 c4 2.2\jugar.c
+	"jugar.h"
+
+1572304648 c:\users\usuario\downloads\tp final rpg laboratorio2 c4 2.2\jugar.h
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	"usuarios.h"
+	"desafios.h"
+
+1572304652 c:\users\usuario\downloads\tp final rpg laboratorio2 c4 2.2\usuarios.h
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+
+1572304648 source:c:\users\usuario\downloads\tp final rpg laboratorio2 c4 2.2\main.c
+	<stdio.h>
+	<stdlib.h>
+	"jugar.h"
+	"usuarios.h"
+
+1572304648 source:c:\users\usuario\downloads\tp final rpg laboratorio2 c4 2.2\menu.c
+	"menu.h"
+
+1572304648 c:\users\usuario\downloads\tp final rpg laboratorio2 c4 2.2\menu.h
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	"desafios.h"
+	"historialDeJugadas.h"
+	"usuarios.h"
+
+1572304652 source:c:\users\usuario\downloads\tp final rpg laboratorio2 c4 2.2\usuarios.c
+	"usuarios.h"
+
