@@ -225,3 +225,38 @@
 1572304652 source:c:\users\usuario\downloads\tp final rpg laboratorio2 c4 2.2\usuarios.c
 	"usuarios.h"
 
+1572358858 source:c:\users\usuario\documents\github\tp-final-programacion-2\tp final rpg laboratorio2 c4 2.2\desafios.c
+	"desafios.h"
+
+1572358858 c:\users\usuario\documents\github\tp-final-programacion-2\tp final rpg laboratorio2 c4 2.2\desafios.h
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+
+1572358858 source:c:\users\usuario\documents\github\tp-final-programacion-2\tp final rpg laboratorio2 c4 2.2\historialdejugadas.c
+	"historialDeJugadas.h"
+
+1572358858 c:\users\usuario\documents\github\tp-final-programacion-2\tp final rpg laboratorio2 c4 2.2\historialdejugadas.h
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+
+1572358858 source:c:\users\usuario\documents\github\tp-final-programacion-2\tp final rpg laboratorio2 c4 2.2\menu.c
+	"menu.h"
+
+1572358858 c:\users\usuario\documents\github\tp-final-programacion-2\tp final rpg laboratorio2 c4 2.2\menu.h
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	"desafios.h"
+	"historialDeJugadas.h"
+	"usuarios.h"
+
+1572358858 c:\users\usuario\documents\github\tp-final-programacion-2\tp final rpg laboratorio2 c4 2.2\usuarios.h
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+
+1572358858 source:c:\users\usuario\documents\github\tp-final-programacion-2\tp final rpg laboratorio2 c4 2.2\usuarios.c
+	"usuarios.h"
+

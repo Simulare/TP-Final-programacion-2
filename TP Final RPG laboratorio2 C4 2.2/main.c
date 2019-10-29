@@ -31,7 +31,7 @@ int main()
     desafio.tipoDesafio='P';
     strcpy(desafio.descripcionDesafio,"Te toca pelear contra el socialismo...\n");
     desafio.puntosDesafio=50;
-    desafio.vidaBase=100;
+    desafio.vidaBase=200;
     desafio.ataqueBase=10;
     strcpy(desafio.preguntaProxDesafio,"1.derecha\n2.izquierda\n\n");
     desafio.desafioEliminado=0;
@@ -42,7 +42,7 @@ int main()
     desafio.tipoDesafio='P';
     strcpy(desafio.descripcionDesafio,"Te toca pelear contra el comunismo...\n");
     desafio.puntosDesafio=50;
-    desafio.vidaBase=100;
+    desafio.vidaBase=200;
     desafio.ataqueBase=10;
     strcpy(desafio.preguntaProxDesafio,"1.derecha\n2.izquierda\n\n");
     desafio.desafioEliminado=0;
@@ -53,7 +53,7 @@ int main()
     desafio.tipoDesafio='P';
     strcpy(desafio.descripcionDesafio,"Te toca pelear contra Carlos Menem (Final Boss)...\n");
     desafio.puntosDesafio=50;
-    desafio.vidaBase=200;
+    desafio.vidaBase=500;
     desafio.ataqueBase=15;
     strcpy(desafio.preguntaProxDesafio,"1.derecha\n2.izquierda\n\n");
     desafio.desafioEliminado=0;
@@ -64,7 +64,7 @@ int main()
     desafio.tipoDesafio='P';
     strcpy(desafio.descripcionDesafio,"Te toca pelear contra Carlos Menem (Final Boss)...\n");
     desafio.puntosDesafio=50;
-    desafio.vidaBase=200;
+    desafio.vidaBase=500;
     desafio.ataqueBase=15;
     strcpy(desafio.preguntaProxDesafio,"1.derecha\n2.izquierda\n\n");
     desafio.desafioEliminado=0;
@@ -75,7 +75,7 @@ int main()
     desafio.tipoDesafio='P';
     strcpy(desafio.descripcionDesafio,"Te toca pelear contra el comunismo...\n");
     desafio.puntosDesafio=50;
-    desafio.vidaBase=100;
+    desafio.vidaBase=200;
     desafio.ataqueBase=10;
     strcpy(desafio.preguntaProxDesafio,"1.derecha\n2.izquierda\n\n");
     desafio.desafioEliminado=0;
@@ -86,7 +86,7 @@ int main()
     desafio.tipoDesafio='P';
     strcpy(desafio.descripcionDesafio,"Te toca pelear contra Carlos Menem (Final Boss)...\n");
     desafio.puntosDesafio=50;
-    desafio.vidaBase=200;
+    desafio.vidaBase=500;
     desafio.ataqueBase=15;
     strcpy(desafio.preguntaProxDesafio,"1.derecha\n2.izquierda\n\n");
     desafio.desafioEliminado=0;
@@ -97,7 +97,7 @@ int main()
     desafio.tipoDesafio='P';
     strcpy(desafio.descripcionDesafio,"Te toca pelear contra Carlos Menem (Final Boss)...\n");
     desafio.puntosDesafio=50;
-    desafio.vidaBase=200;
+    desafio.vidaBase=500;
     desafio.ataqueBase=15;
     strcpy(desafio.preguntaProxDesafio,"1.derecha\n2.izquierda\n\n");
     desafio.desafioEliminado=0;

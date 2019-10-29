@@ -64,7 +64,7 @@ void jugar(nodoListaUsu*jugador,nodoArbolDesa*desafio){
                                 jugar(jugador,desafio->izquierda);
                             }
                         }else{
-                                printf("\n\n---------GANASTE---------\n\n");
+                                printf("\n\nCarlos Menem se siente debilitado y huye un un cohete a la estratosfera...\n\n---------GANASTE---------\n\n");
                         }
                         break;
                     case 'M':
