@@ -260,10 +260,10 @@
 1572358858 source:c:\users\usuario\documents\github\tp-final-programacion-2\tp final rpg laboratorio2 c4 2.2\usuarios.c
 	"usuarios.h"
 
-1572365811 source:c:\users\luca9\desktop\tp final - programacion 2\tp-final-programacion-2\tp final rpg laboratorio2 c4 2.2\desafios.c
+1572568539 source:c:\users\luca9\desktop\tp final - programacion 2\tp-final-programacion-2\tp final rpg laboratorio2 c4 2.2\desafios.c
 	"desafios.h"
 
-1572365811 c:\users\luca9\desktop\tp final - programacion 2\tp-final-programacion-2\tp final rpg laboratorio2 c4 2.2\desafios.h
+1572568539 c:\users\luca9\desktop\tp final - programacion 2\tp-final-programacion-2\tp final rpg laboratorio2 c4 2.2\desafios.h
 	<stdio.h>
 	<stdlib.h>
 	<string.h>
@@ -281,7 +281,7 @@
 	<stdlib.h>
 	<string.h>
 
-1572367287 source:c:\users\luca9\desktop\tp final - programacion 2\tp-final-programacion-2\tp final rpg laboratorio2 c4 2.2\jugar.c
+1572568539 source:c:\users\luca9\desktop\tp final - programacion 2\tp-final-programacion-2\tp final rpg laboratorio2 c4 2.2\jugar.c
 	"jugar.h"
 
 1572365811 c:\users\luca9\desktop\tp final - programacion 2\tp-final-programacion-2\tp final rpg laboratorio2 c4 2.2\jugar.h
@@ -296,7 +296,7 @@
 	<stdlib.h>
 	<string.h>
 
-1572367150 source:c:\users\luca9\desktop\tp final - programacion 2\tp-final-programacion-2\tp final rpg laboratorio2 c4 2.2\main.c
+1572568539 source:c:\users\luca9\desktop\tp final - programacion 2\tp-final-programacion-2\tp final rpg laboratorio2 c4 2.2\main.c
 	<stdio.h>
 	<stdlib.h>
 	"jugar.h"
