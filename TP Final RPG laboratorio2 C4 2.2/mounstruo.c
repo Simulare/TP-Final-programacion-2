@@ -1,13 +1,13 @@
 #include <stdio.h>
 #include <stdlib.h>
-#include <mounstruo.h>
+#include "mounstruo.h"
 
 mounstruo * iniclista()
 {
     return NULL;
 }
 
-mounstruo * cargarMounstruo()
+mounstruo * cargarMounstruo(mounstruo* lista) ///Pasar por parametro la lista. Lo carga a la lista y al archivo
 {
     mounstruo aux;
     mounstruo * nuevo;
@@ -22,31 +22,31 @@ mounstruo * cargarMounstruo()
     {
         printf("Ingrese nombre de mounstruo\n");
         fflush(stdin);
-        scanf("%s",nombre);
+        scanf("%s",&nombre);
         printf("Ingrese vida base del mounstruo\n");
         fflush(stdin);
-        scanf("%d",vidaBase);
+        scanf("%d",&vidaBase);
         printf("Ingrese ataque base del mounstruo\n");
         fflush(stdin);
-        scanf("%d",ataqueBase);
+        scanf("%d",&ataqueBase);
         printf("Ingrese puntos que da el mounstruo al ser derrotado\n");
         fflush(stdin);
-        scanf("%d",puntos);
+        scanf("%d",&puntos);
         nuevo = crearMounstruo(nombre,idMonstruo,ataqueBase,vidaBase,puntos);
-
-        fwrite(&mounstruo,sizof(mounstruo),1,archi);
+        ///Agregar a lista
+        fwrite(&aux,sizeof(mounstruo),1,archi);
         printf("Desea cargar otro mounstruo? [ s ] / [ n ]\n");
         fflush(stdin);
         scanf("%c",&control);
         system("cls");
     }
     fclose(archi);
-    return mounstruo;
+    return nuevo; ///Retorna la lista con el nodo agregado
 }
 
 mounstruo * crearMounstruo(char nombre[],int idMounstruo,int ataqueBase,int vidaBase,int puntos)
 {
-    mounstruo * aux = malloc(sizeof(mounstruo));
+    mounstruo * aux = (mounstruo*)malloc(sizeof(mounstruo));
     strcpy(aux->nombre,nombre);
     aux->idMounstruo=idMounstruo;
     aux->ataqueBase=ataqueBase;
@@ -57,10 +57,10 @@ mounstruo * crearMounstruo(char nombre[],int idMounstruo,int ataqueBase,int vida
 
 void mostrarMounstruos(mounstruo * listaMounstruos)
 {
-        printf("ID : %d",listaMounstruos.idMounstruo);
-        printf("Nombre : %s\n",listaMounstruos.nombre);
-        printf("Vida : %d\n",listaMounstruos.vidaBase);
-        printf("Ataque : %d\n\n\n",listaMounstruos.ataqueBase);
+        printf("ID : %d",listaMounstruos->idMounstruo);
+        printf("Nombre : %s\n",listaMounstruos->nombre);
+        printf("Vida : %d\n",listaMounstruos->vidaBase);
+        printf("Ataque : %d\n\n\n",listaMounstruos->ataqueBase);
 }
 
 mounstruo * agregarFinal(mounstruo * listaMounstruos,mounstruo * nuevoMounstruo)
@@ -71,7 +71,7 @@ mounstruo * agregarFinal(mounstruo * listaMounstruos,mounstruo * nuevoMounstruo)
     }
     else
     {
-        mounstruo * ultimo=buscarFinal(listaMounstruos);
+        mounstruo * ultimo=buscarUltimo(listaMounstruos);
     }
     return listaMounstruos;
 }
