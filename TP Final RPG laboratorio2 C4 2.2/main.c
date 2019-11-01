@@ -30,9 +30,11 @@ int main()
     desafio.idDesafio=4;
     desafio.tipoDesafio='P';
     strcpy(desafio.descripcionDesafio,"Un goblin salvaje se acerca!...\n");
+    desafio.dificultadDesafio=1;
+    strcpy(desafio.monstruo.nombreMonstruo,"Goblin");
+    desafio.monstruo.vidaBaseMonstruo=200;
+    desafio.monstruo.ataqueBaseMonstruo=10;
     desafio.puntosDesafio=50;
-    desafio.vidaBase=200;
-    desafio.ataqueBase=10;
     strcpy(desafio.preguntaProxDesafio,"1.derecha\n2.izquierda\n\n");
     desafio.desafioEliminado=0;
 
@@ -41,9 +43,11 @@ int main()
     desafio.idDesafio=2;
     desafio.tipoDesafio='P';
     strcpy(desafio.descripcionDesafio,"Te encontras con un ghoul...\n");
+    desafio.dificultadDesafio=1;
+    strcpy(desafio.monstruo.nombreMonstruo,"Ghoul");
+    desafio.monstruo.vidaBaseMonstruo=200;
+    desafio.monstruo.ataqueBaseMonstruo=10;
     desafio.puntosDesafio=50;
-    desafio.vidaBase=200;
-    desafio.ataqueBase=10;
     strcpy(desafio.preguntaProxDesafio,"1.derecha\n2.izquierda\n\n");
     desafio.desafioEliminado=0;
 
@@ -52,9 +56,11 @@ int main()
     desafio.idDesafio=1;
     desafio.tipoDesafio='P';
     strcpy(desafio.descripcionDesafio,"Encontraste el final boss!, el dragon rojo...\n");
+    desafio.dificultadDesafio=1;
+    strcpy(desafio.monstruo.nombreMonstruo,"Dragon Rojo");
+    desafio.monstruo.vidaBaseMonstruo=500;
+    desafio.monstruo.ataqueBaseMonstruo=15;
     desafio.puntosDesafio=50;
-    desafio.vidaBase=500;
-    desafio.ataqueBase=15;
     strcpy(desafio.preguntaProxDesafio,"1.derecha\n2.izquierda\n\n");
     desafio.desafioEliminado=0;
 
@@ -63,9 +69,11 @@ int main()
     desafio.idDesafio=3;
     desafio.tipoDesafio='P';
     strcpy(desafio.descripcionDesafio,"Encontraste el final boss!, el dragon rojo...\n");
+    desafio.dificultadDesafio=1;
+    strcpy(desafio.monstruo.nombreMonstruo,"Dragon Rojo");
+    desafio.monstruo.vidaBaseMonstruo=500;
+    desafio.monstruo.ataqueBaseMonstruo=15;
     desafio.puntosDesafio=50;
-    desafio.vidaBase=500;
-    desafio.ataqueBase=15;
     strcpy(desafio.preguntaProxDesafio,"1.derecha\n2.izquierda\n\n");
     desafio.desafioEliminado=0;
 
@@ -74,9 +82,11 @@ int main()
     desafio.idDesafio=6;
     desafio.tipoDesafio='P';
     strcpy(desafio.descripcionDesafio,"Te encontras con un ghoul...\n");
+    desafio.dificultadDesafio=1;
+    strcpy(desafio.monstruo.nombreMonstruo,"Ghoul");
+    desafio.monstruo.vidaBaseMonstruo=200;
+    desafio.monstruo.ataqueBaseMonstruo=10;
     desafio.puntosDesafio=50;
-    desafio.vidaBase=200;
-    desafio.ataqueBase=10;
     strcpy(desafio.preguntaProxDesafio,"1.derecha\n2.izquierda\n\n");
     desafio.desafioEliminado=0;
 
@@ -85,9 +95,11 @@ int main()
     desafio.idDesafio=5;
     desafio.tipoDesafio='P';
     strcpy(desafio.descripcionDesafio,"Encontraste el final boss!, el dragon rojo...\n");
+    desafio.dificultadDesafio=1;
+    strcpy(desafio.monstruo.nombreMonstruo,"Dragon Rojo");
+    desafio.monstruo.vidaBaseMonstruo=500;
+    desafio.monstruo.ataqueBaseMonstruo=15;
     desafio.puntosDesafio=50;
-    desafio.vidaBase=500;
-    desafio.ataqueBase=15;
     strcpy(desafio.preguntaProxDesafio,"1.derecha\n2.izquierda\n\n");
     desafio.desafioEliminado=0;
 
@@ -96,9 +108,11 @@ int main()
     desafio.idDesafio=7;
     desafio.tipoDesafio='P';
     strcpy(desafio.descripcionDesafio,"Encontraste el final boss!, el dragon rojo...\n");
+    desafio.dificultadDesafio=1;
+    strcpy(desafio.monstruo.nombreMonstruo,"Dragon Rojo");
+    desafio.monstruo.vidaBaseMonstruo=500;
+    desafio.monstruo.ataqueBaseMonstruo=15;
     desafio.puntosDesafio=50;
-    desafio.vidaBase=500;
-    desafio.ataqueBase=15;
     strcpy(desafio.preguntaProxDesafio,"1.derecha\n2.izquierda\n\n");
     desafio.desafioEliminado=0;
 

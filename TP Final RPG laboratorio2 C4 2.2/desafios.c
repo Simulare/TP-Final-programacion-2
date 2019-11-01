@@ -35,8 +35,12 @@ void mostrarNodoArbolDesafio(nodoArbolDesa*arbol){
     printf("%c\n",arbol->desafio.tipoDesafio);
     printf("%s\n",arbol->desafio.descripcionDesafio);
     printf("%d\n",arbol->desafio.puntosDesafio);
-    printf("%d\n",arbol->desafio.vidaBase);
-    printf("%d\n",arbol->desafio.ataqueBase);
+    printf("%d\n",arbol->desafio.dificultadDesafio);
+
+    printf("%s\n",arbol->desafio.monstruo.nombreMonstruo);
+    printf("%d\n",arbol->desafio.monstruo.vidaBaseMonstruo);
+    printf("%d\n",arbol->desafio.monstruo.ataqueBaseMonstruo);
+
     printf("%s\n",arbol->desafio.preguntaProxDesafio);
     printf("%d\n",arbol->desafio.desafioEliminado);
     printf("-----------------------------\n");

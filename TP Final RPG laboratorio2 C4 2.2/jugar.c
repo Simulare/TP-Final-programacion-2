@@ -12,27 +12,29 @@ char pelear(nodoListaUsu*jugador,nodoArbolDesa*desafio){ ///al usuario jugador h
     int danio;
     char resultPelea=' ';
     int respuesta=0;
+
     printf("---------------------------------------------------------\n");
-    printf("%s\n\n",desafio->desafio.descripcionDesafio);
+    printf("%s\n",desafio->desafio.descripcionDesafio);
+    printf("Contra el monstruo: %s\n\n",desafio->desafio.monstruo.nombreMonstruo);
     printf("---------------------------------------------------------\n");
     while(resultPelea==' '){
         printf("Vida: %d\n",jugador->usuario.vidaUsuario);
-        printf("Vida Enemigo: %d\n",desafio->desafio.vidaBase);
+        printf("Vida %s: %d\n",desafio->desafio.monstruo.nombreMonstruo,desafio->desafio.monstruo.vidaBaseMonstruo);
         printf("\n1.Atacar\n2.Huir\nElige una accion: ");
         fflush(stdin);
         scanf("%d",&respuesta);
         if(respuesta==1){
             /// Ataca Jugador
             danio=calculoDanio(jugador->usuario.ataqueUsuario);
-            desafio->desafio.vidaBase=desafio->desafio.vidaBase-danio;
-            if(desafio->desafio.vidaBase>0){
+            desafio->desafio.monstruo.vidaBaseMonstruo=desafio->desafio.monstruo.vidaBaseMonstruo-danio;
+            if(desafio->desafio.monstruo.vidaBaseMonstruo>0){
                 printf("\nEs el turno de tu enemigo\n");
                 system("pause");
                 /// Ataca Enemigo
-                danio=calculoDanio(desafio->desafio.ataqueBase);
+                danio=calculoDanio(desafio->desafio.monstruo.ataqueBaseMonstruo);
                 jugador->usuario.vidaUsuario=jugador->usuario.vidaUsuario-danio;
             }
-            if(desafio->desafio.vidaBase<=0){
+            if(desafio->desafio.monstruo.vidaBaseMonstruo<=0){
                 resultPelea='V';    /// Salio Vivo de la pelea
             }
             if(jugador->usuario.vidaUsuario<=0){
