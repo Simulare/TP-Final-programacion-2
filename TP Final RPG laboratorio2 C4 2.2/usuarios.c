@@ -34,15 +34,16 @@ nodoListaUsu* agregarPpioUsuarioToLista (nodoListaUsu* lista, nodoListaUsu* nuev
 }
 
 void mostrarUsuario (usuario aux){
+    printf("\n--------------");
     printf("\nNombre: %s", aux.nombreUsuario);
     printf("\nCategoria: %c", aux.categoriaUsuario);
     printf("\nPuntaje: %i", aux.puntajeUsuario);
     if (aux.categoriaUsuario == 'A'){
-        printf("\nId : %s", aux.idUsuario);
-        printf("\nContraseña: %s", aux.contraUsuario);
+        printf("\nId : %d", aux.idUsuario);
+        printf("\nContrase\xA4a: %s", aux.contraUsuario);
         printf("\nEstado (0 Alta/ 2 Eliminado): %i", aux.usuarioEliminado);
-        printf("--------------");
     }
+    printf("\n--------------\n");
 }
 
 void guardarNuevoUsuArchivo (usuario nuevo){
@@ -72,9 +73,11 @@ nodoListaUsu* pasarUsuariosArchivoToLista (nodoListaUsu* lista){
     usuario aux;
     while (fread(&aux, sizeof(usuario), 1, archi) > 0 ){
         nodoListaUsu* nuevo = crearNodoListaUsu(aux);
-        agregarPpioUsuarioToLista(lista, nuevo);
+        lista = agregarPpioUsuarioToLista(lista, nuevo);
     }
     fclose(archi);
+
+    return lista;
 }
 
 void mostrarArchivoUsu (){
@@ -95,6 +98,6 @@ int ExisteUsuarioNombreEnArchivo (char nombre[]){
             flag = 1;
         }
     }
-    return aux;
+    return flag; //aux;
 }
 

@@ -10,8 +10,8 @@
 #include "desafios.h"
 
 int calculoDanio(int ataqueBase);
-char pelear(nodoListaUsu*jugador,nodoArbolDesa*desafio);
-void jugar(nodoListaUsu*jugador,nodoArbolDesa*desafio);
+char pelear(usuario**jugador,nodoArbolDesa*desafio);
+void jugar(usuario**jugador,nodoArbolDesa*desafio);
 
 
 #endif // JUGAR_H_INCLUDED
