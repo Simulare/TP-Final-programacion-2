@@ -86,3 +86,15 @@ void mostrarArchivoUsu (){
     fclose(archi);
 }
 
+int ExisteUsuarioNombreEnArchivo (char nombre[]){
+    usuario aux;
+    int flag = 0;
+    FILE* archi = fopen(USUARIOS, "rb");
+    while (fread(&aux, sizeof(usuario), 1, archi) > 0 && flag != 1){
+        if (strcmpi(aux.nombreUsuario, nombre) == 0){
+            flag = 1;
+        }
+    }
+    return aux;
+}
+
