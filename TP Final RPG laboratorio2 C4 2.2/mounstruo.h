@@ -7,18 +7,18 @@ char nombre[30];
 int vidaBase;
 int ataqueBase;
 int puntos;
-struct mounstruo* siguiente;
+struct mounstruo * siguiente;
 }mounstruo;
 
 mounstruo * iniclista();
 
-mounstruo * crearMounstruo(char nombre[],int idMounstruo,int ataqueBase,int vidaBase,int puntos);
+mounstruo * crearMounstruo(char nombre[],int idMounstruo,int ataqueBase,int vidaBase,int ataqueBase,int puntos);
 
 mounstruo * cargarMounstruo();
 
 void mostrarMounstruos(mounstruo * listaMounstruos);
 
-mounstruo * agregarFinal(mounstruo * listaMounstruos,mounstruo * nuevoMounstruo);
+mounstruo * agregarFinal(mounstruo * listaMounstruos,mounstruo * nuevoMounstruo)
 
 mounstruo * buscarUltimo(mounstruo * listaMounstruos);
 
