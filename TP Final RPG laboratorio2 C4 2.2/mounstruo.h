@@ -7,7 +7,7 @@ char nombre[30];
 int vidaBase;
 int ataqueBase;
 int puntos;
-struct * siguiente;
+struct mounstruo * siguiente;
 }mounstruo;
 
 mounstruo * iniclista();

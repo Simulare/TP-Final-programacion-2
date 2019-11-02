@@ -1,6 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
-#include <mounstruo.h>
+#include "mounstruo.h"
 
 mounstruo * iniclista()
 {
