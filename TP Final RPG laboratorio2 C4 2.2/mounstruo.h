@@ -12,13 +12,13 @@ struct mounstruo * siguiente;
 
 mounstruo * iniclista();
 
-mounstruo * crearMounstruo(char nombre[],int idMounstruo,int ataqueBase,int vidaBase,int ataqueBase,int puntos);
+mounstruo * crearMounstruo(char nombre[],int idMounstruo,int ataqueBase,int vidaBase,int puntos);
 
 mounstruo * cargarMounstruo();
 
 void mostrarMounstruos(mounstruo * listaMounstruos);
 
-mounstruo * agregarFinal(mounstruo * listaMounstruos,mounstruo * nuevoMounstruo)
+mounstruo * agregarFinal(mounstruo * listaMounstruos,mounstruo * nuevoMounstruo);
 
 mounstruo * buscarUltimo(mounstruo * listaMounstruos);
 

@@ -313,7 +313,7 @@
 	"historialDeJugadas.h"
 	"usuarios.h"
 
-1572365811 source:c:\users\luca9\desktop\tp final - programacion 2\tp-final-programacion-2\tp final rpg laboratorio2 c4 2.2\usuarios.c
+1572725679 source:c:\users\luca9\desktop\tp final - programacion 2\tp-final-programacion-2\tp final rpg laboratorio2 c4 2.2\usuarios.c
 	"usuarios.h"
 
 1572567936 source:d:\proyectos github tomas\tp-final-programacion-2\tp final rpg laboratorio2 c4 2.2\desafios.c
@@ -399,4 +399,11 @@
 	"mounstruo.h"
 
 1572626168 c:\users\usuario\documents\github\tp-final-programacion-2\tp final rpg laboratorio2 c4 2.2\mounstruo.h
+
+1572725679 source:c:\users\luca9\desktop\tp final - programacion 2\tp-final-programacion-2\tp final rpg laboratorio2 c4 2.2\mounstruo.c
+	<stdio.h>
+	<stdlib.h>
+	"mounstruo.h"
+
+1572728176 c:\users\luca9\desktop\tp final - programacion 2\tp-final-programacion-2\tp final rpg laboratorio2 c4 2.2\mounstruo.h
 
