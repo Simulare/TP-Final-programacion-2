@@ -86,13 +86,13 @@ nodoArbolDesa* pasarDesafiosArchivoToArbol (nodoArbolDesa* arbolDesa){
     arbolDesa=insertarNodoArbolDesafio(arbolDesa,desafio);
 
     desafio.idDesafio=2;
-    desafio.tipoDesafio='P';
-    strcpy(desafio.descripcionDesafio,"Te encontras con un ghoul...\n");
+    desafio.tipoDesafio='R';
+    strcpy(desafio.descripcionDesafio,"Conseguiste una pocion de vida!!!\n\nTu vida se incrementara en 100\n\n");
     desafio.dificultadDesafio=1;
-    strcpy(desafio.monstruo.nombreMonstruo,"Ghoul");
-    desafio.monstruo.vidaBaseMonstruo=200;
-    desafio.monstruo.ataqueBaseMonstruo=10;
-    desafio.monstruo.puntosMonstruo=50;
+    strcpy(desafio.monstruo.nombreMonstruo,"");
+    desafio.monstruo.vidaBaseMonstruo=0;
+    desafio.monstruo.ataqueBaseMonstruo=0;
+    desafio.monstruo.puntosMonstruo=0;
     strcpy(desafio.preguntaProxDesafio,"1.derecha\n2.izquierda\n\n");
     desafio.desafioEliminado=0;
 

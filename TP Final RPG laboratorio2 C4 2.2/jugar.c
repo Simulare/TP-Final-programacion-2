@@ -1,5 +1,9 @@
 #include "jugar.h"
 
+void recompensa(usuario**jugador){
+    (*jugador)->vidaUsuario+=100;
+}
+
 int calculoDanio(int ataqueBase){
     int dados=rand () % (MAX_DADOS-MIN_DADOS+1) + MIN_DADOS;
     printf("\nEl resultado de los dados es: %d\n",dados);
@@ -83,7 +87,11 @@ void jugar(usuario**jugador,nodoArbolDesa*desafio){
                 }
                 break;
             case 'R':
-                printf("Recibiste una recompensa");
+                printf("---------------------------------------------------------\n");
+                printf("%s\n",desafio->desafio.descripcionDesafio);
+                ///printf("Vida: %d\n",(*jugador)->vidaUsuario); se cuelga cuando tiene que imprimir la vida luego de tomar la pocion
+                printf("---------------------------------------------------------\n");
+                recompensa(&jugador);
                 printf("%s\n",desafio->desafio.preguntaProxDesafio);
                 fflush(stdin);
                 scanf("%d",&camino);
@@ -96,3 +104,4 @@ void jugar(usuario**jugador,nodoArbolDesa*desafio){
         }
     }
 }
+
