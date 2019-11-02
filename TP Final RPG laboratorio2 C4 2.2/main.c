@@ -6,13 +6,16 @@
 int main()
 {
     srand(time(NULL));  /// planto semilla para los dados.
+
+    iniciarPrograma();
+
+
+
+/*
     usuario user;
 
     STdesafio desafio;
     nodoArbolDesa*arbolDesa=inicArbolDesafio();  ///arbol desafio
-
-    nodoListaUsu*listaUsu=inicListaUsu();
-
 
     /// --- OJOOO, usuario harcodeado -----
     user.idUsuario=1;
@@ -23,8 +26,6 @@ int main()
     user.puntajeUsuario=0;
     user.usuarioEliminado=0;
 
-    nodoListaUsu*nodoUsu=crearNodoListaUsu(user);
-
 
     /// --- OJOOO, desafios harcodeados -----
     desafio.idDesafio=4;
@@ -34,7 +35,7 @@ int main()
     strcpy(desafio.monstruo.nombreMonstruo,"Goblin");
     desafio.monstruo.vidaBaseMonstruo=200;
     desafio.monstruo.ataqueBaseMonstruo=10;
-    desafio.puntosDesafio=50;
+    desafio.monstruo.puntosMonstruo=50;
     strcpy(desafio.preguntaProxDesafio,"1.derecha\n2.izquierda\n\n");
     desafio.desafioEliminado=0;
 
@@ -47,7 +48,7 @@ int main()
     strcpy(desafio.monstruo.nombreMonstruo,"Ghoul");
     desafio.monstruo.vidaBaseMonstruo=200;
     desafio.monstruo.ataqueBaseMonstruo=10;
-    desafio.puntosDesafio=50;
+    desafio.monstruo.puntosMonstruo=50;
     strcpy(desafio.preguntaProxDesafio,"1.derecha\n2.izquierda\n\n");
     desafio.desafioEliminado=0;
 
@@ -60,7 +61,7 @@ int main()
     strcpy(desafio.monstruo.nombreMonstruo,"Dragon Rojo");
     desafio.monstruo.vidaBaseMonstruo=500;
     desafio.monstruo.ataqueBaseMonstruo=15;
-    desafio.puntosDesafio=50;
+    desafio.monstruo.puntosMonstruo=50;
     strcpy(desafio.preguntaProxDesafio,"1.derecha\n2.izquierda\n\n");
     desafio.desafioEliminado=0;
 
@@ -73,7 +74,7 @@ int main()
     strcpy(desafio.monstruo.nombreMonstruo,"Dragon Rojo");
     desafio.monstruo.vidaBaseMonstruo=500;
     desafio.monstruo.ataqueBaseMonstruo=15;
-    desafio.puntosDesafio=50;
+    desafio.monstruo.puntosMonstruo=50;
     strcpy(desafio.preguntaProxDesafio,"1.derecha\n2.izquierda\n\n");
     desafio.desafioEliminado=0;
 
@@ -86,7 +87,7 @@ int main()
     strcpy(desafio.monstruo.nombreMonstruo,"Ghoul");
     desafio.monstruo.vidaBaseMonstruo=200;
     desafio.monstruo.ataqueBaseMonstruo=10;
-    desafio.puntosDesafio=50;
+    desafio.monstruo.puntosMonstruo=50;
     strcpy(desafio.preguntaProxDesafio,"1.derecha\n2.izquierda\n\n");
     desafio.desafioEliminado=0;
 
@@ -99,7 +100,7 @@ int main()
     strcpy(desafio.monstruo.nombreMonstruo,"Dragon Rojo");
     desafio.monstruo.vidaBaseMonstruo=500;
     desafio.monstruo.ataqueBaseMonstruo=15;
-    desafio.puntosDesafio=50;
+    desafio.monstruo.puntosMonstruo=50;
     strcpy(desafio.preguntaProxDesafio,"1.derecha\n2.izquierda\n\n");
     desafio.desafioEliminado=0;
 
@@ -112,7 +113,7 @@ int main()
     strcpy(desafio.monstruo.nombreMonstruo,"Dragon Rojo");
     desafio.monstruo.vidaBaseMonstruo=500;
     desafio.monstruo.ataqueBaseMonstruo=15;
-    desafio.puntosDesafio=50;
+    desafio.monstruo.puntosMonstruo=50;
     strcpy(desafio.preguntaProxDesafio,"1.derecha\n2.izquierda\n\n");
     desafio.desafioEliminado=0;
 
@@ -126,7 +127,9 @@ int main()
 //    char respuestaPelea=pelear(user,arbolDesa);
 //    printf("%c",respuestaPelea);
 
-    jugar(nodoUsu,arbolDesa);
+    jugar(&user,arbolDesa);
+    */
+
     return 0;
 
 }

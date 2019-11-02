@@ -10,6 +10,7 @@ typedef struct{
 	char nombreMonstruo[30];
 	int vidaBaseMonstruo;
     int ataqueBaseMonstruo;
+    int puntosMonstruo;
 }STmonstruo;
 
 typedef struct{
@@ -17,10 +18,7 @@ typedef struct{
     char tipoDesafio;
     char descripcionDesafio[100];
     int dificultadDesafio; 	/// 1-2-3 (Facil-Medio-Dificil )
-    int puntosDesafio;  /// se multiplican por dificultadDesafio
     STmonstruo monstruo;
-    int vidaBase;   /// QUITAR DESPUES
-    int ataqueBase;   /// QUITAR DESPUES
     char preguntaProxDesafio[100];
     int desafioEliminado;
 }STdesafio;

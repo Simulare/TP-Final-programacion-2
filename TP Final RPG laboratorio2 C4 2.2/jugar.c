@@ -8,7 +8,7 @@ int calculoDanio(int ataqueBase){
     return total;
 }
 
-char pelear(nodoListaUsu*jugador,nodoArbolDesa*desafio){ ///al usuario jugador hay que cambiarlo por nodo*jugador
+char pelear(usuario**jugador,nodoArbolDesa*desafio){ ///al usuario jugador hay que cambiarlo por nodo*jugador
     int danio;
     char resultPelea=' ';
     int respuesta=0;
@@ -18,27 +18,29 @@ char pelear(nodoListaUsu*jugador,nodoArbolDesa*desafio){ ///al usuario jugador h
     printf("Contra el monstruo: %s\n\n",desafio->desafio.monstruo.nombreMonstruo);
     printf("---------------------------------------------------------\n");
     while(resultPelea==' '){
-        printf("Vida: %d\n",jugador->usuario.vidaUsuario);
+        printf("Vida: %d\n",(*jugador)->vidaUsuario);
         printf("Vida %s: %d\n",desafio->desafio.monstruo.nombreMonstruo,desafio->desafio.monstruo.vidaBaseMonstruo);
         printf("\n1.Atacar\n2.Huir\nElige una accion: ");
         fflush(stdin);
         scanf("%d",&respuesta);
         if(respuesta==1){
             /// Ataca Jugador
-            danio=calculoDanio(jugador->usuario.ataqueUsuario);
+            danio=calculoDanio((*jugador)->ataqueUsuario);
             desafio->desafio.monstruo.vidaBaseMonstruo=desafio->desafio.monstruo.vidaBaseMonstruo-danio;
             if(desafio->desafio.monstruo.vidaBaseMonstruo>0){
                 printf("\nEs el turno de tu enemigo\n");
                 system("pause");
                 /// Ataca Enemigo
                 danio=calculoDanio(desafio->desafio.monstruo.ataqueBaseMonstruo);
-                jugador->usuario.vidaUsuario=jugador->usuario.vidaUsuario-danio;
+                (*jugador)->vidaUsuario=(*jugador)->vidaUsuario-danio;
             }
             if(desafio->desafio.monstruo.vidaBaseMonstruo<=0){
                 resultPelea='V';    /// Salio Vivo de la pelea
+                (*jugador)->puntajeUsuario+=desafio->desafio.monstruo.puntosMonstruo;
+                printf("\nEn este nivel ganaste: %d puntos\n\n",desafio->desafio.monstruo.puntosMonstruo);
             }
-            if(jugador->usuario.vidaUsuario<=0){
-                resultPelea='M';    /// Salio Muerto de la paelea
+            if((*jugador)->vidaUsuario<=0){
+                resultPelea='M';    /// Salio Muerto de la pelea
             }
         }else{
             resultPelea='H';    /// Decidio Huir
@@ -47,13 +49,13 @@ char pelear(nodoListaUsu*jugador,nodoArbolDesa*desafio){ ///al usuario jugador h
     return resultPelea;
 }
 
-void jugar(nodoListaUsu*jugador,nodoArbolDesa*desafio){
+void jugar(usuario**jugador,nodoArbolDesa*desafio){
     char resultPelea;
     int camino;
     if(desafio!=NULL){
         switch(desafio->desafio.tipoDesafio){
             case 'P':       ///Pelea
-                resultPelea=pelear(jugador,desafio);
+                resultPelea=pelear(&jugador,desafio);
                 switch(resultPelea){
                     case 'V':    ///Salio vivo
                         if(desafio->derecha!=NULL || desafio->izquierda!=NULL){
@@ -66,7 +68,8 @@ void jugar(nodoListaUsu*jugador,nodoArbolDesa*desafio){
                                 jugar(jugador,desafio->izquierda);
                             }
                         }else{
-                                printf("\n\nSaliste del dungeon...\n\n---------GANASTE---------\n\n");
+                            ///printf("\n\nSaliste del dungeon...\n\nTu puntuacion es: %d\n\n---------GANASTE---------\n\n",(*jugador)->puntajeUsuario);///se cuelga en la impresion de puntaje total
+                            printf("\n\nSaliste del dungeon...\n\n---------GANASTE---------\n\n");
                         }
                         break;
                     case 'M':
