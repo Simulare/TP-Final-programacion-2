@@ -337,7 +337,7 @@
 	<stdlib.h>
 	<string.h>
 
-1572727290 source:d:\proyectos github tomas\tp-final-programacion-2\tp final rpg laboratorio2 c4 2.2\menu.c
+1572808592 source:d:\proyectos github tomas\tp-final-programacion-2\tp final rpg laboratorio2 c4 2.2\menu.c
 	"menu.h"
 
 1572558893 d:\proyectos github tomas\tp-final-programacion-2\tp final rpg laboratorio2 c4 2.2\menu.h
@@ -362,7 +362,7 @@
 	"jugar.h"
 	"usuarios.h"
 
-1572714156 d:\proyectos github tomas\tp-final-programacion-2\tp final rpg laboratorio2 c4 2.2\jugar.h
+1572808950 d:\proyectos github tomas\tp-final-programacion-2\tp final rpg laboratorio2 c4 2.2\jugar.h
 	<stdio.h>
 	<stdlib.h>
 	<string.h>

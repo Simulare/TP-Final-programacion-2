@@ -10,7 +10,7 @@ usuario nuevoUsuario(nodoListaUsu* lista, nodoArbolDesa* arbol){
         printf("\n\nYa existe un usuario registrado con el nombre ingresado.\n\n");
         menuPrincipal(lista, arbol);
     }else{
-        printf("\nContraseña (Máx. 15 caracteres) :");
+        printf("\nContrase\xa4\x61 (Max. 15 caracteres) :");
         fflush(stdin);
         gets(aux.contraUsuario);
         strcpy(aux.nombreUsuario,nombre);
@@ -44,13 +44,13 @@ nodoListaUsu* logInUser (nodoListaUsu* lista, nodoArbolDesa* arbol){ ///Retorna 
         menuPrincipal(lista, arbol);
     }else{
         char pass[15];
-        printf("\nContraseña: ");
+        printf("\nContrase\xa4\x61 : ");
         fflush(stdin);
         gets(pass);
         if (strcmp(nodo->usuario.contraUsuario, pass) == 0){
             ///Menu para jugador.
         }else{
-            printf("\n\n----Contraseña incorrecta.----\n\n");
+            printf("\n\n----Contrase\xa4\x61 incorrecta.----\n\n");
             system("pause");
             menuPrincipal(lista, arbol);
         }
@@ -92,7 +92,7 @@ void menuPrincipal (nodoListaUsu* lista, nodoArbolDesa* arbol){
             pantallaPrincipal();
             break;
         default:
-            printf("\n\nOpción incorrecta, intente de nuevo. \n\n\n");
+            printf("\n\nOpcion incorrecta, intente de nuevo. \n\n\n");
             system("pause");
             menuPrincipal(lista, arbol);
             break;
