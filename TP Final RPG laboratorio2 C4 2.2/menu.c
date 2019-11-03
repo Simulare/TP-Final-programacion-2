@@ -116,7 +116,7 @@ void menuUsuario (nodoListaUsu* lista, nodoListaUsu* nodoUsuario, nodoArbolDesa*
         strcpy(jugador.contraUsuario,nodoUsuario->usuario.contraUsuario);
         jugador.categoriaUsuario=nodoUsuario->usuario.categoriaUsuario;
         jugador.vidaUsuario  =1000 ;///  nodoUsuario->usuario.vidaUsuario;
-        jugador.ataqueUsuario=20;   ///  nodoUsuario->usuario.ataqueUsuario;
+        jugador.ataqueUsuario=10;   ///  nodoUsuario->usuario.ataqueUsuario;
         jugador.puntajeUsuario=nodoUsuario->usuario.puntajeUsuario;
         jugador.usuarioEliminado=nodoUsuario->usuario.usuarioEliminado;
 

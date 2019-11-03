@@ -31,6 +31,10 @@
 		<Compiler>
 			<Add option="-Wall" />
 		</Compiler>
+		<Unit filename="Pantallas.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="Pantallas.h" />
 		<Unit filename="desafios.c">
 			<Option compilerVar="CC" />
 		</Unit>

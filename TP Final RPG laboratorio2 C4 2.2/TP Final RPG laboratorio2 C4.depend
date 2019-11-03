@@ -337,7 +337,7 @@
 	<stdlib.h>
 	<string.h>
 
-1572808592 source:d:\proyectos github tomas\tp-final-programacion-2\tp final rpg laboratorio2 c4 2.2\menu.c
+1572818453 source:d:\proyectos github tomas\tp-final-programacion-2\tp final rpg laboratorio2 c4 2.2\menu.c
 	"menu.h"
 
 1572558893 d:\proyectos github tomas\tp-final-programacion-2\tp final rpg laboratorio2 c4 2.2\menu.h
@@ -356,7 +356,7 @@
 1572736040 source:d:\proyectos github tomas\tp-final-programacion-2\tp final rpg laboratorio2 c4 2.2\usuarios.c
 	"usuarios.h"
 
-1572738119 source:d:\proyectos github tomas\tp-final-programacion-2\tp final rpg laboratorio2 c4 2.2\main.c
+1572819907 source:d:\proyectos github tomas\tp-final-programacion-2\tp final rpg laboratorio2 c4 2.2\main.c
 	<stdio.h>
 	<stdlib.h>
 	"jugar.h"
@@ -369,8 +369,9 @@
 	"usuarios.h"
 	"desafios.h"
 
-1572737988 source:d:\proyectos github tomas\tp-final-programacion-2\tp final rpg laboratorio2 c4 2.2\jugar.c
+1572819943 source:d:\proyectos github tomas\tp-final-programacion-2\tp final rpg laboratorio2 c4 2.2\jugar.c
 	"jugar.h"
+	"Pantallas.h"
 
 1572625697 source:c:\users\usuario\documents\github\tp-final-programacion-2\tp final rpg laboratorio2 c4 2.2\gotoxy.c
 	<stdio.h>
@@ -413,4 +414,16 @@
 	"mounstruo.h"
 
 1572736815 d:\proyectos github tomas\tp-final-programacion-2\tp final rpg laboratorio2 c4 2.2\mounstruo.h
+
+1572819027 source:d:\proyectos github tomas\tp-final-programacion-2\tp final rpg laboratorio2 c4 2.2\pantallas.c
+	"Pantallas.h"
+
+1572818965 d:\proyectos github tomas\tp-final-programacion-2\tp final rpg laboratorio2 c4 2.2\pantallas.h
+	<stdio.h>
+	<stdlib.h>
+	<conio.h>
+	<windows.h>
+	"gotoxy.h"
+
+1572558893 d:\proyectos github tomas\tp-final-programacion-2\tp final rpg laboratorio2 c4 2.2\gotoxy.h
 

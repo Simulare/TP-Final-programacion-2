@@ -6,9 +6,8 @@
 int main()
 {
     srand(time(NULL));  /// planto semilla para los dados.
-
     iniciarPrograma();
-
+    ///dibujaPantallaMuerte();
     return 0;
 
 }
