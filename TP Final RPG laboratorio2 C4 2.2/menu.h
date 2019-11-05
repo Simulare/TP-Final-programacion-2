@@ -7,15 +7,16 @@
 #include "historialDeJugadas.h"
 #include "usuarios.h"
 
-usuario nuevoUsuario(nodoListaUsu* lista, nodoArbolDesa* arbol);
 
-nodoListaUsu* logInUser(nodoListaUsu* lista, nodoArbolDesa* arbol);
+void nuevoUsuario();
+
+void logInUser(arbol);
 
 void pantallaPrincipal();
 
-void menuPrincipal(nodoListaUsu* lista, nodoArbolDesa* arbol);
+void menuPrincipal(nodoArbolDesa* arbol);
 
-void menuUsuario(nodoListaUsu* lista, nodoListaUsu* nodoUsuario, nodoArbolDesa* arbol);
+void menuUsuario(usuario aux, nodoArbolDesa* arbol);
 
 void iniciarPrograma();
 

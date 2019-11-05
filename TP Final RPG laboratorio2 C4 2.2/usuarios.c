@@ -11,6 +11,7 @@ nodoListaUsu* buscarUsuarioPorNombre (nodoListaUsu* lista, char nombre[]){
     return rta;
 }
 
+
 nodoListaUsu* inicListaUsu (){
     return NULL;
 }
@@ -89,15 +90,42 @@ void mostrarArchivoUsu (){
     fclose(archi);
 }
 
-int ExisteUsuarioNombreEnArchivo (char nombre[]){
-    usuario aux;
+///---------------------Pasando funciones de usuarioLista a usuarioArchivo ------------------------
+
+int posUsuarioNombreEnArchivo (char nombre[]){ ///Devuelve -1 si no existe el usuario en el archivo
+    int cont = 0;
     int flag = 0;
+    usuario aux;
     FILE* archi = fopen(USUARIOS, "rb");
-    while (fread(&aux, sizeof(usuario), 1, archi) > 0 && flag != 1){
+    while (fread(&aux, sizeof(usuario), 1, archi) > 0 && flag == 0){
         if (strcmpi(aux.nombreUsuario, nombre) == 0){
             flag = 1;
         }
+        cont++;
     }
-    return flag; //aux;
+    fclose(archi);
+    if (flag == 1){
+        return cont;
+    }else{
+        return -1;
+    }
+}
+
+usuario usuarioPorRegistro (int posRegistro){ ///pos-1
+    usuario aux;
+    FILE* archi = fopen(USUARIOS, "rb");
+    fseek(archi, sizeof(usuario)*posRegistro, SEEK_SET);
+    fread(&aux, sizeof(usuario), 1, archi);
+    fclose(archi);
+    return aux;
+}
+
+int cantUsuariosEnArchivo(){
+
+    FILE* archi = fopen(USUARIOS, "rb");
+    fseek(archi, 0, SEEK_END);
+    int registros = ftell(archi)/sizeof(usuario);
+    fclose(archi);
+    return registros;
 }
 

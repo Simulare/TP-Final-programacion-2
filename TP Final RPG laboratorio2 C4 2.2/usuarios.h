@@ -44,4 +44,11 @@ void guardarNuevoUsuArchivo(usuario nuevo);
 
 void mostrarArchivoUsu ();
 
+int posUsuarioNombreEnArchivo (char nombre[]);
+
+usuario usuarioPorRegistro (int posRegistro);
+
+int cantUsuariosEnArchivo();
+
+
 #endif // USUARIOS_H_INCLUDED

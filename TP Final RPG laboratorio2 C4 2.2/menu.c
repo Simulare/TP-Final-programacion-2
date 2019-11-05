@@ -1,61 +1,63 @@
 #include "menu.h"
 
-usuario nuevoUsuario(nodoListaUsu* lista, nodoArbolDesa* arbol){
-    usuario aux;
-    char nombre[30];
-    printf("\nNombre:");
-    fflush(stdin);
-    gets(nombre);
-    if (buscarUsuarioPorNombre(lista, nombre) != NULL){
-        printf("\n\nYa existe un usuario registrado con el nombre ingresado.\n\n");
-        menuPrincipal(lista, arbol);
-    }else{
-        printf("\nContrase\xa4\x61 (Max. 15 caracteres) :");
-        fflush(stdin);
-        gets(aux.contraUsuario);
-        strcpy(aux.nombreUsuario,nombre);
-        aux.puntajeUsuario = 0;
-        aux.ataqueUsuario = ATQ_BASE_USER;
-        aux.vidaUsuario = HP_BASE_USER;
-        aux.usuarioEliminado = 0;
-        if (lista == NULL){ ///El primer usuario a registrar en la lista vacía es admin
-            aux.idUsuario = 1 ;
-            aux.categoriaUsuario = 'A';
-        }else{
-            /// OJOOO falta esto
-            /// aux.idUsuario = buscarUltimoUsuario()+1
-            aux.categoriaUsuario = 'J';
-        }
-    }
 
-    return aux;
-}
-
-nodoListaUsu* logInUser (nodoListaUsu* lista, nodoArbolDesa* arbol){ ///Retorna el nodo del Usuario que se logeo
+void nuevoUsuario (nodoArbolDesa* arbol){ ///Nuevo usuario, versión archivos
+    usuario nuevo;
     char nombre[30];
-    nodoListaUsu* nodo;
     printf("\nNombre: ");
     fflush(stdin);
     gets(nombre);
-    nodo = buscarUsuarioPorNombre(lista, nombre);
-    if (nodo == NULL){
+    int pos = posUsuarioNombreEnArchivo(nombre);
+    if (pos != -1){
+        printf("\n\nYa existe un usuario registrado con el nombre ingresado.\n\n");
+        system("pause");
+        menuPrincipal(arbol);
+    }else{
+        strcpy(nuevo.nombreUsuario, nombre);
+        printf("\nContrase\xa4\x61 : ");
+        fflush(stdin);
+        gets(nuevo.contraUsuario);
+        nuevo.puntajeUsuario = 0;
+        nuevo.ataqueUsuario = ATQ_BASE_USER;
+        nuevo.vidaUsuario = HP_BASE_USER;
+        nuevo.usuarioEliminado = 0;
+        nuevo.idUsuario = cantUsuariosEnArchivo() + 1;
+        if (nuevo.idUsuario == 1){ ///El primer usuario a registrar es admin
+            nuevo.categoriaUsuario = 'A';
+        }else{
+            nuevo.categoriaUsuario = 'J';
+        }
+    }
+    guardarNuevoUsuArchivo(nuevo);
+}
+
+
+void logInUser (nodoArbolDesa* arbol){
+    char nombre[30];
+    printf("\nNombre: ");
+    fflush(stdin);
+    gets(nombre);
+    int pos = posUsuarioNombreEnArchivo(nombre);
+    if (pos == -1){ ///No existe usuario con ese nombre
         printf("\n\n----No existe ningún usuario registrado con el nombre ingresado.----\n\n");
         system("pause");
-        menuPrincipal(lista, arbol);
-    }else{
+        menuPrincipal(arbol);
+    }else{ ///Existe
+        usuario aux = usuarioPorRegistro(pos-1);
         char pass[15];
         printf("\nContrase\xa4\x61 : ");
         fflush(stdin);
         gets(pass);
-        if (strcmp(nodo->usuario.contraUsuario, pass) == 0){
-            ///Menu para jugador.
+
+        if (strcmp(aux.contraUsuario, pass) == 0){ ///Ingresa al menu usuario
+            menuUsuario(aux, arbol);
         }else{
             printf("\n\n----Contrase\xa4\x61 incorrecta.----\n\n");
             system("pause");
-            menuPrincipal(lista, arbol);
+            menuPrincipal(arbol);
         }
+
     }
-    return nodo;
 }
 
 void pantallaPrincipal(){
@@ -63,7 +65,7 @@ void pantallaPrincipal(){
     system("pause");
 }
 
-void menuPrincipal (nodoListaUsu* lista, nodoArbolDesa* arbol){
+void menuPrincipal (nodoArbolDesa* arbol){
     system("cls");
     int op;
     printf("\nIngrese a su cuenta, si no tiene una registrese:\n\n\n1.Registrarse.\n2.Ingresar.\n3.Volver\n");
@@ -72,21 +74,15 @@ void menuPrincipal (nodoListaUsu* lista, nodoArbolDesa* arbol){
     usuario nuevo;
     system("cls");
     switch (op){
-        case 1: ///Se carga a la lista y se guarda en el archivo.
-            nuevo = nuevoUsuario(lista, arbol);
-            mostrarUsuario(nuevo);
-
-            agregarPpioUsuarioToLista(lista, crearNodoListaUsu(nuevo));
-
-            guardarNuevoUsuArchivo(nuevo);
+        case 1: ///Se guarda en el archivo.
+            nuevoUsuario(arbol);
             printf("\n\n¡Su cuenta ha sido creada con éxito! Ingrese a su cuenta desde el menu principal\n\n");
             system ("pause");
-            menuPrincipal(lista, arbol);
+            menuPrincipal(arbol);
             break;
         case 2: ///Se loguea
             printf("\n\nIngrese los datos para acceder a su usuario:\n\n");
-            nodoListaUsu* nodoUsuario = logInUser(lista, arbol);
-            menuUsuario(lista, nodoUsuario, arbol);
+            logInUser(arbol);
             break;
         case 3: ///Volver
             pantallaPrincipal();
@@ -94,13 +90,13 @@ void menuPrincipal (nodoListaUsu* lista, nodoArbolDesa* arbol){
         default:
             printf("\n\nOpcion incorrecta, intente de nuevo. \n\n\n");
             system("pause");
-            menuPrincipal(lista, arbol);
+            menuPrincipal(arbol);
             break;
     }
 }
 
-void menuUsuario (nodoListaUsu* lista, nodoListaUsu* nodoUsuario, nodoArbolDesa* arbolDesafios){  ///Hay que modificar si agregamos más
-    usuario jugador;
+void menuUsuario (usuario jugador, nodoArbolDesa* arbolDesafios){  ///Hay que modificar si agregamos más
+    ///usuario jugador;
     system("cls");
     printf("\n\n1.Jugar.\n2.Ver ranking de puntajes.\n3.Salir del usuario\n");
     int op;
@@ -108,6 +104,7 @@ void menuUsuario (nodoListaUsu* lista, nodoListaUsu* nodoUsuario, nodoArbolDesa*
     scanf("%i", &op);
     switch (op){
     case 1:
+        /**
         ///Función inicJuego (nodoListaUsu* nodoUsuario, nodoArbolDesa* arbol)
 
         /// OJOOO, quitar despues de cambiar la lista de usuarios
@@ -119,7 +116,7 @@ void menuUsuario (nodoListaUsu* lista, nodoListaUsu* nodoUsuario, nodoArbolDesa*
         jugador.ataqueUsuario=10;   ///  nodoUsuario->usuario.ataqueUsuario;
         jugador.puntajeUsuario=nodoUsuario->usuario.puntajeUsuario;
         jugador.usuarioEliminado=nodoUsuario->usuario.usuarioEliminado;
-
+        */
         mostrarUsuario(jugador);
 
         /// ------------------------------------------------------
@@ -131,7 +128,7 @@ void menuUsuario (nodoListaUsu* lista, nodoListaUsu* nodoUsuario, nodoArbolDesa*
         ///Función mostrarUsuariosPorPuntaje
         break;
     case 3:
-        menuPrincipal(lista, arbolDesafios);
+        menuPrincipal(arbolDesafios);
         break;
         }
         ///MOSTRAR LAS OPCIONES QUE SALEN SI ES USUARIO ADMIN--------
@@ -145,6 +142,7 @@ void iniciarPrograma (){ ///Hay que cargar las estructuras desde los archivos cu
     arbol = pasarDesafiosArchivoToArbol(arbol);
 
     pantallaPrincipal();
-    menuPrincipal(lista, arbol);
+    menuPrincipal(arbol);
 
 }
+
