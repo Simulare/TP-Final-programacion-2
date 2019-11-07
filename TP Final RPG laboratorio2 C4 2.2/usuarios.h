@@ -50,5 +50,6 @@ usuario usuarioPorRegistro (int posRegistro);
 
 int cantUsuariosEnArchivo();
 
+void convertirJugadorToAdmin(char nombre[]);
 
 #endif // USUARIOS_H_INCLUDED

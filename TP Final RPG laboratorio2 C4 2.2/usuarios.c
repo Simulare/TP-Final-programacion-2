@@ -47,12 +47,6 @@ void mostrarUsuario (usuario aux){
     printf("\n--------------\n");
 }
 
-void guardarNuevoUsuArchivo (usuario nuevo){
-    FILE* archi = fopen(USUARIOS, "ab");
-    fwrite(&nuevo, sizeof(usuario), 1, archi);
-    fclose(archi);
-}
-
 void mostrarListaUsu (nodoListaUsu* lista){
     while(lista != NULL){
         mostrarUsuario(lista->usuario);
@@ -81,16 +75,40 @@ nodoListaUsu* pasarUsuariosArchivoToLista (nodoListaUsu* lista){
     return lista;
 }
 
-void mostrarArchivoUsu (){
-    FILE* archi = fopen(USUARIOS, "rb");
-    usuario aux;
-    while (fread(&aux, sizeof(usuario), 1, archi) > 0){
-        mostrarUsuario(aux);
-    }
+
+///---------------------Pasando funciones de usuarioLista a usuarioArchivo ------------------------
+
+
+void guardarNuevoUsuArchivo (usuario nuevo){
+    FILE* archi = fopen(USUARIOS, "ab");
+    fwrite(&nuevo, sizeof(usuario), 1, archi);
     fclose(archi);
 }
 
-///---------------------Pasando funciones de usuarioLista a usuarioArchivo ------------------------
+void mostrarArchivoUsu (int modo){ ///0 = todos; 1 = solo jugadores; 2 = solo admins
+    FILE* archi = fopen(USUARIOS, "rb");
+    usuario aux;
+    while (fread(&aux, sizeof(usuario), 1, archi) > 0){
+        switch (modo){
+            case 0:
+                mostrarUsuario(aux);
+                break;
+            case 1:
+                if (aux.categoriaUsuario == 'J'){
+                    mostrarUsuario(aux);
+                }
+                break;
+            case 2:
+                if (aux.categoriaUsuario == 'A'){
+                    mostrarUsuario(aux);
+                }
+                break;
+            default:
+                break;
+        }
+    }
+    fclose(archi);
+}
 
 int posUsuarioNombreEnArchivo (char nombre[]){ ///Devuelve -1 si no existe el usuario en el archivo
     int cont = 0;
@@ -127,5 +145,29 @@ int cantUsuariosEnArchivo(){
     int registros = ftell(archi)/sizeof(usuario);
     fclose(archi);
     return registros;
+}
+
+void convertirJugadorToAdmin (char nombre[]){ ///Cuando va en el menú abajo va la función menuJugador.
+    int pos = posUsuarioNombreEnArchivo(nombre);
+    if (pos == -1){
+        printf("\n\nNo existe un usuario registrado con el nombre ingresado.");
+        system("pause");
+    }else{
+        char op;
+        usuario jugador = usuarioPorRegistro(pos-1);
+        printf("\n\nSi confirma cambiar la categoría a admin del siguiente jugador ingrese 's', sino pulse cualquier otra tecla.\n\n");
+        mostrarUsuario(jugador);
+        fflush(stdin);
+        scanf("%c", &op);
+        if (op == 's' || op == 'S'){
+            jugador.categoriaUsuario = 'A';
+            system("cls");
+            printf("-------¡La categoría del usuario %s se ha cambiado con éxito!---------", nombre);
+            system("pause");
+        }else{
+            printf("\n\nNo se ha modificado la categoría del jugador %s. Volverá al menu anterior.\n\n", nombre);
+            system("pause");
+        }
+    }
 }
 

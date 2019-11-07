@@ -2,28 +2,37 @@
 #define MOUNSTRUO_H_INCLUDED
 
 typedef struct{
-int idMounstruo;
-char nombre[30];
-int vidaBase;
-int ataqueBase;
-int puntos;
-struct mounstruo * siguiente;
-}mounstruo;
+    int idMonstruo;
+    int nivel; ///En qué nivel del arbol va ¿?
+	char nombreMonstruo[30];
+	int vidaBaseMonstruo;
+    int ataqueBaseMonstruo;
+    int puntosMonstruo;
+}STmonstruo;
 
-mounstruo * iniclista();
+typedef struct{
+    STmonstruo monstruo;
+    struct nodoMonstruo* sig;
+    struct nodoMostruo* ante;
+}nodoMonstruo;
 
-mounstruo * crearMounstruo(char nombre[],int idMounstruo,int ataqueBase,int vidaBase,int puntos);
+nodoMonstruo * iniclista();
 
-mounstruo * cargarMounstruo();
+STmonstruo cargarMonstruo();
 
-void mostrarMounstruos(mounstruo * listaMounstruos);
+void agregarMonstruoArchivo (STmonstruo aux);
 
-mounstruo * agregarFinal(mounstruo * listaMounstruos,mounstruo * nuevoMounstruo);
+nodoMonstruo * cargarListaMonstruos(nodoMonstruo* lista);
 
-mounstruo * buscarUltimo(mounstruo * listaMounstruos);
+nodoMonstruo * crearNodoMonstruo(STmonstruo monstruo);
 
-void recorrerMostrar(mounstruo * listaMounstruos);
+void mostrarMonstruo(STmonstruo aux);
 
+ void recorrerMostrar(nodoMonstruo * listaMonstruos);
+
+nodoMonstruo* agregarFinal(nodoMonstruo* listaMonstruos, nodoMonstruo * nuevoMonstruo);
+
+nodoMonstruo * buscarUltimo(nodoMonstruo * listaMonstruos);
 
 
 

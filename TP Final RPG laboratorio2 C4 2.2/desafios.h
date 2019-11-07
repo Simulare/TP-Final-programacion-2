@@ -4,14 +4,7 @@
 #include <stdlib.h>
 #include <string.h>
 #define DESAFIOS "desafios.dat"
-
-typedef struct{
-    int idMonstruo;
-	char nombreMonstruo[30];
-	int vidaBaseMonstruo;
-    int ataqueBaseMonstruo;
-    int puntosMonstruo;
-}STmonstruo;
+#include "mounstruo.h"
 
 typedef struct{
     int idDesafio;

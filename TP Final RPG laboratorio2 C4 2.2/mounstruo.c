@@ -2,95 +2,111 @@
 #include <stdlib.h>
 #include "mounstruo.h"
 
-mounstruo * iniclista()
+nodoMonstruo * iniclista()
 {
     return NULL;
 }
 
-mounstruo * cargarMounstruo(mounstruo* lista) ///Pasar por parametro la lista. Lo carga a la lista y al archivo
+STmonstruo cargarMonstruo(){
+    STmonstruo aux;
+    printf("\nIngrese número de id del monstruo\n"); ///Hay que verificar que no haya uno con el mismo id
+    fflush(stdin);
+    scanf("%i", aux.idMonstruo);
+    printf("Ingrese nombre de monstruo\n");
+    fflush(stdin);
+    scanf("%s",&aux.nombreMonstruo);
+    printf("Ingrese el nivel del monstruo\n ");
+    fflush(stdin);
+    scanf("%i", &aux.nivel);
+    printf("Ingrese vida base del monstruo\n");
+    fflush(stdin);
+    scanf("%d",&aux.vidaBaseMonstruo);
+    printf("Ingrese ataque base del monstruo\n");
+    fflush(stdin);
+    scanf("%d",&aux.ataqueBaseMonstruo);
+    printf("Ingrese puntos que da el monstruo al ser derrotado\n");
+    fflush(stdin);
+    scanf("%d",&aux.puntosMonstruo);
+
+    return aux;
+}
+
+void agregarMonstruoArchivo (STmonstruo aux){
+    FILE * archi = fopen("mounstruos.dat","ab");
+    fwrite(&aux, sizeof(STmonstruo), 1, archi);
+    fclose(archi);
+}
+
+nodoMonstruo * cargarListaMonstruos(nodoMonstruo* lista) ///Lo carga a la lista y al archivo
 {
-    mounstruo aux;
-    mounstruo * nuevo;
-    char nombre[30];
-    int vidaBase;
-    int ataqueBase;
-    int puntos;
-    int idMonstruo;
+    STmonstruo aux;
+    nodoMonstruo* nuevo;
     char control='s';
     FILE * archi = fopen("mounstruos.dat","ab");
     while(control=='s'||'S')
     {
-        printf("Ingrese nombre de mounstruo\n");
-        fflush(stdin);
-        scanf("%s",&nombre);
-        printf("Ingrese vida base del mounstruo\n");
-        fflush(stdin);
-        scanf("%d",&vidaBase);
-        printf("Ingrese ataque base del mounstruo\n");
-        fflush(stdin);
-        scanf("%d",&ataqueBase);
-        printf("Ingrese puntos que da el mounstruo al ser derrotado\n");
-        fflush(stdin);
-        scanf("%d",&puntos);
-        nuevo = crearMounstruo(nombre,idMonstruo,ataqueBase,vidaBase,puntos);
-        ///Agregar a lista
-        fwrite(&aux,sizeof(mounstruo),1,archi);
+        aux = cargarMonstruo();
+        nuevo = crearNodoMonstruo(aux);
+        lista = agregarFinal(lista, nuevo);
+        agregarMonstruoArchivo(aux);
         printf("Desea cargar otro mounstruo? [ s ] / [ n ]\n");
         fflush(stdin);
         scanf("%c",&control);
         system("cls");
     }
-    fclose(archi);
-    return nuevo; ///Retorna la lista con el nodo agregado
+
+    return lista;
 }
 
-mounstruo * crearMounstruo(char nombre[],int idMounstruo,int ataqueBase,int vidaBase,int puntos)
+nodoMonstruo * crearNodoMonstruo(STmonstruo monstruo)
 {
-    mounstruo * aux = (mounstruo*)malloc(sizeof(mounstruo));
-    strcpy(aux->nombre,nombre);
-    aux->idMounstruo=idMounstruo;
-    aux->ataqueBase=ataqueBase;
-    aux->vidaBase=vidaBase;
-    aux->puntos=puntos;
+    nodoMonstruo * aux = (nodoMonstruo*)malloc(sizeof(nodoMonstruo));
+    aux->monstruo = monstruo;
+    aux->sig = NULL;
+    aux->ante = NULL;
+
     return aux;
 }
 
-void mostrarMounstruos(mounstruo * listaMounstruos)
+void mostrarMonstruo(STmonstruo aux)
 {
-        printf("ID : %d",listaMounstruos->idMounstruo);
-        printf("Nombre : %s\n",listaMounstruos->nombre);
-        printf("Vida : %d\n",listaMounstruos->vidaBase);
-        printf("Ataque : %d\n\n\n",listaMounstruos->ataqueBase);
+        printf("ID : %d",aux.idMonstruo);
+        printf("Nombre : %s\n",aux.nombreMonstruo);
+        printf("Nivel: %d\n", aux.nivel);
+        printf("Vida : %d\n",aux.vidaBaseMonstruo);
+        printf("Ataque : %d\n\n\n",aux.ataqueBaseMonstruo);
+        printf("Puntos por derrotarlo: %d", aux.puntosMonstruo);
 }
 
-mounstruo * agregarFinal(mounstruo * listaMounstruos,mounstruo * nuevoMounstruo)
+ void recorrerMostrar(nodoMonstruo * listaMonstruos)
+ {
+     while(listaMonstruos!=NULL)
+     {
+         mostrarMonstruo(listaMonstruos->monstruo);
+         listaMonstruos=listaMonstruos->sig;
+     }
+ }
+
+
+nodoMonstruo* agregarFinal(nodoMonstruo* listaMonstruos, nodoMonstruo * nuevoMonstruo)
 {
-    if(listaMounstruos==NULL)
+    if(listaMonstruos==NULL)
     {
-        listaMounstruos=nuevoMounstruo;
+        listaMonstruos=nuevoMonstruo;
     }
     else
     {
-        mounstruo * ultimo=buscarUltimo(listaMounstruos);
+        nodoMonstruo* ultimo=buscarUltimo(listaMonstruos);
     }
-    return listaMounstruos;
+    return listaMonstruos;
 }
 
-mounstruo * buscarUltimo(mounstruo * listaMounstruos)
+nodoMonstruo * buscarUltimo(nodoMonstruo * listaMonstruos)
 {
-    mounstruo * aux = listaMounstruos;
+    nodoMonstruo * aux = listaMonstruos;
     while(aux!=NULL)
     {
-        aux = aux->siguiente;
+        aux = aux->sig;
     }
     return aux;
 }
-
- void recorrerMostrar(mounstruo * listaMounstruos)
- {
-     while(listaMounstruos!=NULL)
-     {
-         mostrarMounstruos(listaMounstruos);
-         listaMounstruos=listaMounstruos->siguiente;
-     }
- }

@@ -135,8 +135,6 @@ void menuUsuario (usuario jugador, nodoArbolDesa* arbolDesafios){  ///Hay que mo
 }
 
 void iniciarPrograma (){ ///Hay que cargar las estructuras desde los archivos cuando se inicia
-    nodoListaUsu* lista = inicListaUsu();
-    lista = pasarUsuariosArchivoToLista(lista);
 
     nodoArbolDesa* arbol = inicArbolDesafio();
     arbol = pasarDesafiosArchivoToArbol(arbol);
