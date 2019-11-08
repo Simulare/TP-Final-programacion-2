@@ -122,6 +122,7 @@ void menuUsuario (usuario jugador, nodoArbolDesa* arbolDesafios){  ///Hay que mo
         /// ------------------------------------------------------
 
         jugar(&jugador,arbolDesafios, arbolDesafios);
+
         mostrarUsuario(jugador);
         break;
     case 2:
@@ -135,10 +136,11 @@ void menuUsuario (usuario jugador, nodoArbolDesa* arbolDesafios){  ///Hay que mo
 }
 
 void iniciarPrograma (){ ///Hay que cargar las estructuras desde los archivos cuando se inicia
-
+char string[30];
     nodoArbolDesa* arbol = inicArbolDesafio();
     arbol = pasarDesafiosArchivoToArbol(arbol);
-
+sprintf(string, "mode con: cols=%d lines=%d", 45,45);
+system(string);
     pantallaPrincipal();
     menuPrincipal(arbol);
 

@@ -32,6 +32,7 @@ nodoListaUsu* agregarPpioUsuarioToLista (nodoListaUsu* lista, nodoListaUsu* nuev
         lista = nuevo;
     }
     return lista;
+
 }
 
 void mostrarUsuario (usuario aux){

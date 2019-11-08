@@ -122,7 +122,8 @@ void jugar(usuario*jugador,nodoArbolDesa*desafio, nodoArbolDesa* anterior){ ///C
                         return;
                         break;
                     case 'H':
-                        printf("\n¡Decidiste huir! Volves al desafío anterior y podes decidir de nuevo que camino tomar.\n\n");
+                        printf("\n¡Decidiste huir! Volves al desafío anterior y podes decidir de nuevo que camino tomar.\nSe te restarán 50 puntuación total.\n\n");
+                        jugador->puntajeUsuario = jugador->puntajeUsuario - 50;
                         printf("%s\n",anterior->desafio.preguntaProxDesafio);
                         fflush(stdin);
                         scanf("%d",&camino);
