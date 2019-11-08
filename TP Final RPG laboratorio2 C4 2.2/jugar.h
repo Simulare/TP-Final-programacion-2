@@ -11,7 +11,7 @@
 
 int calculoDanio(int ataqueBase);
 char pelear(usuario*jugador,nodoArbolDesa*desafio);
-void jugar(usuario*jugador,nodoArbolDesa*desafio);
+void jugar(usuario*jugador,nodoArbolDesa*desafio, nodoArbolDesa* anterior);
 
 
 #endif // JUGAR_H_INCLUDED

@@ -121,7 +121,7 @@ void menuUsuario (usuario jugador, nodoArbolDesa* arbolDesafios){  ///Hay que mo
 
         /// ------------------------------------------------------
 
-        jugar(&jugador,arbolDesafios);
+        jugar(&jugador,arbolDesafios, arbolDesafios);
         mostrarUsuario(jugador);
         break;
     case 2:

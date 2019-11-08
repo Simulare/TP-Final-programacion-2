@@ -60,6 +60,30 @@ void guardarDesafioEnArchivo (nodoArbolDesa* nuevo){
     fclose(archi);
 }
 
+STdesafio cargarDesafio (){ ///--------------------FALTA MONSTRUO
+    STdesafio aux;
+    printf("\nID del desafío: ");
+    fflush(stdin);
+    scanf("%i", &aux.idDesafio);
+    printf("\nTipo de desafío ('P' pelea / 'R' recompensa): ");
+    fflush(stdin);
+    scanf("%c", &aux.tipoDesafio);
+    printf("\nDescripción del desafío: ");
+    fflush(stdin);
+    gets(aux.descripcionDesafio);
+    printf("\nDificultad del desafío: ");
+    fflush(stdin);
+    scanf("%i", &aux.dificultadDesafio);
+    ///HAY QUE AGREGAR LA INFO DE LOS MONSTRUOS DEPENDE SI LO HACEMOS CON LISTAS O NO.
+    printf("\nPregunta al próximo desafío: ");
+    fflush(stdin);
+    gets(aux.preguntaProxDesafio);
+    aux.desafioEliminado = 0;
+
+    return aux;
+}
+
+
 nodoArbolDesa* pasarDesafiosArchivoToArbol (nodoArbolDesa* arbolDesa){
 /*
     FILE* archi = fopen(DESAFIOS, "rb");

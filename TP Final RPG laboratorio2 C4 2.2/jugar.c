@@ -21,6 +21,7 @@ char pelear(usuario*jugador,nodoArbolDesa*desafio){ ///al usuario jugador hay qu
     int danio;
     char resultPelea=' ';
     int respuesta=0;
+    int vidaInicialM = desafio->desafio.monstruo.vidaBaseMonstruo;
 
     if(desafio->desafio.idDesafio==4){
         gotoxy(0,15);
@@ -79,12 +80,13 @@ char pelear(usuario*jugador,nodoArbolDesa*desafio){ ///al usuario jugador hay qu
             }
         }else{
             resultPelea='H';    /// Decidio Huir
+            desafio->desafio.monstruo.vidaBaseMonstruo = vidaInicialM;
         }
     }
     return resultPelea;
 }
 
-void jugar(usuario*jugador,nodoArbolDesa*desafio){
+void jugar(usuario*jugador,nodoArbolDesa*desafio, nodoArbolDesa* anterior){ ///Cuando es la primer llamada a anterior se pasa el arbol como a desafio
     char resultPelea;
     int camino;
     if(desafio!=NULL){
@@ -100,13 +102,14 @@ void jugar(usuario*jugador,nodoArbolDesa*desafio){
                 switch(resultPelea){
                     case 'V':    ///Salio vivo
                         if(desafio->derecha!=NULL || desafio->izquierda!=NULL){
+                            anterior = desafio;
                             printf("%s\n",desafio->desafio.preguntaProxDesafio);
                             fflush(stdin);
                             scanf("%d",&camino);
                             if(camino==1){
-                                jugar(jugador,desafio->derecha);
+                                jugar(jugador,desafio->derecha, anterior);
                             }else{
-                                jugar(jugador,desafio->izquierda);
+                                jugar(jugador,desafio->izquierda, anterior);
                             }
                         }else{
                             printf("\n\nSaliste del dungeon...\n\nTu puntuacion es: %d\n\n---------GANASTE---------\n\n",jugador->puntajeUsuario);
@@ -119,12 +122,21 @@ void jugar(usuario*jugador,nodoArbolDesa*desafio){
                         return;
                         break;
                     case 'H':
-                        printf("La partida a finalizado.\n");
+                        printf("\n¡Decidiste huir! Volves al desafío anterior y podes decidir de nuevo que camino tomar.\n\n");
+                        printf("%s\n",anterior->desafio.preguntaProxDesafio);
+                        fflush(stdin);
+                        scanf("%d",&camino);
+                        if(camino==1){
+                            jugar(jugador,anterior->derecha, anterior);
+                        }else{
+                            jugar(jugador,anterior->izquierda, anterior);
+                        }
                         return;
                         break;
                 }
                 break;
             case 'R':
+                anterior = desafio;
                 printf("---------------------------------------------------------\n");
                 printf("%s\n",desafio->desafio.descripcionDesafio);
                 recompensa(jugador);
@@ -135,9 +147,9 @@ void jugar(usuario*jugador,nodoArbolDesa*desafio){
                 fflush(stdin);
                 scanf("%d",&camino);
                 if(camino==1){
-                    jugar(jugador,desafio->derecha);
+                    jugar(jugador,desafio->derecha, anterior);
                 }else{
-                    jugar(jugador,desafio->izquierda);
+                    jugar(jugador,desafio->izquierda, anterior);
                 }
                 break;
         }
