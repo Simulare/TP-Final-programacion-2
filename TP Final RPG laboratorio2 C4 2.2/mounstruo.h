@@ -1,9 +1,13 @@
 #ifndef MOUNSTRUO_H_INCLUDED
 #define MOUNSTRUO_H_INCLUDED
 
+#include <stdio.h>
+#include <stdlib.h>
+#define MODIF_LVL2 15
+#define MODIF_LVL3 25
+
 typedef struct{
     int idMonstruo;
-    int nivel; ///En qué nivel del arbol va ¿?
 	char nombreMonstruo[30];
 	int vidaBaseMonstruo;
     int ataqueBaseMonstruo;
@@ -33,6 +37,11 @@ void mostrarMonstruo(STmonstruo aux);
 nodoMonstruo* agregarFinal(nodoMonstruo* listaMonstruos, nodoMonstruo * nuevoMonstruo);
 
 nodoMonstruo * buscarUltimo(nodoMonstruo * listaMonstruos);
+
+nodoMonstruo* buscarMonstruoNombre (nodoMonstruo* lista, char nombre[]);
+
+STmonstruo ponerMonstruo (nodoMonstruo* lista, char nombre[], int dificultad);
+
 
 
 

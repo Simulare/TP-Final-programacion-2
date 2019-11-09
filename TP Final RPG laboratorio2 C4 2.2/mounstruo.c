@@ -1,5 +1,3 @@
-#include <stdio.h>
-#include <stdlib.h>
 #include "mounstruo.h"
 
 nodoMonstruo * iniclista()
@@ -15,9 +13,6 @@ STmonstruo cargarMonstruo(){
     printf("Ingrese nombre de monstruo\n");
     fflush(stdin);
     scanf("%s",&aux.nombreMonstruo);
-    printf("Ingrese el nivel del monstruo\n ");
-    fflush(stdin);
-    scanf("%i", &aux.nivel);
     printf("Ingrese vida base del monstruo\n");
     fflush(stdin);
     scanf("%d",&aux.vidaBaseMonstruo);
@@ -72,7 +67,6 @@ void mostrarMonstruo(STmonstruo aux)
 {
         printf("ID : %d",aux.idMonstruo);
         printf("Nombre : %s\n",aux.nombreMonstruo);
-        printf("Nivel: %d\n", aux.nivel);
         printf("Vida : %d\n",aux.vidaBaseMonstruo);
         printf("Ataque : %d\n\n\n",aux.ataqueBaseMonstruo);
         printf("Puntos por derrotarlo: %d", aux.puntosMonstruo);
@@ -109,4 +103,39 @@ nodoMonstruo * buscarUltimo(nodoMonstruo * listaMonstruos)
         aux = aux->sig;
     }
     return aux;
+}
+
+nodoMonstruo* buscarMonstruoNombre (nodoMonstruo* lista, char nombre[]){
+    nodoMonstruo* rta = NULL;
+    while (lista != NULL && rta == NULL){
+        if (strcmpi(lista->monstruo.nombreMonstruo, nombre) == 0 ){
+            rta = lista;
+        }
+        lista = lista->sig;
+    }
+    return rta;
+}
+
+STmonstruo ponerMonstruo (nodoMonstruo* lista, char nombre[], int dificultad){
+    nodoMonstruo* nodo = buscarMonstruoNombre(lista, nombre);
+    STmonstruo monster = nodo->monstruo;
+    int modificador;
+    switch (dificultad){
+        case 1:
+            modificador = 0;
+            break;
+        case 2:
+            modificador = MODIF_LVL2;
+            break;
+        case 3:
+            modificador = MODIF_LVL3;
+            break;
+        default:
+            modificador = 0;
+            break;
+    }
+        monster.vidaBaseMonstruo = monster.vidaBaseMonstruo + monster.vidaBaseMonstruo * modificador / 100;
+        monster.ataqueBaseMonstruo = monster.ataqueBaseMonstruo + monster.ataqueBaseMonstruo * modificador / 100;
+
+    return monster;
 }
