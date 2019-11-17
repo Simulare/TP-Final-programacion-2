@@ -8,6 +8,9 @@
 #include <string.h>
 #include "usuarios.h"
 #include "desafios.h"
+#include "Pantallas.h"
+#include "puntajes.h"
+
 
 int calculoDanio(int ataqueBase);
 char pelear(usuario*jugador,nodoArbolDesa*desafio,int*turnosTotales);

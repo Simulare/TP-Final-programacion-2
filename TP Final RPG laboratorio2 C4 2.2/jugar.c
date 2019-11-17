@@ -1,6 +1,4 @@
 #include "jugar.h"
-#include "Pantallas.h"
-#include "puntajes.h"
 
 void recompensa(usuario*jugador){
     jugador->vidaUsuario+=100;
@@ -120,8 +118,9 @@ int jugar(usuario*jugador,nodoArbolDesa*desafio, nodoArbolDesa* anterior, int*pu
                             }
                         }else{
                             printf("\n\nSaliste del dungeon...\n\nTu puntuacion es: %d\n\n---------GANASTE---------\n\n",jugador->puntajeUsuario);
+                            ///printf("\n\nSaliste del dungeon...\n\n---------GANASTE---------\n\n");
                             system("pause");
-                            //cargarPuntajes(jugador->nombreUsuario,jugador->puntajeUsuario);
+                            cargarPuntajes(jugador->nombreUsuario,jugador->puntajeUsuario);
                             resultado=1;    /// Gano
                         }
                         break;
@@ -129,7 +128,8 @@ int jugar(usuario*jugador,nodoArbolDesa*desafio, nodoArbolDesa* anterior, int*pu
                         printf("\nMORISTE\n");
                         dibujaPantallaMuerte();
                         system("pause");
-                        //cargarPuntajes(jugador->nombreUsuario,jugador->puntajeUsuario);
+                        cargarPuntajes(jugador->nombreUsuario,jugador->puntajeUsuario);
+                        return;
                         resultado=0; /// Perdio
                         break;
                     case 'H':

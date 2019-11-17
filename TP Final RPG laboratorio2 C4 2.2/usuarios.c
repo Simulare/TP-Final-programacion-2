@@ -140,11 +140,13 @@ usuario usuarioPorRegistro (int posRegistro){ ///pos-1
 }
 
 int cantUsuariosEnArchivo(){
-
+    int registros = 0;
     FILE* archi = fopen(USUARIOS, "rb");
-    fseek(archi, 0, SEEK_END);
-    int registros = ftell(archi)/sizeof(usuario);
-    fclose(archi);
+    if (archi != NULL){
+        fseek(archi, 0, SEEK_END);
+        int registros = ftell(archi)/sizeof(usuario);
+        fclose(archi);
+    }
     return registros;
 }
 
