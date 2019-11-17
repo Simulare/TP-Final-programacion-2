@@ -40,9 +40,9 @@ nodoMonstruo * buscarUltimo(nodoMonstruo * listaMonstruos);
 
 nodoMonstruo* buscarMonstruoNombre (nodoMonstruo* lista, char nombre[]);
 
-STmonstruo ponerMonstruo (nodoMonstruo* nodo, int dificultad);
+STmonstruo ponerMonstruo (nodoMonstruo* lista, char nombre[], int dificultad);
 
-STmonstruo monstruoVacio();
+
 
 
 #endif // MOUNSTRUO_H_INCLUDED

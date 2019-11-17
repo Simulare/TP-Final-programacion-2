@@ -98,76 +98,49 @@ void menuPrincipal (nodoArbolDesa* arbol){
 void menuUsuario (usuario jugador, nodoArbolDesa* arbolDesafios){  ///Hay que modificar si agregamos más
     ///usuario jugador;
     system("cls");
+    printf("\n\n1.Jugar.\n2.Ver ranking de puntajes.\n3.Salir del usuario\n");
     int op;
-    if (jugador.categoriaUsuario == 'J'){
-        printf("\n\n1.Jugar.\n2.Ver ranking de puntajes.\n3.Salir del usuario\n");
-        fflush(stdin);
-        scanf("%i", &op);
-        switch (op){
-            case 1:
+    fflush(stdin);
+    scanf("%i", &op);
+    switch (op){
+    case 1:
+        /**
+        ///Función inicJuego (nodoListaUsu* nodoUsuario, nodoArbolDesa* arbol)
 
-                mostrarUsuario(jugador);
-                jugar(&jugador,arbolDesafios, arbolDesafios);
-                mostrarUsuario(jugador);
-                break;
-            case 2:
-                ///Función mostrarUsuariosPorPuntaje
-                break;
-            case 3:
-                menuPrincipal(arbolDesafios);
-                break;
-            default:
-                printf("\n\nOPCIÓN INCORRECTA. Intente de nuevo.\n\n\n"):
-                system("pause");
-                menuUsuario(jugador, arbolDesafios);
+        /// OJOOO, quitar despues de cambiar la lista de usuarios
+        jugador.idUsuario=nodoUsuario->usuario.idUsuario;
+        strcpy(jugador.nombreUsuario,nodoUsuario->usuario.nombreUsuario);
+        strcpy(jugador.contraUsuario,nodoUsuario->usuario.contraUsuario);
+        jugador.categoriaUsuario=nodoUsuario->usuario.categoriaUsuario;
+        jugador.vidaUsuario  =1000 ;///  nodoUsuario->usuario.vidaUsuario;
+        jugador.ataqueUsuario=10;   ///  nodoUsuario->usuario.ataqueUsuario;
+        jugador.puntajeUsuario=nodoUsuario->usuario.puntajeUsuario;
+        jugador.usuarioEliminado=nodoUsuario->usuario.usuarioEliminado;
+        */
+        mostrarUsuario(jugador);
+
+        /// ------------------------------------------------------
+
+        jugar(&jugador,arbolDesafios, arbolDesafios);
+
+        mostrarUsuario(jugador);
+        break;
+    case 2:
+        ///Función mostrarUsuariosPorPuntaje
+        break;
+    case 3:
+        menuPrincipal(arbolDesafios);
+        break;
         }
-    }else{ ///El usuario es admin
-        printf("\n\n1.Jugar.\n2.Ver ranking de puntajes.\n3.Asignar administrador.\n4.Desafios ABL\n");
-        fflush(stdin);
-        switch (op){
-            case 1:
-
-                mostrarUsuario(jugador);
-                jugar(&jugador,arbolDesafios, arbolDesafios);
-                mostrarUsuario(jugador);
-                break;
-            case 2:
-                ///Función mostrarUsuariosPorPuntaje
-                break;
-            case 3:
-                menuPrincipal(arbolDesafios);
-                break;
-            case 4:
-                char nombre[30];
-                printf("\n\nPara asignar la categoría de administrador recuerde que el usuario ya debe estar registrado. Ingrese el nombre del usuario:\n\n");
-                fflush(stdin);
-                gets(nombre);
-                int pos = posUsuarioNombreEnArchivo(nombre);
-                if (pos == -1){
-                    printf("\n\nEl usuario ingresado no se encuentra ingresado, será enviado al menú anterior.\n\n");
-                    system("pause");
-                    menuUsuario(jugador, arbolDesafios);
-                }else{
-
-                }
-            default:
-                printf("\n\nOPCIÓN INCORRECTA. Intente de nuevo.\n\n\n"):
-                system("pause");
-                menuUsuario(jugador, arbolDesafios);
-        }
-    }
+        ///MOSTRAR LAS OPCIONES QUE SALEN SI ES USUARIO ADMIN--------
 }
-void menuAdmin (usuario jugador){
-    nodoArbolDesa*
-}
-
 
 void iniciarPrograma (){ ///Hay que cargar las estructuras desde los archivos cuando se inicia
-    ///char string[30];
-    ///sprintf(string, "mode con: cols=%d lines=%d", 45,45);
-    ///system(string);
+char string[30];
     nodoArbolDesa* arbol = inicArbolDesafio();
     arbol = pasarDesafiosArchivoToArbol(arbol);
+sprintf(string, "mode con: cols=%d lines=%d", 45,45);
+system(string);
     pantallaPrincipal();
     menuPrincipal(arbol);
 
