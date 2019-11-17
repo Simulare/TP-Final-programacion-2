@@ -1,5 +1,5 @@
 #include "menu.h"
-
+#include <time.h>
 
 void nuevoUsuario (nodoArbolDesa* arbol){ ///Nuevo usuario, versión archivos
     usuario nuevo;
@@ -96,53 +96,104 @@ void menuPrincipal (nodoArbolDesa* arbol){
 }
 
 void menuUsuario (usuario jugador, nodoArbolDesa* arbolDesafios){  ///Hay que modificar si agregamos más
-    ///usuario jugador;
-    system("cls");
-    printf("\n\n1.Jugar.\n2.Ver ranking de puntajes.\n3.Salir del usuario\n");
-    int op;
-    fflush(stdin);
-    scanf("%i", &op);
-    switch (op){
-    case 1:
-        /**
-        ///Función inicJuego (nodoListaUsu* nodoUsuario, nodoArbolDesa* arbol)
+    int op=0;
+    while(op!=4){
+        ///usuario jugador;
+        system("cls");
+        printf("\n\n1.Jugar.\n2.Ver ranking de puntajes.\n3.Ver historial de jugadas.\n4.Salir del usuario.\n");
+        fflush(stdin);
+        scanf("%i", &op);
+        switch (op){
+        case 1:
+            /**
+            ///Función inicJuego (nodoListaUsu* nodoUsuario, nodoArbolDesa* arbol)
 
-        /// OJOOO, quitar despues de cambiar la lista de usuarios
-        jugador.idUsuario=nodoUsuario->usuario.idUsuario;
-        strcpy(jugador.nombreUsuario,nodoUsuario->usuario.nombreUsuario);
-        strcpy(jugador.contraUsuario,nodoUsuario->usuario.contraUsuario);
-        jugador.categoriaUsuario=nodoUsuario->usuario.categoriaUsuario;
-        jugador.vidaUsuario  =1000 ;///  nodoUsuario->usuario.vidaUsuario;
-        jugador.ataqueUsuario=10;   ///  nodoUsuario->usuario.ataqueUsuario;
-        jugador.puntajeUsuario=nodoUsuario->usuario.puntajeUsuario;
-        jugador.usuarioEliminado=nodoUsuario->usuario.usuarioEliminado;
-        */
-        mostrarUsuario(jugador);
+            /// OJOOO, quitar despues de cambiar la lista de usuarios
+            jugador.idUsuario=nodoUsuario->usuario.idUsuario;
+            strcpy(jugador.nombreUsuario,nodoUsuario->usuario.nombreUsuario);
+            strcpy(jugador.contraUsuario,nodoUsuario->usuario.contraUsuario);
+            jugador.categoriaUsuario=nodoUsuario->usuario.categoriaUsuario;
+            jugador.vidaUsuario  =1000 ;///  nodoUsuario->usuario.vidaUsuario;
+            jugador.ataqueUsuario=10;   ///  nodoUsuario->usuario.ataqueUsuario;
+            jugador.puntajeUsuario=nodoUsuario->usuario.puntajeUsuario;
+            jugador.usuarioEliminado=nodoUsuario->usuario.usuarioEliminado;
+            */
+            mostrarUsuario(jugador);
 
-        /// ------------------------------------------------------
+            /// ------------------------------------------------------
+            int resultado=0;
+            int puntaje=0;
+            int turnos=0;
 
-        jugar(&jugador,arbolDesafios, arbolDesafios);
+            /// OJOOO quitar
+            jugador.ataqueUsuario=20;
+            int dificultadJugada=1;
+            printf("Id: %d\n",jugador.idUsuario);
+            /// OJOOO quitar
 
-        mostrarUsuario(jugador);
-        break;
-    case 2:
-        ///Función mostrarUsuariosPorPuntaje
-        break;
-    case 3:
-        menuPrincipal(arbolDesafios);
-        break;
-        }
-        ///MOSTRAR LAS OPCIONES QUE SALEN SI ES USUARIO ADMIN--------
+            jugador.puntajeUsuario=0; ///para asegurarnos que cada vez que empiece un juego nuevo el acumulador sea 0
+            resultado=jugar(&jugador,arbolDesafios,arbolDesafios,&puntaje,&turnos);
+            //printf("%d,%d,%d\n",resultado,puntaje,turnos);
+
+            /// --- Guardo datos en Historico de Jugadas ---
+            char fyh[20];
+            getfechayhora(fyh);
+            historialDeJugadas aux_his;
+
+            aux_his.idUsuario=jugador.idUsuario;
+            strcpy(aux_his.fechaHoraJugada,fyh);
+            aux_his.dificultadJugada=dificultadJugada;
+            aux_his.resultado=resultado;
+            aux_his.turnosTotalesJugados=turnos;
+            aux_his.puntosGanados=puntaje;
+
+            guardarHitoricoJugadas(aux_his);
+            /// ---------------------------------------------
+
+
+            break;
+        case 2:
+            ///Función mostrarUsuariosPorPuntaje
+            break;
+        case 3:
+            system("cls");
+            printf("\n");
+            muestraHistorialJugadas(jugador.idUsuario);
+            printf("\n");
+            system("pause");
+
+            break;
+        case 4:
+            menuPrincipal(arbolDesafios);
+            break;
+            }
+            ///MOSTRAR LAS OPCIONES QUE SALEN SI ES USUARIO ADMIN--------
+    }
 }
 
+void getfechayhora(char fechayhora[20]){
+  time_t t;
+  struct tm *tm;
+  t=time(NULL);
+  tm=localtime(&t);
+  strftime(fechayhora, 20, "%d/%m/%y %H:%M:%S", tm);
+}
+
+
 void iniciarPrograma (){ ///Hay que cargar las estructuras desde los archivos cuando se inicia
-char string[30];
+    char string[30];
     nodoArbolDesa* arbol = inicArbolDesafio();
     arbol = pasarDesafiosArchivoToArbol(arbol);
-sprintf(string, "mode con: cols=%d lines=%d", 45,45);
-system(string);
+<<<<<<< HEAD
+    sprintf(string, "mode con: cols=%d lines=%d", 45,45);
+    system(string);
+=======
+
+    sprintf(string, "mode con: cols=%d lines=%d", 168,57);
+    system(string);
+
+>>>>>>> eca058efa5aa99650ae63fe42df7a9efb57b71de
     pantallaPrincipal();
     menuPrincipal(arbol);
-
 }
 

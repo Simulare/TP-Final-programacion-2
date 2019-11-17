@@ -27,7 +27,7 @@ STmonstruo cargarMonstruo(){
 }
 
 void agregarMonstruoArchivo (STmonstruo aux){
-    FILE * archi = fopen("mounstruos.dat","ab");
+    FILE * archi = fopen("monstruos.dat","ab");
     fwrite(&aux, sizeof(STmonstruo), 1, archi);
     fclose(archi);
 }
@@ -37,14 +37,14 @@ nodoMonstruo * cargarListaMonstruos(nodoMonstruo* lista) ///Lo carga a la lista 
     STmonstruo aux;
     nodoMonstruo* nuevo;
     char control='s';
-    FILE * archi = fopen("mounstruos.dat","ab");
+    FILE * archi = fopen("monstruos.dat","ab");
     while(control=='s'||'S')
     {
         aux = cargarMonstruo();
         nuevo = crearNodoMonstruo(aux);
         lista = agregarFinal(lista, nuevo);
         agregarMonstruoArchivo(aux);
-        printf("Desea cargar otro mounstruo? [ s ] / [ n ]\n");
+        printf("Desea cargar otro monstruos? [ s ] / [ n ]\n");
         fflush(stdin);
         scanf("%c",&control);
         system("cls");
