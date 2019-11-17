@@ -139,10 +139,9 @@ void iniciarPrograma (){ ///Hay que cargar las estructuras desde los archivos cu
 char string[30];
     nodoArbolDesa* arbol = inicArbolDesafio();
     arbol = pasarDesafiosArchivoToArbol(arbol);
-sprintf(string, "mode con: cols=%d lines=%d", 45,45);
-system(string);
+    sprintf(string, "mode con: cols=%d lines=%d", 45,45);
+    system(string);
     pantallaPrincipal();
     menuPrincipal(arbol);
-
 }
 

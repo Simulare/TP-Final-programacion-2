@@ -43,10 +43,6 @@
 			<Option compilerVar="CC" />
 		</Unit>
 		<Unit filename="gotoxy.h" />
-		<Unit filename="historialDeJugadas.c">
-			<Option compilerVar="CC" />
-		</Unit>
-		<Unit filename="historialDeJugadas.h" />
 		<Unit filename="jugar.c">
 			<Option compilerVar="CC" />
 		</Unit>
@@ -62,6 +58,10 @@
 			<Option compilerVar="CC" />
 		</Unit>
 		<Unit filename="mounstruo.h" />
+		<Unit filename="puntajes.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="puntajes.h" />
 		<Unit filename="usuarios.c">
 			<Option compilerVar="CC" />
 		</Unit>

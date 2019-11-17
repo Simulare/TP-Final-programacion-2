@@ -4,7 +4,6 @@
 #include <stdlib.h>
 #include <string.h>
 #include "desafios.h"
-#include "historialDeJugadas.h"
 #include "usuarios.h"
 #include <locale.h>
 
