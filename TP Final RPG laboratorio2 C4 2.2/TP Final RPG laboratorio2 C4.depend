@@ -260,7 +260,7 @@
 1572629885 source:c:\users\usuario\documents\github\tp-final-programacion-2\tp final rpg laboratorio2 c4 2.2\usuarios.c
 	"usuarios.h"
 
-1573274985 source:c:\users\luca9\desktop\tp final - programacion 2\tp-final-programacion-2\tp final rpg laboratorio2 c4 2.2\desafios.c
+1574001533 source:c:\users\luca9\desktop\tp final - programacion 2\tp-final-programacion-2\tp final rpg laboratorio2 c4 2.2\desafios.c
 	"desafios.h"
 
 1573168630 c:\users\luca9\desktop\tp final - programacion 2\tp-final-programacion-2\tp final rpg laboratorio2 c4 2.2\desafios.h
@@ -282,12 +282,12 @@
 	<stdlib.h>
 	<string.h>
 
-1573943309 source:c:\users\luca9\desktop\tp final - programacion 2\tp-final-programacion-2\tp final rpg laboratorio2 c4 2.2\jugar.c
+1574018205 source:c:\users\luca9\desktop\tp final - programacion 2\tp-final-programacion-2\tp final rpg laboratorio2 c4 2.2\jugar.c
 	"jugar.h"
 	"Pantallas.h"
 	"puntajes.h"
 
-1573186038 c:\users\luca9\desktop\tp final - programacion 2\tp-final-programacion-2\tp final rpg laboratorio2 c4 2.2\jugar.h
+1574001533 c:\users\luca9\desktop\tp final - programacion 2\tp-final-programacion-2\tp final rpg laboratorio2 c4 2.2\jugar.h
 	<stdio.h>
 	<stdlib.h>
 	<string.h>
@@ -299,14 +299,15 @@
 	<stdlib.h>
 	<string.h>
 
-1572820726 source:c:\users\luca9\desktop\tp final - programacion 2\tp-final-programacion-2\tp final rpg laboratorio2 c4 2.2\main.c
+1574001533 source:c:\users\luca9\desktop\tp final - programacion 2\tp-final-programacion-2\tp final rpg laboratorio2 c4 2.2\main.c
 	<stdio.h>
 	<stdlib.h>
 	"jugar.h"
 	"usuarios.h"
 
-1573324133 source:c:\users\luca9\desktop\tp final - programacion 2\tp-final-programacion-2\tp final rpg laboratorio2 c4 2.2\menu.c
+1574001533 source:c:\users\luca9\desktop\tp final - programacion 2\tp-final-programacion-2\tp final rpg laboratorio2 c4 2.2\menu.c
 	"menu.h"
+	<time.h>
 
 1573328683 c:\users\luca9\desktop\tp final - programacion 2\tp-final-programacion-2\tp final rpg laboratorio2 c4 2.2\menu.h
 	<stdio.h>
@@ -449,4 +450,7 @@
 
 1572820726 source:c:\users\luca9\desktop\tp final - programacion 2\tp-final-programacion-2\tp final rpg laboratorio2 c4 2.2\pantallas.c
 	"Pantallas.h"
+
+1574018011 source:c:\users\luca9\desktop\tp final - programacion 2\tp-final-programacion-2\tp final rpg laboratorio2 c4 2.2\puntajes.c
+	"puntajes.h"
 

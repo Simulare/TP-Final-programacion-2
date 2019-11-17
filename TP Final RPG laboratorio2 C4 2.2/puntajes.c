@@ -7,7 +7,7 @@ nodoPuntajes * inicListaPuntajes()
 
 nodoPuntajes * crearNodoPuntajes(int puntaje,char nombre[30])
 {
-    nodoPuntajes * nuevo=(nodoPuntajes*)malloc(sizof(nodoPuntajes));
+    nodoPuntajes * nuevo=(nodoPuntajes*)malloc(sizeof(nodoPuntajes));
     strcpy(nuevo->puntajes.nombre,nombre);
     nuevo->puntajes.puntaje=puntaje;
     nuevo->siguiente=NULL;
@@ -35,7 +35,7 @@ nodoPuntajes * acomodarPuntaje(nodoPuntajes * lista, nodoPuntajes * nuevo)
             while(lista->puntajes.puntaje<nuevo->puntajes.puntaje)
             {
                 ante = seg;
-                seg = seg->siguiente
+                seg = seg->siguiente;
             }
             nuevo->siguiente=seg;
             ante->siguiente=nuevo;
@@ -46,10 +46,10 @@ nodoPuntajes * acomodarPuntaje(nodoPuntajes * lista, nodoPuntajes * nuevo)
 
 nodoPuntajes * abrirArchivoPuntajes()
 {
-    nodoPuntajes aux;
+    nodoPuntajes * aux;
     nodoPuntajes * lista;
-    FILE * archi=fread("puntajes.bin","rb");
-    while(fread(&aux,sizof(nodoPuntajes),1,archi)>0)
+    FILE * archi=fopen("puntajes.bin","rb");
+    while(fread(&aux,sizeof(nodoPuntajes),1,archi)>0)
     {
         lista=aux;
     }
@@ -59,12 +59,12 @@ nodoPuntajes * abrirArchivoPuntajes()
 
 void guardarArchivoPuntajes(nodoPuntajes * lista)
 {
-    nodoPuntajes aux;
-    FILE * fopen("puntajes.bin","wb");
+    nodoPuntajes * aux;
+    FILE * archi=fopen("puntajes.bin","wb");
     if(lista!=NULL)
     {
         aux=lista;
-        fwrite(&aux,sizeof(nodoPuntajes),1,archi));
+        fwrite(&aux,sizeof(nodoPuntajes),1,archi);
         lista=lista->siguiente;
     }
     fclose(archi);
@@ -78,16 +78,15 @@ void mostrarPuntajes(nodoPuntajes * lista,int posicion)
 void recorreMostrarPuntajes()
 {
     system("cls");
-    STpuntajes aux;
-    FILE * archi=fread("puntajes.bin","rb");
+    STpuntajes * aux;
+    FILE * archi=fopen("puntajes.bin","rb");
     int posicion=1;
-    while(fread(&aux,sizof(nodoPuntajes),1,archi)>0)
+    while(fread(&aux,sizeof(nodoPuntajes),1,archi)>0)
     {
-        mostrarPuntajes(posicion);
+        mostrarPuntajes(aux,posicion);
         posicion++;
     }
     fclose(archi);
-    return
 }
 
 void cargarPuntajes(char nombre[30],int puntaje)
