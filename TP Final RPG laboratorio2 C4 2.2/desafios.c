@@ -109,7 +109,7 @@ nodoArbolDesa* pasarDesafiosArchivoToArbol (nodoArbolDesa* arbolDesa){
     strcpy(desafio.descripcionDesafio,"Un goblin salvaje se acerca!...\n");
     desafio.dificultadDesafio=1;
     strcpy(desafio.monstruo.nombreMonstruo,"Goblin");
-    desafio.monstruo.vidaBaseMonstruo=200;
+    desafio.monstruo.vidaBaseMonstruo=100;
     desafio.monstruo.ataqueBaseMonstruo=10;
     desafio.monstruo.puntosMonstruo=50;
     strcpy(desafio.preguntaProxDesafio,"1.derecha\n2.izquierda\n\n");
@@ -135,7 +135,7 @@ nodoArbolDesa* pasarDesafiosArchivoToArbol (nodoArbolDesa* arbolDesa){
     strcpy(desafio.descripcionDesafio,"Encontraste el final boss!, el dragon rojo...\n");
     desafio.dificultadDesafio=1;
     strcpy(desafio.monstruo.nombreMonstruo,"Dragon Rojo");
-    desafio.monstruo.vidaBaseMonstruo=500;
+    desafio.monstruo.vidaBaseMonstruo=100;
     desafio.monstruo.ataqueBaseMonstruo=15;
     desafio.monstruo.puntosMonstruo=50;
     strcpy(desafio.preguntaProxDesafio,"1.derecha\n2.izquierda\n\n");
