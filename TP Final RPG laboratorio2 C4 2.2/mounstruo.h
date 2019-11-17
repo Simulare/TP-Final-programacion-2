@@ -47,5 +47,16 @@ STmonstruo monstruoVacio();
 
 nodoMonstruo* bajaMonstruo(nodoMonstruo* lista, char nombre[]);
 
+void pasarListaMonstruoToArchivo (nodoMonstruo* lista);
+
+nodoMonstruo* pasarArchivoMonstruosToLista (nodoMonstruo* lista);
+
+void modificarVidaMonstruo(nodoMonstruo* lista, nodoMonstruo* aModificar);
+
+void modificarAtaqueMonstruo(nodoMonstruo* lista, nodoMonstruo* aModificar);
+
+void modificarPuntosMonstruo(nodoMonstruo* lista, nodoMonstruo* aModificar);
+
+void modificarRegistroMonstruo (char nombre[], int nuevoDato, int tipo);
 
 #endif // MOUNSTRUO_H_INCLUDED

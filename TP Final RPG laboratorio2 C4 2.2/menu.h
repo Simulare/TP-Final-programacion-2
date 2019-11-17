@@ -19,6 +19,14 @@ void menuPrincipal(nodoArbolDesa* arbol, nodoMonstruo* listaMonstruos);
 
 void menuUsuario(usuario aux, nodoArbolDesa* arbol, nodoMonstruo* listaMonstruos);
 
+void ABMLmonstruos(nodoMonstruo* listaMonstruos);
+
+void modificarMonstruo (nodoMonstruo* listaMonstruos, nodoMonstruo* aModificar);
+
+void getfechayhora(char fechayhora[20]);
+
 void iniciarPrograma();
+
+void administrarUsuarios ();
 
 #endif // MENU_H_INCLUDED
