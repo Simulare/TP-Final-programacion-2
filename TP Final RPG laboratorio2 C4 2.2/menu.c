@@ -2,7 +2,7 @@
 #include <time.h>
 #include "historialDeJugadas.h"
 
-void nuevoUsuario (nodoArbolDesa* arbol){ ///Nuevo usuario, versión archivos
+void nuevoUsuario (nodoArbolDesa* arbol){ ///Nuevo usuario, versiï¿½n archivos
     usuario nuevo;
     char nombre[30];
     printf("\nNombre: ");
@@ -40,7 +40,7 @@ void logInUser (nodoArbolDesa* arbol){
     gets(nombre);
     int pos = posUsuarioNombreEnArchivo(nombre);
     if (pos == -1){ ///No existe usuario con ese nombre
-        printf("\n\n----No existe ningún usuario registrado con el nombre ingresado.----\n\n");
+        printf("\n\n----No existe ningï¿½n usuario registrado con el nombre ingresado.----\n\n");
         system("pause");
         menuPrincipal(arbol);
     }else{ ///Existe
@@ -77,7 +77,7 @@ void menuPrincipal (nodoArbolDesa* arbol){
     switch (op){
         case 1: ///Se guarda en el archivo.
             nuevoUsuario(arbol);
-            printf("\n\n¡Su cuenta ha sido creada con éxito! Ingrese a su cuenta desde el menu principal\n\n");
+            printf("\n\nï¿½Su cuenta ha sido creada con ï¿½xito! Ingrese a su cuenta desde el menu principal\n\n");
             system ("pause");
             menuPrincipal(arbol);
             break;
@@ -96,14 +96,14 @@ void menuPrincipal (nodoArbolDesa* arbol){
     }
 }
 
-void menuUsuario (usuario jugador, nodoArbolDesa* arbolDesafios){  ///Hay que modificar si agregamos más
+void menuUsuario (usuario jugador, nodoArbolDesa* arbolDesafios){  ///Hay que modificar si agregamos mï¿½s
     int op=-1;
     while(op!=0){
         ///usuario jugador;
         system("cls");
         printf("\n\n0.Salir del usuario.\n1.Jugar.\n2.Ver ranking de puntajes.\n3.Ver historial de jugadas.\n");
         if (jugador.categoriaUsuario == 'A'){
-            printf("4.ABML Monstruos.\n5.ABML Desafíos.\n\n");
+            printf("4.ABML Monstruos.\n5.ABML Desafï¿½os.\n\n");
         }
         fflush(stdin);
         scanf("%i", &op);
@@ -113,7 +113,7 @@ void menuUsuario (usuario jugador, nodoArbolDesa* arbolDesafios){  ///Hay que mo
             break;
         case 1:
             /**
-            ///Función inicJuego (nodoListaUsu* nodoUsuario, nodoArbolDesa* arbol)
+            ///Funciï¿½n inicJuego (nodoListaUsu* nodoUsuario, nodoArbolDesa* arbol)
 
             /// OJOOO, quitar despues de cambiar la lista de usuarios
             jugador.idUsuario=nodoUsuario->usuario.idUsuario;
@@ -160,7 +160,7 @@ void menuUsuario (usuario jugador, nodoArbolDesa* arbolDesafios){  ///Hay que mo
 
             break;
         case 2:
-            ///Función mostrarUsuariosPorPuntaje
+            ///Funciï¿½n mostrarUsuariosPorPuntaje
             break;
         case 3:
             system("cls");

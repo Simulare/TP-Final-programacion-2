@@ -1,4 +1,6 @@
 #include "jugar.h"
+#include "Pantallas.h"
+#include "puntajes.h"
 
 void recompensa(usuario*jugador){
     jugador->vidaUsuario+=100;
@@ -89,7 +91,7 @@ char pelear(usuario*jugador,nodoArbolDesa*desafio,int*turnos){
 
 int jugar(usuario*jugador,nodoArbolDesa*desafio, nodoArbolDesa* anterior, int*puntaje, int*turnosTotales){ ///Cuando es la primer llamada a anterior se pasa el arbol como a desafio
     int turnos=0;
-    //int turnosTotales;s
+    //int turnosTotales;
     char resultPelea;
     int camino;
     int resultado=-1;
@@ -120,8 +122,8 @@ int jugar(usuario*jugador,nodoArbolDesa*desafio, nodoArbolDesa* anterior, int*pu
                             printf("\n\nSaliste del dungeon...\n\nTu puntuacion es: %d\n\n---------GANASTE---------\n\n",jugador->puntajeUsuario);
                             ///printf("\n\nSaliste del dungeon...\n\n---------GANASTE---------\n\n");
                             system("pause");
-                            ///cargarPuntajes(jugador->nombreUsuario,jugador->puntajeUsuario);
                             resultado=1;    /// Gano
+                            cargarPuntajes(jugador->nombreUsuario,jugador->puntajeUsuario);
                         }
                         break;
                     case 'M':
@@ -130,7 +132,6 @@ int jugar(usuario*jugador,nodoArbolDesa*desafio, nodoArbolDesa* anterior, int*pu
                         system("pause");
                         ///cargarPuntajes(jugador->nombreUsuario,jugador->puntajeUsuario);
                         return;
-                        resultado=0; /// Perdio
                         break;
                     case 'H':
                         printf("\nDecidiste huir!!! Volveras al desafio anterior y podras decidir de nuevo que camino tomar.\nSe te restaran 50 de tu puntuacion total.\n\n");
