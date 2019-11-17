@@ -3,6 +3,7 @@
 
 #include <stdio.h>
 #include <stdlib.h>
+#define MONSTRUOS "monstruos.dat"
 #define MODIF_LVL2 15
 #define MODIF_LVL3 25
 
@@ -32,7 +33,7 @@ nodoMonstruo * crearNodoMonstruo(STmonstruo monstruo);
 
 void mostrarMonstruo(STmonstruo aux);
 
- void recorrerMostrar(nodoMonstruo * listaMonstruos);
+ void mostrarListaMonstruo(nodoMonstruo * listaMonstruos);
 
 nodoMonstruo* agregarFinal(nodoMonstruo* listaMonstruos, nodoMonstruo * nuevoMonstruo);
 
@@ -43,6 +44,8 @@ nodoMonstruo* buscarMonstruoNombre (nodoMonstruo* lista, char nombre[]);
 STmonstruo ponerMonstruo (nodoMonstruo* nodo, int dificultad);
 
 STmonstruo monstruoVacio();
+
+nodoMonstruo* bajaMonstruo(nodoMonstruo* lista, char nombre[]);
 
 
 #endif // MOUNSTRUO_H_INCLUDED

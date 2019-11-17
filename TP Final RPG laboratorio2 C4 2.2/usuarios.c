@@ -163,7 +163,11 @@ void convertirJugadorToAdmin (char nombre[]){ ///Cuando va en el menú abajo va l
         fflush(stdin);
         scanf("%c", &op);
         if (op == 's' || op == 'S'){
+            FILE* archi = fopen(USUARIOS, "r+b");
             jugador.categoriaUsuario = 'A';
+            fseek(archi, sizeof(usuario)*(pos-1), SEEK_SET);
+            fwrite(&jugador, sizeof(usuario), 1, archi);
+            fclose(archi);
             system("cls");
             printf("-------¡La categoría del usuario %s se ha cambiado con éxito!---------", nombre);
             system("pause");
@@ -173,4 +177,5 @@ void convertirJugadorToAdmin (char nombre[]){ ///Cuando va en el menú abajo va l
         }
     }
 }
+
 

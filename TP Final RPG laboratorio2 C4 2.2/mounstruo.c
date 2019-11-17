@@ -9,7 +9,7 @@ STmonstruo cargarMonstruo(){
     STmonstruo aux;
     printf("\nIngrese número de id del monstruo\n"); ///Hay que verificar que no haya uno con el mismo id
     fflush(stdin);
-    scanf("%i", aux.idMonstruo);
+    scanf("%i", &aux.idMonstruo);
     printf("Ingrese nombre de monstruo\n");
     fflush(stdin);
     scanf("%s",&aux.nombreMonstruo);
@@ -65,14 +65,15 @@ nodoMonstruo * crearNodoMonstruo(STmonstruo monstruo)
 
 void mostrarMonstruo(STmonstruo aux)
 {
-        printf("ID : %d",aux.idMonstruo);
+        printf("\nID : %d\n",aux.idMonstruo);
         printf("Nombre : %s\n",aux.nombreMonstruo);
         printf("Vida : %d\n",aux.vidaBaseMonstruo);
-        printf("Ataque : %d\n\n\n",aux.ataqueBaseMonstruo);
-        printf("Puntos por derrotarlo: %d", aux.puntosMonstruo);
+        printf("Ataque : %d\n",aux.ataqueBaseMonstruo);
+        printf("Puntos por derrotarlo: %d\n", aux.puntosMonstruo);
+        printf("\n-------------------\n");
 }
 
- void recorrerMostrar(nodoMonstruo * listaMonstruos)
+ void mostrarListaMonstruo(nodoMonstruo * listaMonstruos)
  {
      while(listaMonstruos!=NULL)
      {
@@ -149,3 +150,100 @@ STmonstruo monstruoVacio (){  ///Cuando el desafío es tipo recompensa va esta fu
     return aux;
 }
 
+nodoMonstruo* bajaMonstruo (nodoMonstruo* lista, char nombre[]){
+    if (lista != NULL){
+        nodoMonstruo* seg;
+        if (strcmpi(lista->monstruo.nombreMonstruo, nombre) == 0 ){
+            seg = lista;
+            lista = lista->sig;
+            free(seg);
+        }else{
+            nodoMonstruo* ante = lista;
+            seg = lista->sig;
+            while (seg != NULL && strcmpi(seg->monstruo.nombreMonstruo, nombre) != 0){
+                ante = seg;
+                seg = seg->sig;
+            }
+            if (seg!= NULL){
+                ante->sig = seg->sig;
+                free(seg);
+            }
+        }
+    }
+    return lista;
+}
+
+void pasarListaMonstruoToArchivo (nodoMonstruo* lista){
+    FILE* archi = fopen(MONSTRUOS, "wb");
+    while (lista != NULL){
+        fwrite(&lista->monstruo, sizeof(STmonstruo), 1, archi);
+        lista = lista->sig;
+    }
+    fclose(archi);
+}
+
+nodoMonstruo* pasarArchivoMonstruosToLista (nodoMonstruo* lista){
+    FILE* archi = fopen(MONSTRUOS, "rb");
+    STmonstruo aux;
+    while (fread(&aux, sizeof(STmonstruo), 1, archi) > 0){
+        lista = agregarFinal(lista, crearNodoMonstruo(aux));
+    }
+    fclose(archi);
+    return lista;
+}
+
+void modificarVidaMonstruo(nodoMonstruo* lista, nodoMonstruo* aModificar){
+    mostrarMonstruo(aModificar->monstruo);
+    printf("\n\nIngrese la nueva vida: ");
+    int vida;
+    fflush(stdin);
+    scanf("%i", &vida);
+    aModificar->monstruo.vidaBaseMonstruo = vida;
+    modificarRegistroMonstruo(aModificar->monstruo.nombreMonstruo, vida, 1);
+}
+
+void modificarAtaqueMonstruo(nodoMonstruo* lista, nodoMonstruo* aModificar){
+    mostrarMonstruo(aModificar->monstruo);
+    printf("\n\nIngrese los nuevos puntos de ataque: ");
+    int atq;
+    fflush(stdin);
+    scanf("%i", &atq);
+    aModificar->monstruo.ataqueBaseMonstruo = atq;
+    modificarRegistroMonstruo(aModificar->monstruo.nombreMonstruo, atq, 2);
+}
+
+void modificarPuntosMonstruo(nodoMonstruo* lista, nodoMonstruo* aModificar){
+    mostrarMonstruo(aModificar->monstruo);
+    printf("\n\nIngrese el nuevo puntaje por derrotarlo: ");
+    int puntos;
+    fflush(stdin);
+    scanf("%i", &puntos);
+    aModificar->monstruo.puntosMonstruo = puntos;
+    modificarRegistroMonstruo(aModificar->monstruo.nombreMonstruo, puntos, 3);
+}
+
+void modificarRegistroMonstruo (char nombre[], int nuevoDato, int tipo){ ///1 vida, 2 atq, 3 puntos.
+    FILE * archi = fopen(MONSTRUOS, "r+b");
+    STmonstruo aux;
+    int flag = 0;
+    while(flag == 0 && fread(&aux, sizeof(STmonstruo),1,archi) > 0){
+        if(strcmpi(aux.nombreMonstruo, nombre) == 0){
+            switch(tipo){
+            case 1:
+                aux.vidaBaseMonstruo = nuevoDato;
+                break;
+            case 2:
+                aux.ataqueBaseMonstruo = nuevoDato;
+                break;
+            case 3:
+                aux.puntosMonstruo = nuevoDato;
+                break;
+            }
+            fseek(archi, sizeof(STmonstruo)*(-1), SEEK_CUR);
+            fwrite(&aux, sizeof(STmonstruo), 1, archi);
+            flag = 1;
+            fclose(archi);
+        }
+    }
+    fclose(archi);
+}

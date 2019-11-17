@@ -9,15 +9,15 @@
 #include <locale.h>
 
 
-void nuevoUsuario();
+void nuevoUsuario(nodoArbolDesa* arbol, nodoMonstruo* listaMonstruos);
 
-void logInUser(arbol);
+void logInUser(nodoArbolDesa* arbol, nodoMonstruo* listaMonstruos);
 
 void pantallaPrincipal();
 
-void menuPrincipal(nodoArbolDesa* arbol);
+void menuPrincipal(nodoArbolDesa* arbol, nodoMonstruo* listaMonstruos);
 
-void menuUsuario(usuario aux, nodoArbolDesa* arbol);
+void menuUsuario(usuario aux, nodoArbolDesa* arbol, nodoMonstruo* listaMonstruos);
 
 void iniciarPrograma();
 
