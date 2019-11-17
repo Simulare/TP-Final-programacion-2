@@ -1,5 +1,7 @@
 #include "menu.h"
 #include <time.h>
+#include "historialDeJugadas.h"
+
 
 void nuevoUsuario (nodoArbolDesa* arbol, nodoMonstruo* listaMonstruos){ ///Nuevo usuario, versión archivos
     usuario nuevo;
@@ -39,7 +41,7 @@ void logInUser (nodoArbolDesa* arbol, nodoMonstruo* listaMonstruos){
     gets(nombre);
     int pos = posUsuarioNombreEnArchivo(nombre);
     if (pos == -1){ ///No existe usuario con ese nombre
-        printf("\n\n----No existe ningún usuario registrado con el nombre ingresado.----\n\n");
+        printf("\n\n----No existe ningï¿½n usuario registrado con el nombre ingresado.----\n\n");
         system("pause");
         menuPrincipal(arbol, listaMonstruos);
     }else{ ///Existe
@@ -64,6 +66,7 @@ void pantallaPrincipal(){
     ///Pantalla titulo
     system("pause");
 }
+
 
 void menuPrincipal (nodoArbolDesa* arbol, nodoMonstruo* listaMonstruos){
     int op = -1;
@@ -117,7 +120,7 @@ void menuUsuario (usuario jugador, nodoArbolDesa* arbolDesafios, nodoMonstruo* l
             break;
         case 1:
             /**
-            ///Función inicJuego (nodoListaUsu* nodoUsuario, nodoArbolDesa* arbol)
+            ///Funciï¿½n inicJuego (nodoListaUsu* nodoUsuario, nodoArbolDesa* arbol)
 
             /// OJOOO, quitar despues de cambiar la lista de usuarios
             jugador.idUsuario=nodoUsuario->usuario.idUsuario;
@@ -164,7 +167,7 @@ void menuUsuario (usuario jugador, nodoArbolDesa* arbolDesafios, nodoMonstruo* l
 
             break;
         case 2:
-            ///Función mostrarUsuariosPorPuntaje
+            ///Funciï¿½n mostrarUsuariosPorPuntaje
             break;
         case 3:
             system("cls");
@@ -321,7 +324,7 @@ void iniciarPrograma (){ ///Hay que cargar las estructuras desde los archivos cu
     sprintf(string, "mode con: cols=%d lines=%d", 45,45);
     system(string);
 
-    sprintf(string, "mode con: cols=%d lines=%d", 168,57);
+    sprintf(string, "mode con: cols=%d lines=%d", 168,50);
     system(string);
 
     pantallaPrincipal();

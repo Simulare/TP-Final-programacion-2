@@ -78,12 +78,12 @@ void mostrarPuntajes(nodoPuntajes * lista,int posicion)
 void recorreMostrarPuntajes() /// Hay que arreglar -----------
 {
     system("cls");
-    STpuntajes aux;
-    FILE * archi = fopen("puntajes.bin","rb");
+    STpuntajes * aux;
+    FILE * archi=fopen("puntajes.bin","rb");
     int posicion=1;
-    while(fread(&aux,sizeof(nodoPuntajes),1,archi)>0 )
+    while(fread(&aux,sizeof(nodoPuntajes),1,archi)>0)
     {
-        ///mostrarPuntajes(posicion); comentado para que el resto compile
+        mostrarPuntajes(aux,posicion);
         posicion++;
     }
     fclose(archi);
