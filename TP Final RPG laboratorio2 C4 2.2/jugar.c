@@ -122,16 +122,15 @@ int jugar(usuario*jugador,nodoArbolDesa*desafio, nodoArbolDesa* anterior, int*pu
                             printf("\n\nSaliste del dungeon...\n\nTu puntuacion es: %d\n\n---------GANASTE---------\n\n",jugador->puntajeUsuario);
                             ///printf("\n\nSaliste del dungeon...\n\n---------GANASTE---------\n\n");
                             system("pause");
-                            resultado=1;    /// Gano
+                            cargarPuntajes(jugador->nombreUsuario,jugador->puntajeUsuario);
                         }
                         break;
                     case 'M':
                         printf("\nMORISTE\n");
                         dibujaPantallaMuerte();
                         system("pause");
+                        cargarPuntajes(jugador->nombreUsuario,jugador->puntajeUsuario);
                         return;
-                        resultado=0; /// Perdio
-
                         break;
                     case 'H':
                         printf("\nDecidiste huir!!! Volveras al desafio anterior y podras decidir de nuevo que camino tomar.\nSe te restaran 50 de tu puntuacion total.\n\n");

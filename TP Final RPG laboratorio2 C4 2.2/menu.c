@@ -1,7 +1,8 @@
 #include "menu.h"
 #include <time.h>
+#include "historialDeJugadas.h"
 
-void nuevoUsuario (nodoArbolDesa* arbol){ ///Nuevo usuario, versión archivos
+void nuevoUsuario (nodoArbolDesa* arbol){ ///Nuevo usuario, versiï¿½n archivos
     usuario nuevo;
     char nombre[30];
     printf("\nNombre: ");
@@ -39,7 +40,7 @@ void logInUser (nodoArbolDesa* arbol){
     gets(nombre);
     int pos = posUsuarioNombreEnArchivo(nombre);
     if (pos == -1){ ///No existe usuario con ese nombre
-        printf("\n\n----No existe ningún usuario registrado con el nombre ingresado.----\n\n");
+        printf("\n\n----No existe ningï¿½n usuario registrado con el nombre ingresado.----\n\n");
         system("pause");
         menuPrincipal(arbol);
     }else{ ///Existe
@@ -76,7 +77,7 @@ void menuPrincipal (nodoArbolDesa* arbol){
     switch (op){
         case 1: ///Se guarda en el archivo.
             nuevoUsuario(arbol);
-            printf("\n\n¡Su cuenta ha sido creada con éxito! Ingrese a su cuenta desde el menu principal\n\n");
+            printf("\n\nï¿½Su cuenta ha sido creada con ï¿½xito! Ingrese a su cuenta desde el menu principal\n\n");
             system ("pause");
             menuPrincipal(arbol);
             break;
@@ -95,18 +96,24 @@ void menuPrincipal (nodoArbolDesa* arbol){
     }
 }
 
-void menuUsuario (usuario jugador, nodoArbolDesa* arbolDesafios){  ///Hay que modificar si agregamos más
-    int op=0;
-    while(op!=4){
+void menuUsuario (usuario jugador, nodoArbolDesa* arbolDesafios){  ///Hay que modificar si agregamos mï¿½s
+    int op=-1;
+    while(op!=0){
         ///usuario jugador;
         system("cls");
-        printf("\n\n1.Jugar.\n2.Ver ranking de puntajes.\n3.Ver historial de jugadas.\n4.Salir del usuario.\n");
+        printf("\n\n0.Salir del usuario.\n1.Jugar.\n2.Ver ranking de puntajes.\n3.Ver historial de jugadas.\n");
+        if (jugador.categoriaUsuario == 'A'){
+            printf("4.ABML Monstruos.\n5.ABML Desafï¿½os.\n\n");
+        }
         fflush(stdin);
         scanf("%i", &op);
         switch (op){
+        case 0:
+            menuPrincipal(arbolDesafios);
+            break;
         case 1:
             /**
-            ///Función inicJuego (nodoListaUsu* nodoUsuario, nodoArbolDesa* arbol)
+            ///Funciï¿½n inicJuego (nodoListaUsu* nodoUsuario, nodoArbolDesa* arbol)
 
             /// OJOOO, quitar despues de cambiar la lista de usuarios
             jugador.idUsuario=nodoUsuario->usuario.idUsuario;
@@ -153,7 +160,7 @@ void menuUsuario (usuario jugador, nodoArbolDesa* arbolDesafios){  ///Hay que mo
 
             break;
         case 2:
-            ///Función mostrarUsuariosPorPuntaje
+            ///Funciï¿½n mostrarUsuariosPorPuntaje
             break;
         case 3:
             system("cls");
@@ -164,12 +171,39 @@ void menuUsuario (usuario jugador, nodoArbolDesa* arbolDesafios){  ///Hay que mo
 
             break;
         case 4:
-            menuPrincipal(arbolDesafios);
+
             break;
             }
-            ///MOSTRAR LAS OPCIONES QUE SALEN SI ES USUARIO ADMIN--------
     }
 }
+
+/**void ABMLmonstruos(nodoMonstruo* listaMonstruos){   COMENTADO PORQUE ES LO QUE ESTOY HACIENDO
+    STmonstruo aux;
+    char nombre[30];
+    while(op != 5){
+        system("cls");
+        printf("\------------------------------------------------------\n\nABML MONSTRUOS\n\n------------------------------------------------------\n\n\n");
+        printf("1.Alta.\2.Baja.\n3.Modificar.\n4.Listar.\5.Volver");
+        int op;
+        fflush(stdin);
+        scanf("%c", &op);
+        switch (op){
+            case 1:
+                system("cls");
+                aux = cargarMonstruo();
+                listaMonstruos = agregarFinal(listaMonstruos, crearNodoMonstruo(aux));
+                agregarMonstruoArchivo(aux);
+                printf("\n\nCargado exitosamente!!\n\n");
+                break;
+        case 2:
+            system("cls");
+            printf("\nIngrese el nombre del monstruo para dar de baja: ");
+            fflush(stdin);
+            gets(nombre);
+
+        }
+    }
+}*/
 
 void getfechayhora(char fechayhora[20]){
   time_t t;
@@ -184,9 +218,9 @@ void iniciarPrograma (){ ///Hay que cargar las estructuras desde los archivos cu
     char string[30];
     nodoArbolDesa* arbol = inicArbolDesafio();
     arbol = pasarDesafiosArchivoToArbol(arbol);
-
     sprintf(string, "mode con: cols=%d lines=%d", 45,45);
     system(string);
+
     sprintf(string, "mode con: cols=%d lines=%d", 168,57);
     system(string);
 

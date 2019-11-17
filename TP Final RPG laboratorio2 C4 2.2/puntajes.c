@@ -46,10 +46,10 @@ nodoPuntajes * acomodarPuntaje(nodoPuntajes * lista, nodoPuntajes * nuevo)
 
 nodoPuntajes * abrirArchivoPuntajes()
 {
-    nodoPuntajes * aux;
+    nodoPuntajes* aux;
     nodoPuntajes * lista;
     FILE * archi=fopen("puntajes.bin","rb");
-    while(fread(&aux,sizeof(nodoPuntajes),1,archi)>0)
+    while(fread(&aux,sizeof(nodoPuntajes),1 ,archi) >0)
     {
         lista=aux;
     }
@@ -59,8 +59,8 @@ nodoPuntajes * abrirArchivoPuntajes()
 
 void guardarArchivoPuntajes(nodoPuntajes * lista)
 {
-    nodoPuntajes * aux;
-    FILE * archi=fopen("puntajes.bin","wb");
+    nodoPuntajes* aux;
+    FILE * archi = fopen("puntajes.bin","wb");
     if(lista!=NULL)
     {
         aux=lista;
@@ -75,7 +75,7 @@ void mostrarPuntajes(nodoPuntajes * lista,int posicion)
     printf("[ %d ]\t%s :\t%d\n",posicion,lista->puntajes.nombre,lista->puntajes.puntaje);
 }
 
-void recorreMostrarPuntajes()
+void recorreMostrarPuntajes() /// Hay que arreglar -----------
 {
     system("cls");
     STpuntajes * aux;
