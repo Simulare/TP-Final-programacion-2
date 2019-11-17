@@ -1,5 +1,6 @@
 #include "menu.h"
 #include <time.h>
+#include "historialDeJugadas.h"
 
 void nuevoUsuario (nodoArbolDesa* arbol){ ///Nuevo usuario, versión archivos
     usuario nuevo;
@@ -184,15 +185,10 @@ void iniciarPrograma (){ ///Hay que cargar las estructuras desde los archivos cu
     char string[30];
     nodoArbolDesa* arbol = inicArbolDesafio();
     arbol = pasarDesafiosArchivoToArbol(arbol);
-<<<<<<< HEAD
-    sprintf(string, "mode con: cols=%d lines=%d", 45,45);
-    system(string);
-=======
 
     sprintf(string, "mode con: cols=%d lines=%d", 168,57);
     system(string);
 
->>>>>>> eca058efa5aa99650ae63fe42df7a9efb57b71de
     pantallaPrincipal();
     menuPrincipal(arbol);
 }

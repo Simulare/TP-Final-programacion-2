@@ -341,16 +341,16 @@
 	<stdlib.h>
 	<string.h>
 
-1573951315 source:d:\proyectos github tomas\tp-final-programacion-2\tp final rpg laboratorio2 c4 2.2\menu.c
+1574014174 source:d:\proyectos github tomas\tp-final-programacion-2\tp final rpg laboratorio2 c4 2.2\menu.c
 	"menu.h"
 	<time.h>
+	"historialDeJugadas.h"
 
-1573924456 d:\proyectos github tomas\tp-final-programacion-2\tp final rpg laboratorio2 c4 2.2\menu.h
+1574013740 d:\proyectos github tomas\tp-final-programacion-2\tp final rpg laboratorio2 c4 2.2\menu.h
 	<stdio.h>
 	<stdlib.h>
 	<string.h>
 	"desafios.h"
-	"historialDeJugadas.h"
 	"usuarios.h"
 	<locale.h>
 
@@ -362,7 +362,7 @@
 1573924456 source:d:\proyectos github tomas\tp-final-programacion-2\tp final rpg laboratorio2 c4 2.2\usuarios.c
 	"usuarios.h"
 
-1573950835 source:d:\proyectos github tomas\tp-final-programacion-2\tp final rpg laboratorio2 c4 2.2\main.c
+1574015900 source:d:\proyectos github tomas\tp-final-programacion-2\tp final rpg laboratorio2 c4 2.2\main.c
 	<stdio.h>
 	<stdlib.h>
 	"jugar.h"
@@ -375,9 +375,10 @@
 	"usuarios.h"
 	"desafios.h"
 
-1573946479 source:d:\proyectos github tomas\tp-final-programacion-2\tp final rpg laboratorio2 c4 2.2\jugar.c
+1574017714 source:d:\proyectos github tomas\tp-final-programacion-2\tp final rpg laboratorio2 c4 2.2\jugar.c
 	"jugar.h"
 	"Pantallas.h"
+	"puntajes.h"
 
 1572625697 source:c:\users\usuario\documents\github\tp-final-programacion-2\tp final rpg laboratorio2 c4 2.2\gotoxy.c
 	<stdio.h>
@@ -414,7 +415,7 @@
 	<stdio.h>
 	<stdlib.h>
 
-1573924456 source:d:\proyectos github tomas\tp-final-programacion-2\tp final rpg laboratorio2 c4 2.2\mounstruo.c
+1574013740 source:d:\proyectos github tomas\tp-final-programacion-2\tp final rpg laboratorio2 c4 2.2\mounstruo.c
 	"mounstruo.h"
 
 1573924456 d:\proyectos github tomas\tp-final-programacion-2\tp final rpg laboratorio2 c4 2.2\mounstruo.h
@@ -449,4 +450,12 @@
 
 1572820726 source:c:\users\luca9\desktop\tp final - programacion 2\tp-final-programacion-2\tp final rpg laboratorio2 c4 2.2\pantallas.c
 	"Pantallas.h"
+
+1574016402 source:d:\proyectos github tomas\tp-final-programacion-2\tp final rpg laboratorio2 c4 2.2\puntajes.c
+	"puntajes.h"
+
+1574013740 d:\proyectos github tomas\tp-final-programacion-2\tp final rpg laboratorio2 c4 2.2\puntajes.h
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
 

@@ -91,7 +91,7 @@ char pelear(usuario*jugador,nodoArbolDesa*desafio,int*turnos){
 
 int jugar(usuario*jugador,nodoArbolDesa*desafio, nodoArbolDesa* anterior, int*puntaje, int*turnosTotales){ ///Cuando es la primer llamada a anterior se pasa el arbol como a desafio
     int turnos=0;
-    //int turnosTotales;
+    //int turnosTotales;s
     char resultPelea;
     int camino;
     int resultado=-1;
@@ -120,25 +120,17 @@ int jugar(usuario*jugador,nodoArbolDesa*desafio, nodoArbolDesa* anterior, int*pu
                             }
                         }else{
                             printf("\n\nSaliste del dungeon...\n\nTu puntuacion es: %d\n\n---------GANASTE---------\n\n",jugador->puntajeUsuario);
-<<<<<<< HEAD
-                            ///printf("\n\nSaliste del dungeon...\n\n---------GANASTE---------\n\n");
                             system("pause");
-                            cargarPuntajes(jugador->nombreUsuario,jugador->puntajeUsuario);
-=======
+                            //cargarPuntajes(jugador->nombreUsuario,jugador->puntajeUsuario);
                             resultado=1;    /// Gano
->>>>>>> eca058efa5aa99650ae63fe42df7a9efb57b71de
                         }
                         break;
                     case 'M':
                         printf("\nMORISTE\n");
                         dibujaPantallaMuerte();
-<<<<<<< HEAD
                         system("pause");
-                        cargarPuntajes(jugador->nombreUsuario,jugador->puntajeUsuario);
-                        return;
-=======
+                        //cargarPuntajes(jugador->nombreUsuario,jugador->puntajeUsuario);
                         resultado=0; /// Perdio
->>>>>>> eca058efa5aa99650ae63fe42df7a9efb57b71de
                         break;
                     case 'H':
                         printf("\nDecidiste huir!!! Volveras al desafio anterior y podras decidir de nuevo que camino tomar.\nSe te restaran 50 de tu puntuacion total.\n\n");
