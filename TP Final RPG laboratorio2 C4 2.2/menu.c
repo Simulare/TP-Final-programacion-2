@@ -221,7 +221,7 @@ void iniciarPrograma (){ ///Hay que cargar las estructuras desde los archivos cu
     sprintf(string, "mode con: cols=%d lines=%d", 45,45);
     system(string);
 
-    sprintf(string, "mode con: cols=%d lines=%d", 168,57);
+    sprintf(string, "mode con: cols=%d lines=%d", 168,50);
     system(string);
 
     pantallaPrincipal();

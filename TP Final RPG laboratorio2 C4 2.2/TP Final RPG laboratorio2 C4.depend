@@ -319,7 +319,7 @@
 1573260416 source:c:\users\luca9\desktop\tp final - programacion 2\tp-final-programacion-2\tp final rpg laboratorio2 c4 2.2\usuarios.c
 	"usuarios.h"
 
-1573934390 source:d:\proyectos github tomas\tp-final-programacion-2\tp final rpg laboratorio2 c4 2.2\desafios.c
+1574021782 source:d:\proyectos github tomas\tp-final-programacion-2\tp final rpg laboratorio2 c4 2.2\desafios.c
 	"desafios.h"
 
 1573924456 d:\proyectos github tomas\tp-final-programacion-2\tp final rpg laboratorio2 c4 2.2\desafios.h
@@ -341,17 +341,18 @@
 	<stdlib.h>
 	<string.h>
 
-1574014174 source:d:\proyectos github tomas\tp-final-programacion-2\tp final rpg laboratorio2 c4 2.2\menu.c
+1574022944 source:d:\proyectos github tomas\tp-final-programacion-2\tp final rpg laboratorio2 c4 2.2\menu.c
 	"menu.h"
 	<time.h>
 	"historialDeJugadas.h"
 
-1574013740 d:\proyectos github tomas\tp-final-programacion-2\tp final rpg laboratorio2 c4 2.2\menu.h
+1574021782 d:\proyectos github tomas\tp-final-programacion-2\tp final rpg laboratorio2 c4 2.2\menu.h
 	<stdio.h>
 	<stdlib.h>
 	<string.h>
 	"desafios.h"
 	"usuarios.h"
+	"historialDeJugadas.h"
 	<locale.h>
 
 1573924456 d:\proyectos github tomas\tp-final-programacion-2\tp final rpg laboratorio2 c4 2.2\usuarios.h
@@ -359,7 +360,7 @@
 	<stdlib.h>
 	<string.h>
 
-1573924456 source:d:\proyectos github tomas\tp-final-programacion-2\tp final rpg laboratorio2 c4 2.2\usuarios.c
+1574021782 source:d:\proyectos github tomas\tp-final-programacion-2\tp final rpg laboratorio2 c4 2.2\usuarios.c
 	"usuarios.h"
 
 1574015900 source:d:\proyectos github tomas\tp-final-programacion-2\tp final rpg laboratorio2 c4 2.2\main.c
@@ -368,17 +369,17 @@
 	"jugar.h"
 	"usuarios.h"
 
-1573946479 d:\proyectos github tomas\tp-final-programacion-2\tp final rpg laboratorio2 c4 2.2\jugar.h
+1574021782 d:\proyectos github tomas\tp-final-programacion-2\tp final rpg laboratorio2 c4 2.2\jugar.h
 	<stdio.h>
 	<stdlib.h>
 	<string.h>
 	"usuarios.h"
 	"desafios.h"
-
-1574017714 source:d:\proyectos github tomas\tp-final-programacion-2\tp final rpg laboratorio2 c4 2.2\jugar.c
-	"jugar.h"
 	"Pantallas.h"
 	"puntajes.h"
+
+1574022847 source:d:\proyectos github tomas\tp-final-programacion-2\tp final rpg laboratorio2 c4 2.2\jugar.c
+	"jugar.h"
 
 1572625697 source:c:\users\usuario\documents\github\tp-final-programacion-2\tp final rpg laboratorio2 c4 2.2\gotoxy.c
 	<stdio.h>
@@ -415,10 +416,10 @@
 	<stdio.h>
 	<stdlib.h>
 
-1574013740 source:d:\proyectos github tomas\tp-final-programacion-2\tp final rpg laboratorio2 c4 2.2\mounstruo.c
+1574021782 source:d:\proyectos github tomas\tp-final-programacion-2\tp final rpg laboratorio2 c4 2.2\mounstruo.c
 	"mounstruo.h"
 
-1573924456 d:\proyectos github tomas\tp-final-programacion-2\tp final rpg laboratorio2 c4 2.2\mounstruo.h
+1574021782 d:\proyectos github tomas\tp-final-programacion-2\tp final rpg laboratorio2 c4 2.2\mounstruo.h
 	<stdio.h>
 	<stdlib.h>
 
@@ -451,7 +452,7 @@
 1572820726 source:c:\users\luca9\desktop\tp final - programacion 2\tp-final-programacion-2\tp final rpg laboratorio2 c4 2.2\pantallas.c
 	"Pantallas.h"
 
-1574016402 source:d:\proyectos github tomas\tp-final-programacion-2\tp final rpg laboratorio2 c4 2.2\puntajes.c
+1574021782 source:d:\proyectos github tomas\tp-final-programacion-2\tp final rpg laboratorio2 c4 2.2\puntajes.c
 	"puntajes.h"
 
 1574013740 d:\proyectos github tomas\tp-final-programacion-2\tp final rpg laboratorio2 c4 2.2\puntajes.h

@@ -7,10 +7,10 @@ void recompensa(usuario*jugador){
 
 int calculoDanio(int ataqueBase){
     int dados=rand () % (MAX_DADOS-MIN_DADOS+1) + MIN_DADOS;
-    gotoxy(42,47);
+    gotoxy(42,40);
     printf("El resultado de los dados es: %2d",dados);
     int total=dados*ataqueBase;
-    gotoxy(42,49);
+    gotoxy(42,42);
     printf("El danio total es: %3d",total);
 
     return total;
@@ -24,28 +24,28 @@ char pelear(usuario*jugador,nodoArbolDesa*desafio,int*turnos){
     int vidaInicialM = desafio->desafio.monstruo.vidaBaseMonstruo;
 
     if(desafio->desafio.idDesafio==4){
-        gotoxy(0,15);
+        gotoxy(0,10);
         dibujaGoblin();
     }
 
 
     while(resultPelea==' '){
         dibujaCaja(1,1,35,10);///caja de vida's
-        dibujaCaja(1,45,35,55);///caja de opciones
-        dibujaCaja(40,45,165,55);///caja de descripciones
+        dibujaCaja(1,38,35,48);///caja de opciones
+        dibujaCaja(40,38,165,48);///caja de descripciones
 
         gotoxy(3,3);
         printf("Vida:%5d\n",jugador->vidaUsuario);
         gotoxy(3,5);
         printf("Vida %s: %3d\n",desafio->desafio.monstruo.nombreMonstruo,desafio->desafio.monstruo.vidaBaseMonstruo);
-        gotoxy(3,47);
+        gotoxy(3,40);
         printf("1.Atacar");
-        gotoxy(3,49);
+        gotoxy(3,42);
         printf("2.Huir");
-        gotoxy(42,47);
+        gotoxy(42,40);
         printf("Elige una accion: ");
         fflush(stdin);
-        gotoxy(60,47);
+        gotoxy(60,40);
         scanf("%d",&respuesta);
         if(respuesta==1){
             /// Ataca Jugador
@@ -53,15 +53,15 @@ char pelear(usuario*jugador,nodoArbolDesa*desafio,int*turnos){
             danio=calculoDanio(jugador->ataqueUsuario);
             desafio->desafio.monstruo.vidaBaseMonstruo=desafio->desafio.monstruo.vidaBaseMonstruo-danio;
             if(desafio->desafio.monstruo.vidaBaseMonstruo>0){
-                gotoxy(42,51);
+                gotoxy(42,44);
                 printf("Es el turno de tu enemigo");
-                gotoxy(42,53);
+                gotoxy(42,46);
                 system("pause");
                 /// Ataca Enemigo
                 danio=calculoDanio(desafio->desafio.monstruo.ataqueBaseMonstruo);
-                gotoxy(42,51);
+                gotoxy(42,44);
                 printf("                           ");
-                gotoxy(42,53);
+                gotoxy(42,46);
                 system("pause");
                 jugador->vidaUsuario=jugador->vidaUsuario-danio;
             }
@@ -70,9 +70,9 @@ char pelear(usuario*jugador,nodoArbolDesa*desafio,int*turnos){
                 jugador->puntajeUsuario+=desafio->desafio.monstruo.puntosMonstruo;
 
                 // dibujaCaja(40,50,195,60);///caja de descripciones
-                gotoxy(42,51);
+                gotoxy(42,44);
                 printf("Eliminaste a tu enemigo, en este nivel ganaste: %d puntos",desafio->desafio.monstruo.puntosMonstruo);
-                gotoxy(42,53);
+                gotoxy(42,46);
                 system("pause");
 
             }
@@ -120,7 +120,7 @@ int jugar(usuario*jugador,nodoArbolDesa*desafio, nodoArbolDesa* anterior, int*pu
                             printf("\n\nSaliste del dungeon...\n\nTu puntuacion es: %d\n\n---------GANASTE---------\n\n",jugador->puntajeUsuario);
                             ///printf("\n\nSaliste del dungeon...\n\n---------GANASTE---------\n\n");
                             system("pause");
-                            cargarPuntajes(jugador->nombreUsuario,jugador->puntajeUsuario);
+                            ///cargarPuntajes(jugador->nombreUsuario,jugador->puntajeUsuario);
                             resultado=1;    /// Gano
                         }
                         break;
@@ -128,7 +128,7 @@ int jugar(usuario*jugador,nodoArbolDesa*desafio, nodoArbolDesa* anterior, int*pu
                         printf("\nMORISTE\n");
                         dibujaPantallaMuerte();
                         system("pause");
-                        cargarPuntajes(jugador->nombreUsuario,jugador->puntajeUsuario);
+                        ///cargarPuntajes(jugador->nombreUsuario,jugador->puntajeUsuario);
                         return;
                         resultado=0; /// Perdio
                         break;
