@@ -60,14 +60,22 @@ void guardarDesafioEnArchivo (nodoArbolDesa* nuevo){
     fclose(archi);
 }
 
-STdesafio cargarDesafio (nodoMonstruo* lista){ ///--------------------FALTA MONSTRUO
+STdesafio cargarDesafio (nodoMonstruo* lista){
     STdesafio aux;
     printf("\nID del desafío: ");
     fflush(stdin);
     scanf("%i", &aux.idDesafio);
-    printf("\nTipo de desafío ('P' pelea / 'R' recompensa): ");
-    fflush(stdin);
-    scanf("%c", &aux.tipoDesafio);
+    do{ ///Para verificar que sea tipo P o R
+        printf("\nTipo de desafío ('P' pelea / 'R' recompensa): ");
+        fflush(stdin);
+        scanf("%c", &aux.tipoDesafio);
+        if (aux.tipoDesafio != 'R' && aux.tipoDesafio != 'P'){
+            printf("\n\nError. El tipo de desafío solo puede ser 'P' o 'R'. Vuelva a intentar.\n\n");
+            system("pause");
+            system("cls");
+        }
+    }while (aux.tipoDesafio != 'P' && aux.tipoDesafio != 'R');
+
     printf("\nDescripción del desafío: ");
     fflush(stdin);
     gets(aux.descripcionDesafio);
@@ -79,9 +87,16 @@ STdesafio cargarDesafio (nodoMonstruo* lista){ ///--------------------FALTA MONS
         printf("\nIngrese el nombre del monstruo del desafío: ");
         fflush(stdin);
         gets(nombre);
-        aux.monstruo = ponerMonstruo(lista, nombre, aux.dificultadDesafio);
+        nodoMonstruo* monster = buscarMonstruoNombre(lista, nombre);
+        if (monster == NULL){
+            printf("\n\nEl monstruo ingresado no existe en la lista de monstruos, si quiere ingresar un mosntruo nuevo primero debe cargarlo en 'cargar monstruo'. Será enviado al menú anterior.\n\n");
+            system("pause");
+            ///MENU ANTERIOR ---------------------
+        }else{
+            aux.monstruo = ponerMonstruo(monster, aux.dificultadDesafio);
+        }
     }else{
-        ///Si no hay monstruo
+        aux.monstruo = monstruoVacio();
     }
     printf("\nPregunta al próximo desafío: ");
     fflush(stdin);

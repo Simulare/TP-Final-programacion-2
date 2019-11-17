@@ -1,6 +1,4 @@
 #include "jugar.h"
-#include "Pantallas.h"
-#include "puntajes.h"
 
 void recompensa(usuario*jugador){
     jugador->vidaUsuario+=100;
@@ -120,25 +118,20 @@ int jugar(usuario*jugador,nodoArbolDesa*desafio, nodoArbolDesa* anterior, int*pu
                             }
                         }else{
                             printf("\n\nSaliste del dungeon...\n\nTu puntuacion es: %d\n\n---------GANASTE---------\n\n",jugador->puntajeUsuario);
-<<<<<<< HEAD
                             ///printf("\n\nSaliste del dungeon...\n\n---------GANASTE---------\n\n");
                             system("pause");
                             cargarPuntajes(jugador->nombreUsuario,jugador->puntajeUsuario);
-=======
                             resultado=1;    /// Gano
->>>>>>> eca058efa5aa99650ae63fe42df7a9efb57b71de
                         }
                         break;
                     case 'M':
                         printf("\nMORISTE\n");
                         dibujaPantallaMuerte();
-<<<<<<< HEAD
                         system("pause");
                         cargarPuntajes(jugador->nombreUsuario,jugador->puntajeUsuario);
                         return;
-=======
+
                         resultado=0; /// Perdio
->>>>>>> eca058efa5aa99650ae63fe42df7a9efb57b71de
                         break;
                     case 'H':
                         printf("\nDecidiste huir!!! Volveras al desafio anterior y podras decidir de nuevo que camino tomar.\nSe te restaran 50 de tu puntuacion total.\n\n");
