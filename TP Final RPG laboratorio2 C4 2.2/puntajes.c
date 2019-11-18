@@ -75,7 +75,7 @@ void mostrarPuntajes(nodoPuntajes * lista,int posicion)
     printf("[ %d ]\t%s :\t%d\n",posicion,lista->puntajes.nombre,lista->puntajes.puntaje);
 }
 
-void recorreMostrarPuntajes() /// Hay que arreglar -----------
+void recorreMostrarPuntajes()
 {
     system("cls");
     STpuntajes * aux;

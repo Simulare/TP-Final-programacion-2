@@ -167,9 +167,9 @@ void convertirJugadorToAdmin (char nombre[]){ ///Cuando va en el menú abajo va l
             fwrite(&jugador, sizeof(usuario), 1, archi);
             fclose(archi);
             system("cls");
-            printf("-------¡La categoría del usuario %s se ha cambiado con éxito!---------\n\n\n\n", nombre);
+            printf("-------¡La categor%ca del usuario %s se ha cambiado con %cxito!---------\n\n\n\n", 160, nombre, 130);
         }else{
-            printf("\n\nNo se ha modificado la categoría del jugador %s. Volverá al menu anterior.\n\n", nombre);
+            printf("\n\nNo se ha modificado la categor%ca del jugador %s. Volver%c al men%c anterior.\n\n", 161, nombre, 160, 163);
         }
     }
     system("pause");

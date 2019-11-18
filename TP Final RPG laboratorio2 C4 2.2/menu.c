@@ -6,6 +6,7 @@
 void nuevoUsuario (nodoArbolDesa* arbol, nodoMonstruo* listaMonstruos){ ///Nuevo usuario, versión archivos
     usuario nuevo;
     char nombre[30];
+    printf("\n       <<< REGISTRAR USUARIO >>>\n\n");
     printf("\nNombre: ");
     fflush(stdin);
     gets(nombre);
@@ -16,7 +17,7 @@ void nuevoUsuario (nodoArbolDesa* arbol, nodoMonstruo* listaMonstruos){ ///Nuevo
         menuPrincipal(arbol, listaMonstruos);
     }else{
         strcpy(nuevo.nombreUsuario, nombre);
-        printf("\nContrase\xa4\x61 : ");
+        printf("\nContrase%ca : ", 164);
         fflush(stdin);
         gets(nuevo.contraUsuario);
         nuevo.puntajeUsuario = 0;
@@ -41,20 +42,20 @@ void logInUser (nodoArbolDesa* arbol, nodoMonstruo* listaMonstruos){
     gets(nombre);
     int pos = posUsuarioNombreEnArchivo(nombre);
     if (pos == -1){ ///No existe usuario con ese nombre
-        printf("\n\n----No existe ningï¿½n usuario registrado con el nombre ingresado.----\n\n");
+        printf("\n\n----No existe ning%cn usuario registrado con el nombre ingresado.----\n\n", 163);
         system("pause");
         menuPrincipal(arbol, listaMonstruos);
     }else{ ///Existe
         usuario aux = usuarioPorRegistro(pos-1);
         char pass[15];
-        printf("\nContrase\xa4\x61 : ");
+        printf("\nContrase%ca : ", 164);
         fflush(stdin);
         gets(pass);
 
         if (strcmp(aux.contraUsuario, pass) == 0){ ///Ingresa al menu usuario
             menuUsuario(aux, arbol, listaMonstruos);
         }else{
-            printf("\n\n----Contrase\xa4\x61 incorrecta.----\n\n");
+            printf("\n\n----Contrase%ca incorrecta.----\n\n", 164);
             system("pause");
             menuPrincipal(arbol, listaMonstruos);
         }
@@ -72,8 +73,9 @@ void menuPrincipal (nodoArbolDesa* arbol, nodoMonstruo* listaMonstruos){
     int op = -1;
     while (op != 3){
         system("cls");
+        printf("\n       <<< MENU PRINCIPAL >>>\n\n");
         printf("\nIngrese a su cuenta, si no tiene una registrese:\n\n\n[1]   Registrarse.\n[2]   Ingresar.\n[3]   Volver\n\n\n");
-        printf("Ingrese una opción: ");
+        printf("Ingrese una opci%cn: ", 162);
         fflush(stdin);
         scanf("%i", &op);
         usuario nuevo;
@@ -81,10 +83,11 @@ void menuPrincipal (nodoArbolDesa* arbol, nodoMonstruo* listaMonstruos){
         switch (op){
             case 1: ///Se guarda en el archivo.
                 nuevoUsuario(arbol, listaMonstruos);
-                printf("\n\n¡Su cuenta ha sido creada con éxito! Ingrese a su cuenta desde el menu principal\n\n");
+                printf("\n\n¡Su cuenta ha sido creada con %cxito! Ingrese a su cuenta desde el menu principal\n\n", 130);
                 system ("pause");
                 break;
             case 2: ///Se loguea
+                printf("\n       <<< INGRESAR A USUARIO >>>\n\n");
                 printf("\n\nIngrese los datos para acceder a su usuario:\n\n");
                 logInUser(arbol, listaMonstruos);
                 break;
@@ -92,7 +95,7 @@ void menuPrincipal (nodoArbolDesa* arbol, nodoMonstruo* listaMonstruos){
                 pantallaPrincipal();
                 break;
             default:
-                printf("\n\nOpcion incorrecta, intente de nuevo. \n\n\n");
+                printf("\n\nOpci%cn incorrecta, intente de nuevo. \n\n\n", 162);
                 system("pause");
                 break;
         }
@@ -104,11 +107,12 @@ void menuUsuario (usuario jugador, nodoArbolDesa* arbolDesafios, nodoMonstruo* l
     while(op!=0){
         ///usuario jugador;
         system("cls");
+        printf("\n       <<< MENU DE USUARIO >>>\n\n");
         printf("\n\n[0]   Salir del usuario.\n[1]   Jugar.\n[2]   Ver ranking de puntajes.\n[3]   Ver historial de jugadas.\n\n\n");
-        printf("Ingrese una opción: ");
         if (jugador.categoriaUsuario == 'A'){
-            printf("[4]   ABML Monstruos.\n[5]   ABML Desafíos.\n[6]   Administrar usuarios.\n\n");
+            printf("[4]   ABML Monstruos.\n[5]   ABML Desaf%cos.\n[6]   Administrar usuarios.\n\n", 161);
         }
+        printf("Ingrese una opci%cn: ", 162);
         fflush(stdin);
         scanf("%i", &op);
         if (jugador.categoriaUsuario == 'J' && op > 3){
@@ -202,9 +206,9 @@ void ABMLmonstruos(nodoMonstruo* listaMonstruos){
     int op = -1;
     while(op != 5){
         system("cls");
-        printf("\n------------------------------------------------------\n\nABML MONSTRUOS\n\n------------------------------------------------------\n\n\n");
+        printf("\n------------------------------------------------------\nABML MONSTRUOS\n------------------------------------------------------\n\n\n");
         printf("[1]   Alta.\n[2]   Baja.\n[3]   Modificar.\n[4]   Listar.\n[5]   Volver\n\n\n");
-        printf("Ingrese una opción: ");
+        printf("Ingrese una opci%cn: ", 162);
         fflush(stdin);
         scanf("%i", &op);
         switch (op){
@@ -222,7 +226,7 @@ void ABMLmonstruos(nodoMonstruo* listaMonstruos){
             fflush(stdin);
             gets(nombre);
             if (buscarMonstruoNombre(listaMonstruos, nombre) == NULL){
-                printf("\n\nNo existe ningun monstruo con el nombre ingresado.\n\n\n");
+                printf("\n\nNo existe ning%cn monstruo con el nombre ingresado.\n\n\n", 163);
                 system("pause");
             }else{
                 listaMonstruos = bajaMonstruo(listaMonstruos, nombre);
@@ -238,7 +242,7 @@ void ABMLmonstruos(nodoMonstruo* listaMonstruos){
                 gets(nombre);
                 nodoAux = buscarMonstruoNombre(listaMonstruos, nombre);
                 if (nodoAux == NULL){
-                    printf("\n\nNo existe ningun monstruo con el nombre ingresado, será enviado al menú anterior.\n\n");
+                    printf("\n\nNo existe ningun monstruo con el nombre ingresado, ser%c enviado al men%c anterior.\n\n", 160, 163);
                     system("pause");
                 }else{
                     modificarMonstruo(listaMonstruos, nodoAux);
@@ -257,12 +261,13 @@ void modificarMonstruo (nodoMonstruo* listaMonstruos, nodoMonstruo* aModificar){
     int op = -1;
     while (op != 4){
         system("cls");
+        printf("\n       <<< MODIFICAR MONSTRUO >>>\n\n");
         printf("\n[1]   Vida base.\n[2]   Ataque base.\n[3]   Puntos por derrota.\n[4]   Volver\n\n\n");
-        printf("Ingrese una opción: ");
+        printf("Ingrese una opci%cn: ",162);
         fflush(stdin);
         scanf("%i", &op);
         if (op > 4){
-            printf("Opción incorrecta, vuelva a intentar.\n\n");
+            printf("Opci%cn incorrecta, vuelva a intentar.\n\n", 162);
             system("pause");
             op = -1;
         }
@@ -297,7 +302,8 @@ void ABMLdesafios(){
     while(op != 5){
         system("cls");
         printf("\------------------------------------------------------\n\nABML DESAFIOS\n\n------------------------------------------------------\n\n\n");
-        printf("1.Alta.\n2.Baja.\n3.Modificar.\n4.Listar.\n5.Volver\n");
+        printf("[1]   Alta.\n[2]   Baja.\n[3]   Modificar.\n[4]   Listar.\n[5]   Volver\n\n\n");
+        printf("Ingrese una opci%cn: ", 162);
         fflush(stdin);
         scanf("%i", &op);
         switch (op){
@@ -324,8 +330,9 @@ void administrarUsuarios (){
 
     while (op != 4){
         system("cls");
+        printf("\n       <<< ADMINISTRAR USUARIOS >>>\n\n");
         printf("\n[1]   Convertir a un usuario en administrador.\n[2]   Listar usuarios.\n[3]   Dar de baja usuario.\n[4]   Volver\n\n\n");
-        printf("Ingrese una opción: ");
+        printf("Ingrese una opci%cn: ", 162);
         fflush(stdin);
         scanf("%i", &op);
         switch(op){

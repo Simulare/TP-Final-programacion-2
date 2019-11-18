@@ -41,6 +41,8 @@ nodoArbolDesa*insertarNodoArbolDesafio(nodoArbolDesa*arbol,STdesafio desafio);
 void mostrarNodoArbolDesafio(nodoArbolDesa*arbol);
 void listarArbolDesafio(nodoArbolDesa*arbol);
 void guardarDesafioEnArchivo (nodoArbolDesa* nuevo);
+STdesafio cargarDesafio (nodoMonstruo* lista);
+void buscarMonstruoPorId(int idMonstruo, STmonstruo *aux_monstruo);
 nodoArbolDesa* pasarDesafiosArbolToArbol(nodoArbolDesa* arbol);
 void altaREGdesafio();
 void muestraArchiDesafios();

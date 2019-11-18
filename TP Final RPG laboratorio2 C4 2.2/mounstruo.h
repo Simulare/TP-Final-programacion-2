@@ -8,6 +8,8 @@
 #define MODIF_LVL2 15
 #define MODIF_LVL3 25
 
+
+
 typedef struct{
     int idMonstruo;
 	char nombreMonstruo[30];

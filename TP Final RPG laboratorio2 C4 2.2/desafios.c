@@ -66,30 +66,30 @@ STdesafio cargarDesafio (nodoMonstruo* lista){
     fflush(stdin);
     scanf("%i", &aux.idDesafio);
     do{ ///Para verificar que sea tipo P o R
-        printf("\nTipo de desafío ('P' pelea / 'R' recompensa): ");
+        printf("\nTipo de desaf%co ('P' pelea / 'R' recompensa): ", 161);
         fflush(stdin);
         scanf("%c", &aux.tipoDesafio);
         if (aux.tipoDesafio != 'R' && aux.tipoDesafio != 'P'){
-            printf("\n\nError. El tipo de desafío solo puede ser 'P' o 'R'. Vuelva a intentar.\n\n");
+            printf("\n\nError. El tipo de desaf%co solo puede ser 'P' o 'R'. Vuelva a intentar.\n\n", 161);
             system("pause");
             system("cls");
         }
     }while (aux.tipoDesafio != 'P' && aux.tipoDesafio != 'R');
 
-    printf("\nDescripción del desafío: ");
+    printf("\nDescripci%cn del desaf%co: ", 162, 161);
     fflush(stdin);
     gets(aux.descripcionDesafio);
-    printf("\nDificultad del desafío: ");
+    printf("\nDificultad del desaf%co: ", 161);
     fflush(stdin);
     scanf("%i", &aux.dificultadDesafio);
     if (aux.tipoDesafio == 'P'){
         char nombre[20];
-        printf("\nIngrese el nombre del monstruo del desafío: ");
+        printf("\nIngrese el nombre del monstruo del desaf%co: ", 161);
         fflush(stdin);
         gets(nombre);
         nodoMonstruo* monster = buscarMonstruoNombre(lista, nombre);
         if (monster == NULL){
-            printf("\n\nEl monstruo ingresado no existe en la lista de monstruos, si quiere ingresar un mosntruo nuevo primero debe cargarlo en 'cargar monstruo'. Será enviado al menú anterior.\n\n");
+            printf("\n\nEl monstruo ingresado no existe en la lista de monstruos, si quiere ingresar un monstruo nuevo primero debe cargarlo en 'cargar monstruo'. Ser%c enviado al men%c anterior.\n\n", 160, 163);
             system("pause");
             ///MENU ANTERIOR ---------------------
         }else{
@@ -98,7 +98,7 @@ STdesafio cargarDesafio (nodoMonstruo* lista){
     }else{
         aux.monstruo = monstruoVacio();
     }
-    printf("\nPregunta al próximo desafío: ");
+    printf("\nPregunta al pr%cximo desaf%co: ", 162, 161);
     fflush(stdin);
     gets(aux.preguntaProxDesafio);
     aux.desafioEliminado = 0;
@@ -283,11 +283,11 @@ void altaREGdesafio(){
         fflush(stdin);
         scanf("%d",&desafio.idDesafio);
 
-        printf("\nTipo desafio: ");
+        printf("\nTipo desaf%co: ", 161);
         fflush(stdin);
         scanf("%c",&desafio.tipoDesafio);
 
-        printf("\nDescripcion: ");
+        printf("\nDescripci%cn: ", 162);
         fflush(stdin);
         gets(desafio.descripcionDesafio);
 
@@ -299,7 +299,7 @@ void altaREGdesafio(){
         fflush(stdin);
         scanf("%d",&desafio.idMonstruo);
 
-        printf("\nPregunta proximo desafio: ");
+        printf("\nPregunta pr%cximo desafio: ", 162);
         fflush(stdin);
         gets(desafio.preguntaProxDesafio);
 

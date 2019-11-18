@@ -7,19 +7,19 @@ nodoMonstruo * iniclista()
 
 STmonstruo cargarMonstruo(){
     STmonstruo aux;
-    printf("\nIngrese número de id del monstruo\n"); ///Hay que verificar que no haya uno con el mismo id
+    printf("\nIngrese n%cmero de id del monstruo:\n", 163); ///Hay que verificar que no haya uno con el mismo id
     fflush(stdin);
     scanf("%i", &aux.idMonstruo);
-    printf("Ingrese nombre de monstruo\n");
+    printf("Ingrese nombre de monstruo:\n");
     fflush(stdin);
     gets(aux.nombreMonstruo);
-    printf("Ingrese vida base del monstruo\n");
+    printf("Ingrese vida base del monstruo:\n");
     fflush(stdin);
     scanf("%d",&aux.vidaBaseMonstruo);
-    printf("Ingrese ataque base del monstruo\n");
+    printf("Ingrese ataque base del monstruo:\n");
     fflush(stdin);
     scanf("%d",&aux.ataqueBaseMonstruo);
-    printf("Ingrese puntos que da el monstruo al ser derrotado\n");
+    printf("Ingrese los puntos que da el monstruo al ser derrotado:\n");
     fflush(stdin);
     scanf("%d",&aux.puntosMonstruo);
 

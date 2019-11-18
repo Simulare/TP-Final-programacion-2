@@ -23,6 +23,8 @@ void ABMLmonstruos(nodoMonstruo* listaMonstruos);
 
 void modificarMonstruo (nodoMonstruo* listaMonstruos, nodoMonstruo* aModificar);
 
+void ABMLdesafios();
+
 void getfechayhora(char fechayhora[20]);
 
 void iniciarPrograma();

@@ -13,7 +13,7 @@ int calculoDanio(int ataqueBase){
     printf("El resultado de los dados es: %2d",dados);
     int total=dados*ataqueBase;
     gotoxy(42,42);
-    printf("El danio total es: %3d",total);
+    printf("El da%co total es: %3d",164, total);
 
     return total;
 }
@@ -45,7 +45,7 @@ char pelear(usuario*jugador,nodoArbolDesa*desafio,int*turnos){
         gotoxy(3,42);
         printf("2.Huir");
         gotoxy(42,40);
-        printf("Elige una accion: ");
+        printf("Elige una acci%cn: ", 162);
         fflush(stdin);
         gotoxy(60,40);
         scanf("%d",&respuesta);
@@ -119,7 +119,7 @@ int jugar(usuario*jugador,nodoArbolDesa*desafio, nodoArbolDesa* anterior, int*pu
                                 resultado=jugar(jugador,desafio->izquierda, anterior,puntaje,turnosTotales);
                             }
                         }else{
-                            printf("\n\nSaliste del dungeon...\n\nTu puntuacion es: %d\n\n---------GANASTE---------\n\n",jugador->puntajeUsuario);
+                            printf("\n\nSaliste del dungeon...\n\nTu puntuaci%cn es: %d\n\n---------GANASTE---------\n\n",162, jugador->puntajeUsuario);
                             ///printf("\n\nSaliste del dungeon...\n\n---------GANASTE---------\n\n");
                             system("pause");
                             resultado=1;    /// Gano
@@ -134,7 +134,7 @@ int jugar(usuario*jugador,nodoArbolDesa*desafio, nodoArbolDesa* anterior, int*pu
                         return;
                         break;
                     case 'H':
-                        printf("\nDecidiste huir!!! Volveras al desafio anterior y podras decidir de nuevo que camino tomar.\nSe te restaran 50 de tu puntuacion total.\n\n");
+                        printf("\nDecidiste huir!!! Volver%cs al desafio anterior y podras decidir de nuevo que camino tomar.\nSe te restar%cn 50 de tu puntuaci%cn total.\n\n", 160, 160, 162);
                         jugador->puntajeUsuario = jugador->puntajeUsuario - 50;
                         if(jugador->puntajeUsuario<0){
                             jugador->puntajeUsuario=0;  ///para que el puntaje no quede negativo

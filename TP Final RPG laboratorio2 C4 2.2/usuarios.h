@@ -52,4 +52,6 @@ int cantUsuariosEnArchivo();
 
 void convertirJugadorToAdmin(char nombre[]);
 
+void bajaUsuario (char nombre[]);
+
 #endif // USUARIOS_H_INCLUDED

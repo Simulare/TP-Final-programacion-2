@@ -24,6 +24,8 @@ nodoPuntajes * abrirArchivoPuntajes();
 
 void guardarArchivoPuntajes(nodoPuntajes * lista);
 
+void recorreMostrarPuntajes();
+
 void cargarPuntajes(char nombre[30],int puntaje);
 
 
