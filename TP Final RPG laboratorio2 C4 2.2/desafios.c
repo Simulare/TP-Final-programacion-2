@@ -28,21 +28,20 @@ nodoArbolDesa*insertarNodoArbolDesafio(nodoArbolDesa*arbol,STdesafio desafio)
     return arbol;
 }
 
-
 void mostrarNodoArbolDesafio(nodoArbolDesa*arbol){
 
-    printf("%d\n",arbol->desafio.idDesafio);
-    printf("%c\n",arbol->desafio.tipoDesafio);
-    printf("%s\n",arbol->desafio.descripcionDesafio);
+    printf("Id         : %d\n",arbol->desafio.idDesafio);
+    printf("Tipo       : %c\n",arbol->desafio.tipoDesafio);
+    printf("Descripcion: %s\n",arbol->desafio.descripcionDesafio);
 
-    printf("%d\n",arbol->desafio.dificultadDesafio);
+    printf("Dificultad : %d\n",arbol->desafio.dificultadDesafio);
 
-    printf("%s\n",arbol->desafio.monstruo.nombreMonstruo);
-    printf("%d\n",arbol->desafio.monstruo.vidaBaseMonstruo);
-    printf("%d\n",arbol->desafio.monstruo.ataqueBaseMonstruo);
-    printf("%d\n",arbol->desafio.monstruo.puntosMonstruo);
-    printf("%s\n",arbol->desafio.preguntaProxDesafio);
-    printf("%d\n",arbol->desafio.desafioEliminado);
+    printf("   Nombre Mons.  : %s\n",arbol->desafio.monstruo.nombreMonstruo);
+    printf("   Vida Monst.   : %d\n",arbol->desafio.monstruo.vidaBaseMonstruo);
+    printf("   Ataque Monst. : %d\n",arbol->desafio.monstruo.ataqueBaseMonstruo);
+    printf("   Punstos Monst.: %d\n",arbol->desafio.monstruo.puntosMonstruo);
+    printf("Preg.Prox.Desaf. : %s\n",arbol->desafio.preguntaProxDesafio);
+    printf("Desafio Eliminado: %d\n",arbol->desafio.desafioEliminado);
     printf("-----------------------------\n");
 }
 
@@ -106,29 +105,20 @@ STdesafio cargarDesafio (nodoMonstruo* lista){
     return aux;
 }
 
-void buscarMonstruoPorId(int idMonstruo, STmonstruo *aux_monstruo){
-    STmonstruo monstruo;
-    FILE*archi=fopen("monstruos.dat","rb");
-    int flag=0;
-    while(fread(&monstruo,sizeof(STmonstruo),1,archi)>0 && flag==0){
-        if(idMonstruo==monstruo.idMonstruo){
-            aux_monstruo->idMonstruo=monstruo.idMonstruo;
-            strcpy(aux_monstruo->nombreMonstruo,monstruo.nombreMonstruo);
-            aux_monstruo->vidaBaseMonstruo=monstruo.vidaBaseMonstruo;
-            aux_monstruo->ataqueBaseMonstruo=monstruo.ataqueBaseMonstruo;
-            aux_monstruo->puntosMonstruo=monstruo.puntosMonstruo;
 
-            flag=1;
-        }
-    }
-    fclose(archi);
-}
-
-nodoArbolDesa* pasarDesafiosArchivoToArbol (nodoArbolDesa* arbolDesa){
+void pasarDesafiosArchivoToArbol (celda adaArbolDesa[]){
 
     FILE* archi = fopen(DESAFIOS, "rb");
     REGdesafio aux_reg;
     STdesafio aux_desafio;
+
+    adaArbolDesa[0].dificultad=1;
+    adaArbolDesa[0].arbol=inicArbolDesafio();
+    adaArbolDesa[1].dificultad=2;
+    adaArbolDesa[1].arbol=inicArbolDesafio();
+    adaArbolDesa[2].dificultad=3;
+    adaArbolDesa[2].arbol=inicArbolDesafio();
+
 
     while (fread(&aux_reg, sizeof(REGdesafio), 1, archi) > 0){
         if(&aux_reg.desafioEliminado!=1){
@@ -146,7 +136,18 @@ nodoArbolDesa* pasarDesafiosArchivoToArbol (nodoArbolDesa* arbolDesa){
             /// los agrego a la estructura para el nodo de desafios.
             aux_desafio.monstruo=aux_monstruo;
 
-            arbolDesa=insertarNodoArbolDesafio(arbolDesa, aux_desafio);
+            /// Original
+            adaArbolDesa[0].arbol=insertarNodoArbolDesafio(adaArbolDesa[0].arbol,aux_desafio);
+
+            aux_desafio.monstruo.ataqueBaseMonstruo=aux_desafio.monstruo.ataqueBaseMonstruo+5;
+            aux_desafio.monstruo.vidaBaseMonstruo  =aux_desafio.monstruo.vidaBaseMonstruo*2;
+            aux_desafio.monstruo.puntosMonstruo    =aux_desafio.monstruo.puntosMonstruo*2;
+            adaArbolDesa[1].arbol=insertarNodoArbolDesafio(adaArbolDesa[1].arbol,aux_desafio);
+
+            aux_desafio.monstruo.ataqueBaseMonstruo=aux_desafio.monstruo.ataqueBaseMonstruo+5;
+            aux_desafio.monstruo.vidaBaseMonstruo  =aux_desafio.monstruo.vidaBaseMonstruo*1.5;
+            aux_desafio.monstruo.puntosMonstruo    =aux_desafio.monstruo.puntosMonstruo*2;
+            adaArbolDesa[2].arbol=insertarNodoArbolDesafio(adaArbolDesa[2].arbol,aux_desafio);
         }
     }
     fclose(archi);
@@ -248,7 +249,6 @@ nodoArbolDesa* pasarDesafiosArchivoToArbol (nodoArbolDesa* arbolDesa){
 
     */
 
-    return arbolDesa;
 }
 
 void muestraArchiDesafios(){

@@ -62,4 +62,6 @@ void modificarPuntosMonstruo(nodoMonstruo* lista, nodoMonstruo* aModificar);
 
 void modificarRegistroMonstruo (char nombre[], int nuevoDato, int tipo);
 
+void buscarMonstruoPorId(int idMonstruo, STmonstruo *aux_monstruo);
+
 #endif // MOUNSTRUO_H_INCLUDED

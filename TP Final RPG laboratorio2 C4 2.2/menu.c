@@ -3,7 +3,7 @@
 #include "historialDeJugadas.h"
 
 
-void nuevoUsuario (nodoArbolDesa* arbol, nodoMonstruo* listaMonstruos){ ///Nuevo usuario, versión archivos
+void nuevoUsuario (celda celdaArbolDesa[], nodoMonstruo* listaMonstruos){ ///Nuevo usuario, versión archivos
     usuario nuevo;
     char nombre[30];
     printf("\n       <<< REGISTRAR USUARIO >>>\n\n");
@@ -14,7 +14,7 @@ void nuevoUsuario (nodoArbolDesa* arbol, nodoMonstruo* listaMonstruos){ ///Nuevo
     if (pos != -1){
         printf("\n\nYa existe un usuario registrado con el nombre ingresado.\n\n");
         system("pause");
-        menuPrincipal(arbol, listaMonstruos);
+        menuPrincipal(celdaArbolDesa, listaMonstruos);
     }else{
         strcpy(nuevo.nombreUsuario, nombre);
         printf("\nContrase%ca : ", 164);
@@ -35,7 +35,7 @@ void nuevoUsuario (nodoArbolDesa* arbol, nodoMonstruo* listaMonstruos){ ///Nuevo
 }
 
 
-void logInUser (nodoArbolDesa* arbol, nodoMonstruo* listaMonstruos){
+void logInUser (celda celdaArbolDesa[], nodoMonstruo* listaMonstruos){
     char nombre[30];
     printf("\nNombre: ");
     fflush(stdin);
@@ -44,7 +44,7 @@ void logInUser (nodoArbolDesa* arbol, nodoMonstruo* listaMonstruos){
     if (pos == -1){ ///No existe usuario con ese nombre
         printf("\n\n----No existe ning%cn usuario registrado con el nombre ingresado.----\n\n", 163);
         system("pause");
-        menuPrincipal(arbol, listaMonstruos);
+        menuPrincipal(celdaArbolDesa, listaMonstruos);
     }else{ ///Existe
         usuario aux = usuarioPorRegistro(pos-1);
         char pass[15];
@@ -53,11 +53,11 @@ void logInUser (nodoArbolDesa* arbol, nodoMonstruo* listaMonstruos){
         gets(pass);
 
         if (strcmp(aux.contraUsuario, pass) == 0){ ///Ingresa al menu usuario
-            menuUsuario(aux, arbol, listaMonstruos);
+            menuUsuario(aux, celdaArbolDesa, listaMonstruos);
         }else{
             printf("\n\n----Contrase%ca incorrecta.----\n\n", 164);
             system("pause");
-            menuPrincipal(arbol, listaMonstruos);
+            menuPrincipal(celdaArbolDesa, listaMonstruos);
         }
 
     }
@@ -69,7 +69,7 @@ void pantallaPrincipal(){
 }
 
 
-void menuPrincipal (nodoArbolDesa* arbol, nodoMonstruo* listaMonstruos){
+void menuPrincipal (celda celdaArbolDesa[], nodoMonstruo* listaMonstruos){
     int op = -1;
     while (op != 3){
         system("cls");
@@ -82,14 +82,14 @@ void menuPrincipal (nodoArbolDesa* arbol, nodoMonstruo* listaMonstruos){
         system("cls");
         switch (op){
             case 1: ///Se guarda en el archivo.
-                nuevoUsuario(arbol, listaMonstruos);
+                nuevoUsuario(celdaArbolDesa, listaMonstruos);
                 printf("\n\n¡Su cuenta ha sido creada con %cxito! Ingrese a su cuenta desde el menu principal\n\n", 130);
                 system ("pause");
                 break;
             case 2: ///Se loguea
                 printf("\n       <<< INGRESAR A USUARIO >>>\n\n");
                 printf("\n\nIngrese los datos para acceder a su usuario:\n\n");
-                logInUser(arbol, listaMonstruos);
+                logInUser(celdaArbolDesa, listaMonstruos);
                 break;
             case 3: ///Volver
                 pantallaPrincipal();
@@ -102,8 +102,9 @@ void menuPrincipal (nodoArbolDesa* arbol, nodoMonstruo* listaMonstruos){
     }
 }
 
-void menuUsuario (usuario jugador, nodoArbolDesa* arbolDesafios, nodoMonstruo* listaMonstruos){  ///Hay que modificar si agregamos más
+void menuUsuario (usuario jugador, celda celdaArbolDesa[], nodoMonstruo* listaMonstruos){  ///Hay que modificar si agregamos más
     int op=-1;
+    int dificultadElegida;
     while(op!=0){
         ///usuario jugador;
         system("cls");
@@ -124,55 +125,51 @@ void menuUsuario (usuario jugador, nodoArbolDesa* arbolDesafios, nodoMonstruo* l
         }
         switch (op){
         case 0:
-            menuPrincipal(arbolDesafios, listaMonstruos);
+            menuPrincipal(celdaArbolDesa, listaMonstruos);
             break;
         case 1:
-            /**
-            ///Funciï¿½n inicJuego (nodoListaUsu* nodoUsuario, nodoArbolDesa* arbol)
-
-            /// OJOOO, quitar despues de cambiar la lista de usuarios
-            jugador.idUsuario=nodoUsuario->usuario.idUsuario;
-            strcpy(jugador.nombreUsuario,nodoUsuario->usuario.nombreUsuario);
-            strcpy(jugador.contraUsuario,nodoUsuario->usuario.contraUsuario);
-            jugador.categoriaUsuario=nodoUsuario->usuario.categoriaUsuario;
-            jugador.vidaUsuario  =1000 ;///  nodoUsuario->usuario.vidaUsuario;
-            jugador.ataqueUsuario=10;   ///  nodoUsuario->usuario.ataqueUsuario;
-            jugador.puntajeUsuario=nodoUsuario->usuario.puntajeUsuario;
-            jugador.usuarioEliminado=nodoUsuario->usuario.usuarioEliminado;
-            */
-            mostrarUsuario(jugador);
-
-            /// ------------------------------------------------------
-            int resultado=0;
-            int puntaje=0;
-            int turnos=0;
-
-            /// OJOOO quitar
-            jugador.ataqueUsuario=20;
-            int dificultadJugada=1;
-            printf("Id: %d\n",jugador.idUsuario);
-            /// OJOOO quitar
-
-            jugador.puntajeUsuario=0; ///para asegurarnos que cada vez que empiece un juego nuevo el acumulador sea 0
-            resultado=jugar(&jugador,arbolDesafios,arbolDesafios,&puntaje,&turnos);
-            //printf("%d,%d,%d\n",resultado,puntaje,turnos);
-
-            /// --- Guardo datos en Historico de Jugadas ---
-            char fyh[20];
-            getfechayhora(fyh);
-            historialDeJugadas aux_his;
-
-            aux_his.idUsuario=jugador.idUsuario;
-            strcpy(aux_his.fechaHoraJugada,fyh);
-            aux_his.dificultadJugada=dificultadJugada;
-            aux_his.resultado=resultado;
-            aux_his.turnosTotalesJugados=turnos;
-            aux_his.puntosGanados=puntaje;
-
-            guardarHitoricoJugadas(aux_his);
-            /// ---------------------------------------------
+            printf("\nElija una dificultad para jugar:\n\n[1]   Facil.\n[2]   Medio.\n[3]   Dificil.\n\n");
+            fflush(stdin);
+            scanf("%d",&dificultadElegida);
+            if (dificultadElegida > 3){
+                system("cls");
+                printf("\n\nError. Las opciones son de 1 a 3.\n\n");
+                system ("pause");
+            }else{
 
 
+                mostrarUsuario(jugador);
+
+                /// ------------------------------------------------------
+                int resultado=0;
+                int puntaje=0;
+                int turnos=0;
+
+                /// OJOOO quitar
+                jugador.ataqueUsuario=20;
+                printf("Id: %d\n",jugador.idUsuario);
+                /// OJOOO quitar
+
+                jugador.puntajeUsuario=0; ///para asegurarnos que cada vez que empiece un juego nuevo el acumulador sea 0
+                resultado=jugar(&jugador,celdaArbolDesa[dificultadElegida-1].arbol,celdaArbolDesa[dificultadElegida-1].arbol,&puntaje,&turnos);
+                //printf("%d,%d,%d\n",resultado,puntaje,turnos);
+
+                /// --- Guardo datos en Historico de Jugadas ---
+                char fyh[20];
+                getfechayhora(fyh);
+                historialDeJugadas aux_his;
+
+                aux_his.idUsuario=jugador.idUsuario;
+                strcpy(aux_his.fechaHoraJugada,fyh);
+                aux_his.dificultadJugada=dificultadElegida;
+                aux_his.resultado=resultado;
+                aux_his.turnosTotalesJugados=turnos;
+                aux_his.puntosGanados=puntaje;
+
+                guardarHitoricoJugadas(aux_his);
+                /// ---------------------------------------------
+
+            }
             break;
         case 2:
             ///Funciï¿½n mostrarUsuariosPorPuntaje
@@ -372,17 +369,17 @@ void getfechayhora(char fechayhora[20]){
 
 void iniciarPrograma (){ ///Hay que cargar las estructuras desde los archivos cuando se inicia
     char string[30];
-    nodoArbolDesa* arbol = inicArbolDesafio();
-    arbol = pasarDesafiosArchivoToArbol(arbol);
+
+    celda celdaArbolDesa[3];
+    pasarDesafiosArchivoToArbol(celdaArbolDesa);
+
     nodoMonstruo * listaMonstruos = iniclista();
     listaMonstruos = pasarArchivoMonstruosToLista(listaMonstruos);
-    sprintf(string, "mode con: cols=%d lines=%d", 45,45);
-    system(string);
 
     sprintf(string, "mode con: cols=%d lines=%d", 168,50);
     system(string);
 
     pantallaPrincipal();
-    menuPrincipal(arbol, listaMonstruos);
+    menuPrincipal(celdaArbolDesa, listaMonstruos);
 }
 

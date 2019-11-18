@@ -27,12 +27,17 @@ typedef struct{
 }REGdesafio;
 
 
-
 typedef struct{
     STdesafio desafio;
     struct nodoArbolDesa*izquierda;
     struct nodoArbolDesa*derecha;
 }nodoArbolDesa;
+
+typedef struct{
+    int dificultad;
+    nodoArbolDesa*arbol;
+}celda;
+
 
 
 nodoArbolDesa*inicArbolDesafio();
@@ -42,7 +47,6 @@ void mostrarNodoArbolDesafio(nodoArbolDesa*arbol);
 void listarArbolDesafio(nodoArbolDesa*arbol);
 void guardarDesafioEnArchivo (nodoArbolDesa* nuevo);
 STdesafio cargarDesafio (nodoMonstruo* lista);
-void buscarMonstruoPorId(int idMonstruo, STmonstruo *aux_monstruo);
 nodoArbolDesa* pasarDesafiosArbolToArbol(nodoArbolDesa* arbol);
 void altaREGdesafio();
 void muestraArchiDesafios();

@@ -25,11 +25,7 @@ char pelear(usuario*jugador,nodoArbolDesa*desafio,int*turnos){
     int respuesta=0;
     int vidaInicialM = desafio->desafio.monstruo.vidaBaseMonstruo;
 
-    if(desafio->desafio.idDesafio==4){
-        gotoxy(0,10);
-        dibujaGoblin();
-    }
-
+    dibujaMonstruoDesdeTXT(75,10,desafio->desafio.monstruo.nombreMonstruo);
 
     while(resultPelea==' '){
         dibujaCaja(1,1,35,10);///caja de vida's

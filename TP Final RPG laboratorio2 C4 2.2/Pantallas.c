@@ -67,29 +67,22 @@ printf("\n\n\n\n\n\n\n\n\n\n\n\n");
 }
 
 
-void dibujaGoblin(){
-printf("                                                                                                   (    )               \n");
-printf("                                                                                                  ((((()))              \n");
-printf("                                                                                                  |o\\ /o)|             \n");
-printf("                                                                                                  ( (  _')              \n");
-printf("                                                                                                   (._.  /\\__          \n");
-printf("                                                                                                  ,\\___,/ '  ')        \n");
-printf("                                                                                    '.,_,,       (  .- .   .    )       \n");
-printf("                                                                                     \\   \\\\     ( '        )(    )   \n");
-printf("                                                                                      \\   \\\\    \\.  _.__ ____( .  | \n");
-printf("                                                                                       \\  /\\\\   .(   .'  /\\  '.  )  \n");
-printf("                                                                                        \\(  \\\\.-' ( /    \\/    \\)  \n");
-printf("                                                                                         '  ()) _'.-|/\\/\\/\\/\\/\\|   \n");
-printf("                                                                                             '\\\\ .( |\\/\\/\\/\\/\\/| \n");
-printf("                                                                                               '((  \\    /\\    /      \n");
-printf("                                                                                               ((((  '.__\\/__.')       \n");
-printf("                                                                                                ((,) /   ((()   )       \n");
-printf("                                                                                                 '..-,  (()('   /       \n");
-printf("                                                                                                  _//.   ((() .'        \n");
-printf("                                                                                          _____ //,/' ___ ((( ', ___    \n");
-printf("                                                                                                           ((  )        \n");
-printf("                                                                                                            / /         \n");
-printf("                                                                                                          _/,/'         \n");
-printf("                                                                                                        /,/,'           \n");
-}
 
+void dibujaMonstruoDesdeTXT(int x, int y, char nombreMonstruo[]){
+    char nombreArchi[34];
+    char linea[61];
+
+    strcpy(nombreArchi,nombreMonstruo);
+    strcat(nombreArchi,".txt");
+
+    ///printf("Archi=%s\n\n",nombreArchi);
+
+    FILE *archi= fopen(nombreArchi,"r");
+
+    gotoxy(x,y);
+    while(fgets(&linea,sizeof(linea),archi)>0){
+        gotoxy(x,whereY());
+        printf("%s",linea);
+    }
+    fclose(archi);
+}

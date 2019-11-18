@@ -251,3 +251,21 @@ void modificarRegistroMonstruo (char nombre[], int nuevoDato, int tipo){ ///1 vi
     }
     fclose(archi);
 }
+
+void buscarMonstruoPorId(int idMonstruo, STmonstruo *aux_monstruo){
+    STmonstruo monstruo;
+    FILE*archi=fopen(MONSTRUOS,"rb");
+    int flag=0;
+    while(fread(&monstruo,sizeof(STmonstruo),1,archi)>0 && flag==0){
+        if(idMonstruo==monstruo.idMonstruo){
+            aux_monstruo->idMonstruo=monstruo.idMonstruo;
+            strcpy(aux_monstruo->nombreMonstruo,monstruo.nombreMonstruo);
+            aux_monstruo->vidaBaseMonstruo=monstruo.vidaBaseMonstruo;
+            aux_monstruo->ataqueBaseMonstruo=monstruo.ataqueBaseMonstruo;
+            aux_monstruo->puntosMonstruo=monstruo.puntosMonstruo;
+
+            flag=1;
+        }
+    }
+    fclose(archi);
+}
