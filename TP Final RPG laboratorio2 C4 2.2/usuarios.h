@@ -6,7 +6,7 @@
 #define USUARIOS "usuarios.dat"
 #define HP_BASE_USER 1000
 #define ATQ_BASE_USER 10
-#define ADMIN_PASS "colador"
+
 
 typedef struct{
     int idUsuario;

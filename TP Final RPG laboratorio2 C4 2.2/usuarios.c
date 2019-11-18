@@ -40,11 +40,9 @@ void mostrarUsuario (usuario aux){
     printf("\nNombre: %s", aux.nombreUsuario);
     printf("\nCategoria: %c", aux.categoriaUsuario);
     printf("\nPuntaje: %i", aux.puntajeUsuario);
-    if (aux.categoriaUsuario == 'A'){
-        printf("\nId : %d", aux.idUsuario);
-        printf("\nContrase\xA4a: %s", aux.contraUsuario);
-        printf("\nEstado (0 Alta/ 2 Eliminado): %i", aux.usuarioEliminado);
-    }
+    printf("\nId : %d", aux.idUsuario);
+    printf("\nContrase\xA4a: %s", aux.contraUsuario);
+    printf("\nEstado (0 Alta/ 2 Eliminado): %i", aux.usuarioEliminado);
     printf("\n--------------\n");
 }
 
@@ -111,6 +109,7 @@ void mostrarArchivoUsu (int modo){ ///0 = todos; 1 = solo jugadores; 2 = solo ad
     fclose(archi);
 }
 
+
 int posUsuarioNombreEnArchivo (char nombre[]){ ///Devuelve -1 si no existe el usuario en el archivo
     int cont = 0;
     int flag = 0;
@@ -144,7 +143,7 @@ int cantUsuariosEnArchivo(){
     FILE* archi = fopen(USUARIOS, "rb");
     if (archi != NULL){
         fseek(archi, 0, SEEK_END);
-        int registros = ftell(archi)/sizeof(usuario);
+        registros = ftell(archi)/sizeof(usuario);
         fclose(archi);
     }
     return registros;
@@ -154,7 +153,6 @@ void convertirJugadorToAdmin (char nombre[]){ ///Cuando va en el menú abajo va l
     int pos = posUsuarioNombreEnArchivo(nombre);
     if (pos == -1){
         printf("\n\nNo existe un usuario registrado con el nombre ingresado.");
-        system("pause");
     }else{
         char op;
         usuario jugador = usuarioPorRegistro(pos-1);
@@ -169,13 +167,26 @@ void convertirJugadorToAdmin (char nombre[]){ ///Cuando va en el menú abajo va l
             fwrite(&jugador, sizeof(usuario), 1, archi);
             fclose(archi);
             system("cls");
-            printf("-------¡La categoría del usuario %s se ha cambiado con éxito!---------", nombre);
-            system("pause");
+            printf("-------¡La categoría del usuario %s se ha cambiado con éxito!---------\n\n\n\n", nombre);
         }else{
             printf("\n\nNo se ha modificado la categoría del jugador %s. Volverá al menu anterior.\n\n", nombre);
-            system("pause");
         }
     }
+    system("pause");
 }
 
+void bajaUsuario (char nombre[]){
+    FILE * archi = fopen(USUARIOS, "r+b");
+    usuario aux;
+    int flag = 0;
+    while(flag == 0 && fread(&aux, sizeof(usuario),1,archi) > 0){
+        if(strcmpi(aux.nombreUsuario, nombre) == 0){
+            aux.usuarioEliminado = 1;
+            fseek(archi, sizeof(usuario)*(-1), SEEK_CUR);
+            fwrite(&aux, sizeof(usuario), 1, archi);
+            flag = 1;
+        }
+    }
+    fclose(archi);
+}
 

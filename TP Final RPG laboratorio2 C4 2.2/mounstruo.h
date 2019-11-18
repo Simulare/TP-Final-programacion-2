@@ -3,6 +3,7 @@
 
 #include <stdio.h>
 #include <stdlib.h>
+#include <string.h>
 #define MONSTRUOS "monstruos.dat"
 #define MODIF_LVL2 15
 #define MODIF_LVL3 25

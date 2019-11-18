@@ -72,7 +72,8 @@ void menuPrincipal (nodoArbolDesa* arbol, nodoMonstruo* listaMonstruos){
     int op = -1;
     while (op != 3){
         system("cls");
-        printf("\nIngrese a su cuenta, si no tiene una registrese:\n\n\n1.Registrarse.\n2.Ingresar.\n3.Volver\n");
+        printf("\nIngrese a su cuenta, si no tiene una registrese:\n\n\n[1]   Registrarse.\n[2]   Ingresar.\n[3]   Volver\n\n\n");
+        printf("Ingrese una opción: ");
         fflush(stdin);
         scanf("%i", &op);
         usuario nuevo;
@@ -103,14 +104,17 @@ void menuUsuario (usuario jugador, nodoArbolDesa* arbolDesafios, nodoMonstruo* l
     while(op!=0){
         ///usuario jugador;
         system("cls");
-        printf("\n\n0.Salir del usuario.\n1.Jugar.\n2.Ver ranking de puntajes.\n3.Ver historial de jugadas.\n");
+        printf("\n\n[0]   Salir del usuario.\n[1]   Jugar.\n[2]   Ver ranking de puntajes.\n[3]   Ver historial de jugadas.\n\n\n");
+        printf("Ingrese una opción: ");
         if (jugador.categoriaUsuario == 'A'){
-            printf("4.ABML Monstruos.\n5.ABML Desafíos.\n6.Administrar usuarios.\n\n");
+            printf("[4]   ABML Monstruos.\n[5]   ABML Desafíos.\n[6]   Administrar usuarios.\n\n");
         }
         fflush(stdin);
         scanf("%i", &op);
-        if (jugador.categoriaUsuario == 'J' && op > 4){
+        if (jugador.categoriaUsuario == 'J' && op > 3){
+            system("cls");
             printf("\n\nError. Las opciones son de 0 a 3.\n\n");
+            system ("pause");
             op = -1;
 
         }
@@ -184,7 +188,7 @@ void menuUsuario (usuario jugador, nodoArbolDesa* arbolDesafios, nodoMonstruo* l
             ///ABML Desafíos
             break;
         case 6:
-
+            administrarUsuarios();
         default:
             break;
             }
@@ -198,8 +202,9 @@ void ABMLmonstruos(nodoMonstruo* listaMonstruos){
     int op = -1;
     while(op != 5){
         system("cls");
-        printf("\------------------------------------------------------\n\nABML MONSTRUOS\n\n------------------------------------------------------\n\n\n");
-        printf("1.Alta.\n2.Baja.\n3.Modificar.\n4.Listar.\n5.Volver\n");
+        printf("\n------------------------------------------------------\n\nABML MONSTRUOS\n\n------------------------------------------------------\n\n\n");
+        printf("[1]   Alta.\n[2]   Baja.\n[3]   Modificar.\n[4]   Listar.\n[5]   Volver\n\n\n");
+        printf("Ingrese una opción: ");
         fflush(stdin);
         scanf("%i", &op);
         switch (op){
@@ -252,9 +257,15 @@ void modificarMonstruo (nodoMonstruo* listaMonstruos, nodoMonstruo* aModificar){
     int op = -1;
     while (op != 4){
         system("cls");
-        printf("\n1.Vida base.\n2.Ataque base.\n3.Puntos por derrota.\n4.Volver\n");
+        printf("\n[1]   Vida base.\n[2]   Ataque base.\n[3]   Puntos por derrota.\n[4]   Volver\n\n\n");
+        printf("Ingrese una opción: ");
         fflush(stdin);
         scanf("%i", &op);
+        if (op > 4){
+            printf("Opción incorrecta, vuelva a intentar.\n\n");
+            system("pause");
+            op = -1;
+        }
         switch (op){
             case 1:
                 modificarVidaMonstruo(listaMonstruos, aModificar);
@@ -277,10 +288,6 @@ void modificarMonstruo (nodoMonstruo* listaMonstruos, nodoMonstruo* aModificar){
                 printf("\nSe han modificado los puntos exitosamente!!\n\n\n");
                 system("pause");
                 break;
-            default:
-                printf("Opción incorrecta, vuelva a intentar.\n\n");
-                system("pause");
-                break;
         }
     }
 }
@@ -288,9 +295,11 @@ void modificarMonstruo (nodoMonstruo* listaMonstruos, nodoMonstruo* aModificar){
 void administrarUsuarios (){
     int op = -1;
     char nombre[30];
-    while (op != 3){
+
+    while (op != 4){
         system("cls");
-        printf("\n1.Converitir a un usuario en administrador.\n2.Listar usuarios.\n3.Volver\n");
+        printf("\n[1]   Convertir a un usuario en administrador.\n[2]   Listar usuarios.\n[3]   Dar de baja usuario.\n[4]   Volver\n\n\n");
+        printf("Ingrese una opción: ");
         fflush(stdin);
         scanf("%i", &op);
         switch(op){
@@ -301,8 +310,21 @@ void administrarUsuarios (){
             gets(nombre);
             convertirJugadorToAdmin(nombre);
             break;
+        case 2:
+            system("cls");
+            mostrarArchivoUsu(0);
+            system("pause");
+            break;
+        case 3:
+            system("cls");
+            printf("\nIngrese el nombre del usuario a dar de baja: ");
+            fflush(stdin);
+            gets(nombre);
+            bajaUsuario(nombre);
+            system("cls");
+            printf("Baja exitosa!!\n\n\n");
+            system("pause");
         }
-
     }
 }
 

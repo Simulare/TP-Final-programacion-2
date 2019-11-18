@@ -12,7 +12,7 @@ STmonstruo cargarMonstruo(){
     scanf("%i", &aux.idMonstruo);
     printf("Ingrese nombre de monstruo\n");
     fflush(stdin);
-    scanf("%s",&aux.nombreMonstruo);
+    gets(aux.nombreMonstruo);
     printf("Ingrese vida base del monstruo\n");
     fflush(stdin);
     scanf("%d",&aux.vidaBaseMonstruo);
@@ -79,9 +79,8 @@ void mostrarMonstruo(STmonstruo aux)
      {
          mostrarMonstruo(listaMonstruos->monstruo);
          listaMonstruos=listaMonstruos->sig;
-     }
+    }
  }
-
 
 nodoMonstruo* agregarFinal(nodoMonstruo* listaMonstruos, nodoMonstruo * nuevoMonstruo)
 {
@@ -92,6 +91,7 @@ nodoMonstruo* agregarFinal(nodoMonstruo* listaMonstruos, nodoMonstruo * nuevoMon
     else
     {
         nodoMonstruo* ultimo=buscarUltimo(listaMonstruos);
+        ultimo->sig = nuevoMonstruo;
     }
     return listaMonstruos;
 }
@@ -99,9 +99,13 @@ nodoMonstruo* agregarFinal(nodoMonstruo* listaMonstruos, nodoMonstruo * nuevoMon
 nodoMonstruo * buscarUltimo(nodoMonstruo * listaMonstruos)
 {
     nodoMonstruo * aux = listaMonstruos;
-    while(aux!=NULL)
+    if (aux != NULL)
     {
-        aux = aux->sig;
+        while (aux->sig != NULL)
+        {
+            aux = aux->sig;
+        }
+
     }
     return aux;
 }
