@@ -185,7 +185,7 @@ void menuUsuario (usuario jugador, nodoArbolDesa* arbolDesafios, nodoMonstruo* l
             ABMLmonstruos(listaMonstruos);
             break;
         case 5:
-            ///ABML Desafíos
+            ABMLdesafios();
             break;
         case 6:
             administrarUsuarios();
@@ -286,6 +286,32 @@ void modificarMonstruo (nodoMonstruo* listaMonstruos, nodoMonstruo* aModificar){
                 system("cls");
                 mostrarMonstruo(aModificar->monstruo);
                 printf("\nSe han modificado los puntos exitosamente!!\n\n\n");
+                system("pause");
+                break;
+        }
+    }
+}
+
+void ABMLdesafios(){
+    int op = -1;
+    while(op != 5){
+        system("cls");
+        printf("\------------------------------------------------------\n\nABML DESAFIOS\n\n------------------------------------------------------\n\n\n");
+        printf("1.Alta.\n2.Baja.\n3.Modificar.\n4.Listar.\n5.Volver\n");
+        fflush(stdin);
+        scanf("%i", &op);
+        switch (op){
+            case 1:
+                system("cls");
+                altaREGdesafio();
+                printf("\n\nCargado exitosamente!!\n\n\n\n");
+                system("pause");
+                break;
+
+            case 4:
+                system("cls");
+                muestraArchiDesafios();
+                muestraArchiMonstruos();
                 system("pause");
                 break;
         }

@@ -106,16 +106,52 @@ STdesafio cargarDesafio (nodoMonstruo* lista){
     return aux;
 }
 
+void buscarMonstruoPorId(int idMonstruo, STmonstruo *aux_monstruo){
+    STmonstruo monstruo;
+    FILE*archi=fopen("monstruos.dat","rb");
+    int flag=0;
+    while(fread(&monstruo,sizeof(STmonstruo),1,archi)>0 && flag==0){
+        if(idMonstruo==monstruo.idMonstruo){
+            aux_monstruo->idMonstruo=monstruo.idMonstruo;
+            strcpy(aux_monstruo->nombreMonstruo,monstruo.nombreMonstruo);
+            aux_monstruo->vidaBaseMonstruo=monstruo.vidaBaseMonstruo;
+            aux_monstruo->ataqueBaseMonstruo=monstruo.ataqueBaseMonstruo;
+            aux_monstruo->puntosMonstruo=monstruo.puntosMonstruo;
 
-nodoArbolDesa* pasarDesafiosArchivoToArbol (nodoArbolDesa* arbolDesa){
-/*
-    FILE* archi = fopen(DESAFIOS, "rb");
-    STdesafio aux;
-    while (fread(&aux, sizeof(STdesafio), 1, archi) > 0){
-        insertarNodoArbolDesafio(arbol, aux);
+            flag=1;
+        }
     }
     fclose(archi);
-*/
+}
+
+nodoArbolDesa* pasarDesafiosArchivoToArbol (nodoArbolDesa* arbolDesa){
+
+    FILE* archi = fopen(DESAFIOS, "rb");
+    REGdesafio aux_reg;
+    STdesafio aux_desafio;
+
+    while (fread(&aux_reg, sizeof(REGdesafio), 1, archi) > 0){
+        if(&aux_reg.desafioEliminado!=1){
+            /// paso los datos del archivo a la estructura para el nodo de desafios.
+            aux_desafio.idDesafio=aux_reg.idDesafio;
+            aux_desafio.tipoDesafio=aux_reg.tipoDesafio;
+            strcpy(aux_desafio.descripcionDesafio,aux_reg.descripcionDesafio);
+            aux_desafio.dificultadDesafio=aux_reg.dificultadDesafio;
+            strcpy(aux_desafio.preguntaProxDesafio,aux_reg.preguntaProxDesafio);
+            aux_desafio.desafioEliminado=aux_reg.desafioEliminado;
+
+            /// Busco los datos del Monstruo que me faltan en el archivo "monstruos.dat"
+            STmonstruo aux_monstruo;
+            buscarMonstruoPorId(aux_reg.idMonstruo, &aux_monstruo);
+            /// los agrego a la estructura para el nodo de desafios.
+            aux_desafio.monstruo=aux_monstruo;
+
+            arbolDesa=insertarNodoArbolDesafio(arbolDesa, aux_desafio);
+        }
+    }
+    fclose(archi);
+
+    /*
     STdesafio desafio;
 
     /// --- OJOOO, desafios harcodeados -----
@@ -210,7 +246,73 @@ nodoArbolDesa* pasarDesafiosArchivoToArbol (nodoArbolDesa* arbolDesa){
 
     arbolDesa=insertarNodoArbolDesafio(arbolDesa,desafio);
 
+    */
 
     return arbolDesa;
+}
 
+void muestraArchiDesafios(){
+    REGdesafio desafio;
+    FILE *archi= fopen(DESAFIOS,"rb");
+    // printf("%d-%c-%s-%d-%d-%s,%d\n","");
+    printf("----- DESAFIOS -----\n");
+    while(fread(&desafio,sizeof(REGdesafio),1,archi)>0){
+          printf("%d-%c-%s-%d-%d-%s,%d\n",desafio.idDesafio,desafio.tipoDesafio,desafio.descripcionDesafio,desafio.dificultadDesafio,desafio.idMonstruo,desafio.preguntaProxDesafio,desafio.desafioEliminado);
+    }
+    fclose(archi);
+}
+void muestraArchiMonstruos(){
+    STmonstruo monstruo;
+    FILE *archi= fopen("monstruos.dat","rb");
+    printf("----- MONSTRUOS -----\n");
+    while(fread(&monstruo,sizeof(STmonstruo),1,archi)>0){
+          printf("%d-%s-%d-%d-%d\n",monstruo.idMonstruo,monstruo.nombreMonstruo,monstruo.vidaBaseMonstruo,monstruo.ataqueBaseMonstruo,monstruo.puntosMonstruo);
+    }
+    fclose(archi);
+}
+
+void altaREGdesafio(){
+    REGdesafio desafio;
+    FILE *archi= fopen(DESAFIOS,"ab");
+
+    char control='s';
+
+    while(control=='s'){
+        system("cls");
+        printf("\nIdDesafio: ");
+        fflush(stdin);
+        scanf("%d",&desafio.idDesafio);
+
+        printf("\nTipo desafio: ");
+        fflush(stdin);
+        scanf("%c",&desafio.tipoDesafio);
+
+        printf("\nDescripcion: ");
+        fflush(stdin);
+        gets(desafio.descripcionDesafio);
+
+        printf("\nDificultad: ");
+        fflush(stdin);
+        scanf("%d",&desafio.dificultadDesafio);
+
+        printf("\nIdMonstruo: ");
+        fflush(stdin);
+        scanf("%d",&desafio.idMonstruo);
+
+        printf("\nPregunta proximo desafio: ");
+        fflush(stdin);
+        gets(desafio.preguntaProxDesafio);
+
+        printf("\nDesafio eliminado: ");
+        fflush(stdin);
+        scanf("%d",&desafio.desafioEliminado);
+
+        fwrite(&desafio,sizeof(REGdesafio),1,archi);
+
+        printf("\nDesea cargar otro?");
+        fflush(stdin);
+        scanf("%c",&control);
+
+    }
+    fclose(archi);
 }
