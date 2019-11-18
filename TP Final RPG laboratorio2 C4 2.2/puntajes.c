@@ -5,7 +5,7 @@ nodoPuntajes * inicListaPuntajes()
     return NULL;
 }
 
-nodoPuntajes * crearNodoPuntajes(int puntaje,char nombre[30])
+nodoPuntajes * crearNodoPuntajes(char nombre[30],int puntaje)
 {
     nodoPuntajes * nuevo=(nodoPuntajes*)malloc(sizeof(nodoPuntajes));
     strcpy(nuevo->puntajes.nombre,nombre);
@@ -14,7 +14,7 @@ nodoPuntajes * crearNodoPuntajes(int puntaje,char nombre[30])
     return nuevo;
 }
 
-//Acomoda el puntaje del mayor puntaje al menor
+///Acomoda el puntaje del mayor puntaje al menor
 nodoPuntajes * acomodarPuntaje(nodoPuntajes * lista, nodoPuntajes * nuevo)
 {
 
@@ -27,18 +27,19 @@ nodoPuntajes * acomodarPuntaje(nodoPuntajes * lista, nodoPuntajes * nuevo)
         if(lista->puntajes.puntaje<nuevo->puntajes.puntaje)
         {
             nuevo->siguiente=lista;
+            lista=nuevo;
         }
         else
         {
             nodoPuntajes * ante=lista;
             nodoPuntajes * seg=lista->siguiente;
-            while(lista->puntajes.puntaje<nuevo->puntajes.puntaje)
+            while(lista != NULL && lista->puntajes.puntaje>nuevo->puntajes.puntaje)
             {
                 ante = seg;
                 seg = seg->siguiente;
             }
-            nuevo->siguiente=seg;
             ante->siguiente=nuevo;
+            nuevo->siguiente=seg;
         }
     }
     return lista;
@@ -46,12 +47,16 @@ nodoPuntajes * acomodarPuntaje(nodoPuntajes * lista, nodoPuntajes * nuevo)
 
 nodoPuntajes * abrirArchivoPuntajes()
 {
-    nodoPuntajes* aux;
+    STpuntajes aux;
     nodoPuntajes * lista;
-    FILE * archi=fopen("puntajes.bin","rb");
+    FILE * archi=fopen("puntajes.dat","rb");
     while(fread(&aux,sizeof(nodoPuntajes),1 ,archi) >0)
     {
-        lista=aux;
+        lista = acomodarPuntaje(lista, crearNodoPuntajes(aux.puntaje, aux.nombre));
+        ///strcpy(lista->puntajes.nombre,aux.nombre);
+        ///lista->puntajes.puntaje=aux.puntaje;
+        ///lista->siguiente=inicListaPuntajes();
+
     }
     fclose(archi);
     return lista;
@@ -59,29 +64,31 @@ nodoPuntajes * abrirArchivoPuntajes()
 
 void guardarArchivoPuntajes(nodoPuntajes * lista)
 {
-    nodoPuntajes* aux;
-    FILE * archi = fopen("puntajes.bin","wb");
+    STpuntajes aux;
+    FILE * archi = fopen("puntajes.dat","ab");
     if(lista!=NULL)
     {
-        aux=lista;
-        fwrite(&aux,sizeof(nodoPuntajes),1,archi);
+        aux.puntaje=lista->puntajes.puntaje;
+        strcpy(aux.nombre,lista->puntajes.nombre);
+        fwrite(&aux,sizeof(STpuntajes),1,archi);
         lista=lista->siguiente;
     }
     fclose(archi);
 }
 
-void mostrarPuntajes(nodoPuntajes * lista,int posicion)
+void mostrarPuntajes(STpuntajes puntaje,int posicion)
 {
-    printf("[ %d ]\t%s :\t%d\n",posicion,lista->puntajes.nombre,lista->puntajes.puntaje);
+    printf("[ %d ]\t%s :\t%d\n",posicion,puntaje.nombre,puntaje.puntaje);
 }
 
 void recorreMostrarPuntajes()
 {
     system("cls");
-    STpuntajes * aux;
-    FILE * archi=fopen("puntajes.bin","rb");
+    STpuntajes aux;
+
+    FILE * archi=fopen("puntajes.dat","rb");
     int posicion=1;
-    while(fread(&aux,sizeof(nodoPuntajes),1,archi)>0)
+    while(fread(&aux,sizeof(STpuntajes),1,archi)>0)
     {
         mostrarPuntajes(aux,posicion);
         posicion++;
@@ -89,11 +96,24 @@ void recorreMostrarPuntajes()
     fclose(archi);
 }
 
-void cargarPuntajes(char nombre[30],int puntaje)
+void cargarPuntajes(char nombre[],int puntaje)
 {
-    nodoPuntajes * nuevo=crearNodoPuntajes(nombre,puntaje);
-    nuevo=inicListaPuntajes();
+    nodoPuntajes * nuevo=inicListaPuntajes();
+    printf("se inicializo la lista\n");
+    system("pause");
+
+    nuevo=crearNodoPuntajes(nombre,puntaje);
+    printf("se creo el nodo\n");
+    system("pause");
+
     nodoPuntajes * lista = abrirArchivoPuntajes();
+    printf("se abrio archivopuntajes\n");
+    system("pause");
     lista=acomodarPuntaje(lista,nuevo);
+    printf("se acomodo\n");
+    system("pause");
     guardarArchivoPuntajes(lista);
+    printf("se guardo\n");
+    system("pause");
+
 }

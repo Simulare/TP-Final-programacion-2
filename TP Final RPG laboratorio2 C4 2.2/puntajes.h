@@ -16,13 +16,15 @@ struct nodoPuntajes * siguiente;
 
 nodoPuntajes * inicListaPuntajes();
 
-nodoPuntajes * crearNodoPuntajes(int puntaje,char nombre[30]);
+nodoPuntajes * crearNodoPuntajes(char nombre[30],int puntaje);
 
 nodoPuntajes * acomodarPuntaje(nodoPuntajes * lista, nodoPuntajes * nuevo);
 
 nodoPuntajes * abrirArchivoPuntajes();
 
 void guardarArchivoPuntajes(nodoPuntajes * lista);
+
+void mostrarPuntajes(STpuntajes puntaje,int posicion);
 
 void recorreMostrarPuntajes();
 

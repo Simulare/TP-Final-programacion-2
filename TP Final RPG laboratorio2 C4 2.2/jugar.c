@@ -119,7 +119,7 @@ int jugar(usuario*jugador,nodoArbolDesa*desafio, nodoArbolDesa* anterior, int*pu
                             ///printf("\n\nSaliste del dungeon...\n\n---------GANASTE---------\n\n");
                             system("pause");
                             resultado=1;    /// Gano
-                            cargarPuntajes(jugador->nombreUsuario,jugador->puntajeUsuario);
+                            ///cargarPuntajes(jugador->nombreUsuario,jugador->puntajeUsuario);
                         }
                         break;
                     case 'M':
@@ -162,7 +162,7 @@ int jugar(usuario*jugador,nodoArbolDesa*desafio, nodoArbolDesa* anterior, int*pu
                 }else{
                     resultado=jugar(jugador,desafio->izquierda, anterior,puntaje,turnosTotales);
                 }
-                cargarPuntajes(jugador->nombreUsuario,jugador->puntajeUsuario);
+                ///cargarPuntajes(jugador->nombreUsuario,jugador->puntajeUsuario);
                 printf("\n\nSaliste del dungeon...\n\nTu puntuaci%cn es: %d\n\n---------GANASTE---------\n\n",162, jugador->puntajeUsuario);
                 system("pause");
                 break;

@@ -168,12 +168,17 @@ void menuUsuario (usuario jugador, celda celdaArbolDesa[], nodoMonstruo* listaMo
 
                 guardarHitoricoJugadas(aux_his);
 
+                printf("Se guardo la partida en el historial\n\n");
+
+                cargarPuntajes(jugador.nombreUsuario,puntaje);
+
                 /// ---------------------------------------------
 
             }
             break;
         case 2:
-            ///Funci�n mostrarUsuariosPorPuntaje
+            recorreMostrarPuntajes();
+            system ("pause");
             break;
         case 3:
             system("cls");
