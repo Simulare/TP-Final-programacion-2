@@ -25,7 +25,7 @@ char pelear(usuario*jugador,nodoArbolDesa*desafio,int*turnos){
     int respuesta=0;
     int vidaInicialM = desafio->desafio.monstruo.vidaBaseMonstruo;
 
-    dibujaMonstruoDesdeTXT(75,10,desafio->desafio.monstruo.nombreMonstruo);
+    dibujaMonstruoDesdeTXT(70,10,desafio->desafio.monstruo.nombreMonstruo);
 
     while(resultPelea==' '){
         dibujaCaja(1,1,35,10);///caja de vida's
@@ -162,6 +162,9 @@ int jugar(usuario*jugador,nodoArbolDesa*desafio, nodoArbolDesa* anterior, int*pu
                 }else{
                     resultado=jugar(jugador,desafio->izquierda, anterior,puntaje,turnosTotales);
                 }
+                cargarPuntajes(jugador->nombreUsuario,jugador->puntajeUsuario);
+                printf("\n\nSaliste del dungeon...\n\nTu puntuaci%cn es: %d\n\n---------GANASTE---------\n\n",162, jugador->puntajeUsuario);
+                system("pause");
                 break;
         }
     }

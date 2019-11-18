@@ -167,6 +167,7 @@ void menuUsuario (usuario jugador, celda celdaArbolDesa[], nodoMonstruo* listaMo
                 aux_his.puntosGanados=puntaje;
 
                 guardarHitoricoJugadas(aux_his);
+
                 /// ---------------------------------------------
 
             }
@@ -186,7 +187,7 @@ void menuUsuario (usuario jugador, celda celdaArbolDesa[], nodoMonstruo* listaMo
             ABMLmonstruos(listaMonstruos);
             break;
         case 5:
-            ABMLdesafios();
+            ABMLdesafios(celdaArbolDesa);
             break;
         case 6:
             administrarUsuarios();
@@ -294,7 +295,7 @@ void modificarMonstruo (nodoMonstruo* listaMonstruos, nodoMonstruo* aModificar){
     }
 }
 
-void ABMLdesafios(){
+void ABMLdesafios(celda celdaArbolDesa[]){
     int op = -1;
     while(op != 5){
         system("cls");
@@ -313,8 +314,10 @@ void ABMLdesafios(){
 
             case 4:
                 system("cls");
-                muestraArchiDesafios();
-                muestraArchiMonstruos();
+                printf("\n---- Celda 0 ----\n");
+                listarArbolDesafio(celdaArbolDesa[0].arbol);
+                //muestraArchiDesafios();
+                //muestraArchiMonstruos();
                 system("pause");
                 break;
         }
