@@ -177,6 +177,7 @@ void menuUsuario (usuario jugador, celda celdaArbolDesa[], nodoMonstruo* listaMo
             }
             break;
         case 2:
+
             recorreMostrarPuntajes();
             system ("pause");
             break;

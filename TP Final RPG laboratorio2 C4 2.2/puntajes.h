@@ -18,6 +18,8 @@ nodoPuntajes * inicListaPuntajes();
 
 nodoPuntajes * crearNodoPuntajes(char nombre[30],int puntaje);
 
+nodoPuntajes*agregarPpio(nodoPuntajes*lista,nodoPuntajes*nuevo);
+
 nodoPuntajes * acomodarPuntaje(nodoPuntajes * lista, nodoPuntajes * nuevo);
 
 nodoPuntajes * abrirArchivoPuntajes();
@@ -28,7 +30,7 @@ void mostrarPuntajes(STpuntajes puntaje,int posicion);
 
 void recorreMostrarPuntajes();
 
-void cargarPuntajes(char nombre[30],int puntaje);
+void cargarPuntajes(char nombre[],int puntaje);
 
 
 #endif // PUNTAJES_H_INCLUDED
