@@ -43,13 +43,15 @@ typedef struct{
 nodoArbolDesa*inicArbolDesafio();
 nodoArbolDesa*crearNodoArbolDesafio(STdesafio desafio);
 nodoArbolDesa*insertarNodoArbolDesafio(nodoArbolDesa*arbol,STdesafio desafio);
-void mostrarNodoArbolDesafio(nodoArbolDesa*arbol);
+void mostrarNodoArbolDesafio(STdesafio);
 void listarArbolDesafio(nodoArbolDesa*arbol);
 void guardarDesafioEnArchivo (nodoArbolDesa* nuevo);
 STdesafio cargarDesafio (nodoMonstruo* lista);
 nodoArbolDesa* pasarDesafiosArbolToArbol(nodoArbolDesa* arbol);
 void altaREGdesafio();
 void muestraArchiDesafios();
+nodoArbolDesa* buscarDesafioEnArbolID (nodoArbolDesa* arbol, int id);
+REGdesafio REGparaReemplazar (int id);
 
 
 #endif // DESAFIOS_H_INCLUDED

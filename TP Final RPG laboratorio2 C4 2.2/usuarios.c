@@ -39,7 +39,6 @@ void mostrarUsuario (usuario aux){
     printf("\n--------------");
     printf("\nNombre: %s", aux.nombreUsuario);
     printf("\nCategoria: %c", aux.categoriaUsuario);
-    printf("\nPuntaje: %i", aux.puntajeUsuario);
     printf("\nId : %d", aux.idUsuario);
     printf("\nContrase\xA4a: %s", aux.contraUsuario);
     printf("\nEstado (0 Alta/ 2 Eliminado): %i", aux.usuarioEliminado);

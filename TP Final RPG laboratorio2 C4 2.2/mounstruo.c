@@ -7,9 +7,6 @@ nodoMonstruo * iniclista()
 
 STmonstruo cargarMonstruo(){
     STmonstruo aux;
-    printf("\nIngrese n%cmero de id del monstruo:\n", 163); ///Hay que verificar que no haya uno con el mismo id
-    fflush(stdin);
-    scanf("%i", &aux.idMonstruo);
     printf("Ingrese nombre de monstruo:\n");
     fflush(stdin);
     gets(aux.nombreMonstruo);
@@ -22,6 +19,7 @@ STmonstruo cargarMonstruo(){
     printf("Ingrese los puntos que da el monstruo al ser derrotado:\n");
     fflush(stdin);
     scanf("%d",&aux.puntosMonstruo);
+    aux.idMonstruo = cantMonstruosEnArchivo()+1;
 
     return aux;
 }
@@ -246,7 +244,6 @@ void modificarRegistroMonstruo (char nombre[], int nuevoDato, int tipo){ ///1 vi
             fseek(archi, sizeof(STmonstruo)*(-1), SEEK_CUR);
             fwrite(&aux, sizeof(STmonstruo), 1, archi);
             flag = 1;
-            fclose(archi);
         }
     }
     fclose(archi);
@@ -268,4 +265,15 @@ void buscarMonstruoPorId(int idMonstruo, STmonstruo *aux_monstruo){
         }
     }
     fclose(archi);
+}
+
+int cantMonstruosEnArchivo(){
+    int registros = 0;
+    FILE* archi = fopen(MONSTRUOS, "rb");
+    if (archi != NULL){
+        fseek(archi, 0, SEEK_END);
+        registros = ftell(archi)/sizeof(STmonstruo);
+        fclose(archi);
+    }
+    return registros;
 }

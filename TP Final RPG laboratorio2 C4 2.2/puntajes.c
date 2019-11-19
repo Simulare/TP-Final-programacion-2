@@ -36,7 +36,7 @@ nodoPuntajes * acomodarPuntaje(nodoPuntajes * lista, nodoPuntajes * nuevo)
     }
     else
     {
-        if(nuevo->puntajes.puntaje < lista->puntajes.puntaje)
+        if(nuevo->puntajes.puntaje > lista->puntajes.puntaje)
         {
             lista=agregarPpio(lista,nuevo);
 

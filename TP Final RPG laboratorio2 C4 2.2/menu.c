@@ -109,11 +109,11 @@ void menuUsuario (usuario jugador, celda celdaArbolDesa[], nodoMonstruo* listaMo
         ///usuario jugador;
         system("cls");
         printf("\n       <<< MENU DE USUARIO >>>\n\n");
-        printf("\n\n[0]   Salir del usuario.\n[1]   Jugar.\n[2]   Ver ranking de puntajes.\n[3]   Ver historial de jugadas.\n\n\n");
+        printf("\n\n[0]   Salir del usuario.\n[1]   Jugar.\n[2]   Ver ranking de puntajes.\n[3]   Ver historial de jugadas.\n");
         if (jugador.categoriaUsuario == 'A'){
-            printf("[4]   ABML Monstruos.\n[5]   ABML Desaf%cos.\n[6]   Administrar usuarios.\n\n", 161);
+            printf("[4]   ABML Monstruos.\n[5]   ABML Desaf%cos.\n[6]   Administrar usuarios.\n", 161);
         }
-        printf("Ingrese una opci%cn: ", 162);
+        printf("\n\n\nIngrese una opci%cn: ", 162);
         fflush(stdin);
         scanf("%i", &op);
         if (jugador.categoriaUsuario == 'J' && op > 3){
@@ -128,7 +128,9 @@ void menuUsuario (usuario jugador, celda celdaArbolDesa[], nodoMonstruo* listaMo
             menuPrincipal(celdaArbolDesa, listaMonstruos);
             break;
         case 1:
+            system("cls");
             printf("\nElija una dificultad para jugar:\n\n[1]   Facil.\n[2]   Medio.\n[3]   Dificil.\n\n");
+            printf("\n\n\nIngrese una opci%cn: ", 162);
             fflush(stdin);
             scanf("%d",&dificultadElegida);
             if (dificultadElegida > 3){
@@ -303,10 +305,13 @@ void modificarMonstruo (nodoMonstruo* listaMonstruos, nodoMonstruo* aModificar){
 
 void ABMLdesafios(celda celdaArbolDesa[]){
     int op = -1;
-    while(op != 5){
+    char confirm;
+    int id;
+    REGdesafio reemplazo;
+    while(op != 4){
         system("cls");
         printf("\------------------------------------------------------\n\nABML DESAFIOS\n\n------------------------------------------------------\n\n\n");
-        printf("[1]   Alta.\n[2]   Baja.\n[3]   Modificar.\n[4]   Listar.\n[5]   Volver\n\n\n");
+        printf("[1]   Alta.\n[2]   Modificar.\n[3]   Listar.\n[4]   Volver\n\n\n");
         printf("Ingrese una opci%cn: ", 162);
         fflush(stdin);
         scanf("%i", &op);
@@ -318,7 +323,36 @@ void ABMLdesafios(celda celdaArbolDesa[]){
                 system("pause");
                 break;
 
-            case 4:
+            case 2:
+                system("cls");
+                printf("\n\n Para modificar un desafio tenga en cuenta que:\n\n - La id del mismo no se puede modificar.\n - El desafio se modifica en todas las dificultades.\n\nPara continuar con la modificacion ingrese 's' de otra forma volvera al menu anterior.\n\n");
+                fflush(stdin);
+                scanf("%c", &confirm);
+                if (confirm == 's'){
+                    system("cls");
+                    printf("\n\nIngrese la id del desafio a modificar: ");
+                    fflush(stdin);
+                    scanf("%i", &id);
+                    if (existeREGDesafioID(id) == 1){
+                        reemplazo = REGparaReemplazar(id);
+                        ///Lo reemplazo en el archivo y en cada arbol de los niveles.
+                        buscarYReemplazarREGDesafio(id, reemplazo);
+                        muestraArchiDesafios();
+                        system("pause");
+                        reemplazarNodoDesafio(celdaArbolDesa[0].arbol, reemplazo);
+                        reemplazarNodoDesafio(celdaArbolDesa[1].arbol, reemplazo);
+                        reemplazarNodoDesafio(celdaArbolDesa[2].arbol, reemplazo);
+                        system("cls");
+                        printf("\n\nSe ha modificado el desafio con exito!!\n\n\n\n");
+                        system("pause");
+                    }else{
+                        printf("\n\nLa id ingresada no existe.\n\n\n\n");
+                        system("pause");
+                    }
+                }
+                break;
+
+            case 3:
                 system("cls");
                 printf("\n---- Celda 0 ----\n");
                 listarArbolDesafio(celdaArbolDesa[0].arbol);
