@@ -52,6 +52,7 @@ void muestraArchiDesafios();
 nodoArbolDesa* buscarDesafioEnArbolID (nodoArbolDesa* arbol, int id);
 REGdesafio REGparaReemplazar (int id);
 void reemplazarNodoDesafio (nodoArbolDesa* nodo, REGdesafio desafio);
+int existeREGDesafioID(int id);
 
 
 #endif // DESAFIOS_H_INCLUDED

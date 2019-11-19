@@ -4,7 +4,7 @@
 #include <stdlib.h>
 #include <string.h>
 #define USUARIOS "usuarios.dat"
-#define HP_BASE_USER 1000
+#define HP_BASE_USER 150
 #define ATQ_BASE_USER 10
 
 
@@ -18,11 +18,6 @@ typedef struct{
     int puntajeUsuario;
     int usuarioEliminado; //0 Alta; 1 Baja
 }usuario;
-
-typedef struct{
-    usuario usuario;
-    struct nodoListaUsu* sig;
-}nodoListaUsu;
 
 
 void mostrarUsuario (usuario aux);

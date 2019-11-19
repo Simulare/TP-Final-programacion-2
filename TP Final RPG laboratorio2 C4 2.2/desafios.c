@@ -100,8 +100,8 @@ void pasarDesafiosArchivoToArbol (celda adaArbolDesa[]){
 
             if (aux_desafio.monstruo.idMonstruo != -1){ ///Si es un monstruo vacío entonces no se aplican modificadores
                 aux_desafio.monstruo.ataqueBaseMonstruo=aux_desafio.monstruo.ataqueBaseMonstruo+5;
-                aux_desafio.monstruo.vidaBaseMonstruo  =aux_desafio.monstruo.vidaBaseMonstruo*2;
-                aux_desafio.monstruo.puntosMonstruo    =aux_desafio.monstruo.puntosMonstruo*2;
+                aux_desafio.monstruo.vidaBaseMonstruo  =aux_desafio.monstruo.vidaBaseMonstruo*1.4;
+                aux_desafio.monstruo.puntosMonstruo    =aux_desafio.monstruo.puntosMonstruo*1.4;
             }
             adaArbolDesa[1].arbol=insertarNodoArbolDesafio(adaArbolDesa[1].arbol,aux_desafio);
 

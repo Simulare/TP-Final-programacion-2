@@ -20,7 +20,7 @@ nodoPuntajes * crearNodoPuntajes(char nombre[30],int puntaje);
 
 nodoPuntajes*agregarPpio(nodoPuntajes*lista,nodoPuntajes*nuevo);
 
-nodoPuntajes * acomodarPuntaje(nodoPuntajes * lista, nodoPuntajes * nuevo);
+nodoPuntajes* acomodarPuntaje(nodoPuntajes* lista, nodoPuntajes* nuevo);
 
 nodoPuntajes * abrirArchivoPuntajes();
 

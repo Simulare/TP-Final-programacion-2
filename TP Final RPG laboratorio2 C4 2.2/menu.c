@@ -161,14 +161,11 @@ void menuUsuario (usuario jugador, celda celdaArbolDesa[], nodoMonstruo* listaMo
                 int puntaje=0;
                 int turnos=0;
 
-                /// OJOOO quitar
-                jugador.ataqueUsuario=20;
-                printf("Id: %d\n",jugador.idUsuario);
-                /// OJOOO quitar
-
+                jugador.vidaUsuario = HP_BASE_USER;
+                jugador.ataqueUsuario = ATQ_BASE_USER;
                 jugador.puntajeUsuario=0; ///para asegurarnos que cada vez que empiece un juego nuevo el acumulador sea 0
                 resultado=jugar(&jugador,celdaArbolDesa[dificultadElegida-1].arbol,celdaArbolDesa[dificultadElegida-1].arbol,&puntaje,&turnos);
-                //printf("%d,%d,%d\n",resultado,puntaje,turnos);
+                pasarDesafiosArchivoToArbol(celdaArbolDesa);
 
                 /// --- Guardo datos en Historico de Jugadas ---
                 char fyh[20];
@@ -183,8 +180,6 @@ void menuUsuario (usuario jugador, celda celdaArbolDesa[], nodoMonstruo* listaMo
                 aux_his.puntosGanados=puntaje;
 
                 guardarHitoricoJugadas(aux_his);
-
-                printf("Se guardo la partida en el historial\n\n");
 
                 cargarPuntajes(jugador.nombreUsuario,puntaje);
 
@@ -432,8 +427,8 @@ void iniciarPrograma (){ ///Hay que cargar las estructuras desde los archivos cu
     nodoMonstruo * listaMonstruos = iniclista();
     listaMonstruos = pasarArchivoMonstruosToLista(listaMonstruos);
 
-    ///sprintf(string, "mode con: cols=%d lines=%d", 168,50);
-    ///system(string);
+    sprintf(string, "mode con: cols=%d lines=%d", 168,50);
+    system(string);
 
     pantallaPrincipal();
     menuPrincipal(celdaArbolDesa, listaMonstruos);

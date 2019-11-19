@@ -75,7 +75,6 @@ printf("\n\n\n\n\n\n\n\n\n\n\n\n");
 }
 
 
-
 void dibujaMonstruoDesdeTXT(int x, int y, char nombreMonstruo[]){
     char nombreArchi[34];
     char linea[81];

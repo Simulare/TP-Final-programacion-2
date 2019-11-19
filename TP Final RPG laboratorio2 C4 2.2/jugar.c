@@ -94,7 +94,7 @@ int jugar(usuario*jugador,nodoArbolDesa*desafio, nodoArbolDesa* anterior, int*pu
     if(desafio!=NULL){
         printf("---------------------------------------------------------\n");
         printf("%s\n",desafio->desafio.descripcionDesafio);
-        printf("---------------------------------------------------------\n");
+        printf("---------------------------------------------------------\n\n");
         system("pause");
         system("cls");
         switch(desafio->desafio.tipoDesafio){
@@ -108,6 +108,7 @@ int jugar(usuario*jugador,nodoArbolDesa*desafio, nodoArbolDesa* anterior, int*pu
                             anterior = desafio;
                             printf("%s\n",desafio->desafio.preguntaProxDesafio);
                             fflush(stdin);
+                            printf("\n\n\nTu elecci%cn: ", 162);
                             scanf("%d",&camino);
                             if(camino==1){
                                 resultado=jugar(jugador,desafio->derecha, anterior,puntaje,turnosTotales);
@@ -115,7 +116,11 @@ int jugar(usuario*jugador,nodoArbolDesa*desafio, nodoArbolDesa* anterior, int*pu
                                 resultado=jugar(jugador,desafio->izquierda, anterior,puntaje,turnosTotales);
                             }
                         }else{
-                            printf("\n\nSaliste del dungeon...\n\nTu puntuaci%cn es: %d\n\n---------GANASTE---------\n\n",162, jugador->puntajeUsuario);
+                            system("pause");
+                            system("cls");
+                            printf("\n\nSaliste del dungeon...\n\nTu puntuaci%cn es: %d\n\n\n",162, jugador->puntajeUsuario);
+                            dibujaMonstruoDesdeTXT(9, 7, "ganaste");
+                            printf("\n\n\n");
                             system("pause");
                             resultado=1;    /// Gano
                         }

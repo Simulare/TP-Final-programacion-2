@@ -119,28 +119,6 @@ nodoMonstruo* buscarMonstruoNombre (nodoMonstruo* lista, char nombre[]){
     return rta;
 }
 
-STmonstruo ponerMonstruo (nodoMonstruo* nodo, int dificultad){
-    STmonstruo monster = nodo->monstruo;
-    int modificador;
-    switch (dificultad){
-        case 1:
-            modificador = 0;
-            break;
-        case 2:
-            modificador = MODIF_LVL2;
-            break;
-        case 3:
-            modificador = MODIF_LVL3;
-            break;
-        default:
-            modificador = 0;
-            break;
-    }
-        monster.vidaBaseMonstruo = monster.vidaBaseMonstruo + monster.vidaBaseMonstruo * modificador / 100;
-        monster.ataqueBaseMonstruo = monster.ataqueBaseMonstruo + monster.ataqueBaseMonstruo * modificador / 100;
-
-    return monster;
-}
 
 STmonstruo monstruoVacio (){  ///Cuando el desafío es tipo recompensa va esta función como monstruo del desafio
     STmonstruo aux;
