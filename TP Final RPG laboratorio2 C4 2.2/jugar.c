@@ -116,17 +116,15 @@ int jugar(usuario*jugador,nodoArbolDesa*desafio, nodoArbolDesa* anterior, int*pu
                             }
                         }else{
                             printf("\n\nSaliste del dungeon...\n\nTu puntuaci%cn es: %d\n\n---------GANASTE---------\n\n",162, jugador->puntajeUsuario);
-                            ///printf("\n\nSaliste del dungeon...\n\n---------GANASTE---------\n\n");
                             system("pause");
                             resultado=1;    /// Gano
-                            ///cargarPuntajes(jugador->nombreUsuario,jugador->puntajeUsuario);
                         }
                         break;
                     case 'M':
                         printf("\nMORISTE\n");
                         dibujaPantallaMuerte();
                         system("pause");
-                        ///cargarPuntajes(jugador->nombreUsuario,jugador->puntajeUsuario);
+
                         return;
                         break;
                     case 'H':
@@ -162,8 +160,6 @@ int jugar(usuario*jugador,nodoArbolDesa*desafio, nodoArbolDesa* anterior, int*pu
                 }else{
                     resultado=jugar(jugador,desafio->izquierda, anterior,puntaje,turnosTotales);
                 }
-                ///cargarPuntajes(jugador->nombreUsuario,jugador->puntajeUsuario);
-                printf("\n\nSaliste del dungeon...\n\nTu puntuaci%cn es: %d\n\n---------GANASTE---------\n\n",162, jugador->puntajeUsuario);
                 system("pause");
                 break;
         }

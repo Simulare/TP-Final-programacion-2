@@ -32,5 +32,7 @@ void recorreMostrarPuntajes();
 
 void cargarPuntajes(char nombre[],int puntaje);
 
+void mostrarListaPuntajes(nodoPuntajes*lista);
+
 
 #endif // PUNTAJES_H_INCLUDED

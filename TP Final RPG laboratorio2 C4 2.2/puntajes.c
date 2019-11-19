@@ -63,17 +63,23 @@ nodoPuntajes * abrirArchivoPuntajes()
 {
     STpuntajes aux;
     nodoPuntajes * lista=inicListaPuntajes();
-    FILE * archi=fopen("puntajes.dat","rb");
-    while(fread(&aux,sizeof(STpuntajes),1 ,archi) >0)
-    {
-        nodoPuntajes* nuevoNodo = crearNodoPuntajes(aux.nombre, aux.puntaje);
-        lista = acomodarPuntaje(lista, nuevoNodo);
-        ///strcpy(lista->puntajes.nombre,aux.nombre);
-        ///lista->puntajes.puntaje=aux.puntaje;
-        ///lista->siguiente=inicListaPuntajes();
 
+    FILE * archi=fopen("puntajes.dat","rb");
+    if(archi!=NULL){
+        printf("--- lee puntajes.dat ---\n");
+        while(fread(&aux,sizeof(STpuntajes),1 ,archi) >0)
+        {
+            nodoPuntajes* nuevoNodo = crearNodoPuntajes(aux.nombre, aux.puntaje);
+            lista = acomodarPuntaje(lista, nuevoNodo);
+
+            ///strcpy(lista->puntajes.nombre,aux.nombre);
+            ///lista->puntajes.puntaje=aux.puntaje;
+            ///lista->siguiente=inicListaPuntajes();
+
+        }
+        fclose(archi);
     }
-    fclose(archi);
+
     return lista;
 }
 
@@ -81,14 +87,26 @@ void guardarArchivoPuntajes(nodoPuntajes * lista)
 {
     STpuntajes aux;
     FILE * archi = fopen("puntajes.dat","wb");
-    while(lista!=NULL)
-    {
-        aux.puntaje=lista->puntajes.puntaje;
-        strcpy(aux.nombre,lista->puntajes.nombre);
+
+    nodoPuntajes*seg=lista;
+    while(seg!=NULL){
+        aux.puntaje=seg->puntajes.puntaje;
+        strcpy(aux.nombre,seg->puntajes.nombre);
+
         fwrite(&aux,sizeof(STpuntajes),1,archi);
-        lista=lista->siguiente;
+
+        seg=seg->siguiente;
     }
     fclose(archi);
+}
+
+void mostrarListaPuntajes(nodoPuntajes*lista){
+    nodoPuntajes*seg=lista;
+    printf("--- ListaPuntajes ----\n");
+    while(seg!=NULL){
+        printf("%s-%d\n",seg->puntajes.nombre,seg->puntajes.puntaje);
+        seg=seg->siguiente;
+    }
 }
 
 void mostrarPuntajes(STpuntajes puntaje,int posicion)
@@ -113,21 +131,29 @@ void recorreMostrarPuntajes()
 
 void cargarPuntajes(char nombre[],int puntaje)
 {
+//    printf("%s-%d\n",nombre,puntaje);
+
     nodoPuntajes * nuevo=inicListaPuntajes();
-    printf("se inicializo la lista\n");
-    system("pause");
+//    printf("se inicializo la lista\n");
+//    system("pause");
 
     nuevo=crearNodoPuntajes(nombre,puntaje);
-    printf("se creo el nodo\n");
-    system("pause");
+//    printf("se creo el nodo\n");
+//    system("pause");
 
     nodoPuntajes * lista = abrirArchivoPuntajes();
-    printf("se abrio archivopuntajes\n");
-    system("pause");
+//    printf("se abrio archivopuntajes\n");
+//    system("pause");
+
+//    mostrarListaPuntajes(lista);
+
     lista=acomodarPuntaje(lista,nuevo);
-    printf("se acomodo\n");
-    system("pause");
+//    printf("se acomodo\n");
+//    system("pause");
+
+//    mostrarListaPuntajes(lista);
+
     guardarArchivoPuntajes(lista);
-    printf("se guardo\n");
-    system("pause");
+//    printf("se guardo\n");
+//    system("pause");
 }
