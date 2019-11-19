@@ -24,21 +24,8 @@ typedef struct{
     struct nodoListaUsu* sig;
 }nodoListaUsu;
 
-nodoListaUsu* inicListaUsu();
-
-nodoListaUsu* buscarUsuarioPorNombre(nodoListaUsu* lista, char nombre[]);
-
-nodoListaUsu* crearNodoListaUsu(usuario usu);
-
-nodoListaUsu* agregarPpioUsuarioToLista (nodoListaUsu* lista, nodoListaUsu* nuevo);
 
 void mostrarUsuario (usuario aux);
-
-void mostrarListaUsu (nodoListaUsu* lista);
-
-void pasarUsuariosListaToArchivo (nodoListaUsu* lista); ///Para pruebas.
-
-nodoListaUsu* pasarUsuariosArchivoToLista(nodoListaUsu* lista);
 
 void guardarNuevoUsuArchivo(usuario nuevo);
 

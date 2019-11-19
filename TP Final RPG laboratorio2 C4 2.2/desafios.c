@@ -35,11 +35,12 @@ void mostrarNodoArbolDesafio(STdesafio desafio){
     printf("Descripcion: %s\n",desafio.descripcionDesafio);
 
     printf("Dificultad : %d\n",desafio.dificultadDesafio);
-
-    printf("   Nombre Mons.  : %s\n",desafio.monstruo.nombreMonstruo);
-    printf("   Vida Monst.   : %d\n",desafio.monstruo.vidaBaseMonstruo);
-    printf("   Ataque Monst. : %d\n",desafio.monstruo.ataqueBaseMonstruo);
-    printf("   Punstos Monst.: %d\n",desafio.monstruo.puntosMonstruo);
+    if (desafio.tipoDesafio == 'R'){
+        printf("   Nombre Mons.  : %s\n",desafio.monstruo.nombreMonstruo);
+        printf("   Vida Monst.   : %d\n",desafio.monstruo.vidaBaseMonstruo);
+        printf("   Ataque Monst. : %d\n",desafio.monstruo.ataqueBaseMonstruo);
+        printf("   Punstos Monst.: %d\n",desafio.monstruo.puntosMonstruo);
+    }
     printf("Preg.Prox.Desaf. : %s\n",desafio.preguntaProxDesafio);
     printf("Desafio Eliminado: %d\n",desafio.desafioEliminado);
     printf("-----------------------------\n");
@@ -57,52 +58,6 @@ void guardarDesafioEnArchivo (nodoArbolDesa* nuevo){
     FILE* archi = fopen(DESAFIOS, "ab");
     fwrite(&nuevo->desafio, sizeof(STdesafio), 1, archi);
     fclose(archi);
-}
-
-STdesafio cargarDesafio (nodoMonstruo* lista){
-    STdesafio aux;
-    printf("\nID del desafío: ");
-    fflush(stdin);
-    scanf("%i", &aux.idDesafio);
-    do{ ///Para verificar que sea tipo P o R
-        printf("\nTipo de desaf%co ('P' pelea / 'R' recompensa): ", 161);
-        fflush(stdin);
-        scanf("%c", &aux.tipoDesafio);
-        if (aux.tipoDesafio != 'R' && aux.tipoDesafio != 'P'){
-            printf("\n\nError. El tipo de desaf%co solo puede ser 'P' o 'R'. Vuelva a intentar.\n\n", 161);
-            system("pause");
-            system("cls");
-        }
-    }while (aux.tipoDesafio != 'P' && aux.tipoDesafio != 'R');
-
-    printf("\nDescripci%cn del desaf%co: ", 162, 161);
-    fflush(stdin);
-    gets(aux.descripcionDesafio);
-    printf("\nDificultad del desaf%co: ", 161);
-    fflush(stdin);
-    scanf("%i", &aux.dificultadDesafio);
-    if (aux.tipoDesafio == 'P'){
-        char nombre[20];
-        printf("\nIngrese el nombre del monstruo del desaf%co: ", 161);
-        fflush(stdin);
-        gets(nombre);
-        nodoMonstruo* monster = buscarMonstruoNombre(lista, nombre);
-        if (monster == NULL){
-            printf("\n\nEl monstruo ingresado no existe en la lista de monstruos, si quiere ingresar un monstruo nuevo primero debe cargarlo en 'cargar monstruo'. Ser%c enviado al men%c anterior.\n\n", 160, 163);
-            system("pause");
-            ///MENU ANTERIOR ---------------------
-        }else{
-            aux.monstruo = ponerMonstruo(monster, aux.dificultadDesafio);
-        }
-    }else{
-        aux.monstruo = monstruoVacio();
-    }
-    printf("\nPregunta al pr%cximo desaf%co: ", 162, 161);
-    fflush(stdin);
-    gets(aux.preguntaProxDesafio);
-    aux.desafioEliminado = 0;
-
-    return aux;
 }
 
 
@@ -160,115 +115,18 @@ void pasarDesafiosArchivoToArbol (celda adaArbolDesa[]){
     }
     fclose(archi);
 
-    /*
-    STdesafio desafio;
-
-    /// --- OJOOO, desafios harcodeados -----
-    desafio.idDesafio=4;
-    desafio.tipoDesafio='P';
-    strcpy(desafio.descripcionDesafio,"Un goblin salvaje se acerca!...\n");
-    desafio.dificultadDesafio=1;
-    strcpy(desafio.monstruo.nombreMonstruo,"Goblin");
-    desafio.monstruo.vidaBaseMonstruo=100;
-    desafio.monstruo.ataqueBaseMonstruo=10;
-    desafio.monstruo.puntosMonstruo=50;
-    strcpy(desafio.preguntaProxDesafio,"1.derecha\n2.izquierda\n\n");
-    desafio.desafioEliminado=0;
-
-    arbolDesa=insertarNodoArbolDesafio(arbolDesa,desafio);
-
-    desafio.idDesafio=2;
-    desafio.tipoDesafio='R';
-    strcpy(desafio.descripcionDesafio,"Conseguiste una pocion de vida!!!\n\nTu vida se incrementara en 100\n\n");
-    desafio.dificultadDesafio=1;
-    strcpy(desafio.monstruo.nombreMonstruo,"");
-    desafio.monstruo.vidaBaseMonstruo=0;
-    desafio.monstruo.ataqueBaseMonstruo=0;
-    desafio.monstruo.puntosMonstruo=0;
-    strcpy(desafio.preguntaProxDesafio,"1.derecha\n2.izquierda\n\n");
-    desafio.desafioEliminado=0;
-
-    arbolDesa=insertarNodoArbolDesafio(arbolDesa,desafio);
-
-    desafio.idDesafio=1;
-    desafio.tipoDesafio='P';
-    strcpy(desafio.descripcionDesafio,"Encontraste el final boss!, el dragon rojo...\n");
-    desafio.dificultadDesafio=1;
-    strcpy(desafio.monstruo.nombreMonstruo,"Dragon Rojo");
-    desafio.monstruo.vidaBaseMonstruo=100;
-    desafio.monstruo.ataqueBaseMonstruo=15;
-    desafio.monstruo.puntosMonstruo=50;
-    strcpy(desafio.preguntaProxDesafio,"1.derecha\n2.izquierda\n\n");
-    desafio.desafioEliminado=0;
-
-    arbolDesa=insertarNodoArbolDesafio(arbolDesa,desafio);
-
-    desafio.idDesafio=3;
-    desafio.tipoDesafio='P';
-    strcpy(desafio.descripcionDesafio,"Encontraste el final boss!, el dragon rojo...\n");
-    desafio.dificultadDesafio=1;
-    strcpy(desafio.monstruo.nombreMonstruo,"Dragon Rojo");
-    desafio.monstruo.vidaBaseMonstruo=500;
-    desafio.monstruo.ataqueBaseMonstruo=15;
-    desafio.monstruo.puntosMonstruo=50;
-    strcpy(desafio.preguntaProxDesafio,"1.derecha\n2.izquierda\n\n");
-    desafio.desafioEliminado=0;
-
-    arbolDesa=insertarNodoArbolDesafio(arbolDesa,desafio);
-
-    desafio.idDesafio=6;
-    desafio.tipoDesafio='P';
-    strcpy(desafio.descripcionDesafio,"Te encontras con un ghoul...\n");
-    desafio.dificultadDesafio=1;
-    strcpy(desafio.monstruo.nombreMonstruo,"Ghoul");
-    desafio.monstruo.vidaBaseMonstruo=200;
-    desafio.monstruo.ataqueBaseMonstruo=10;
-    desafio.monstruo.puntosMonstruo=50;
-    strcpy(desafio.preguntaProxDesafio,"1.derecha\n2.izquierda\n\n");
-    desafio.desafioEliminado=0;
-
-    arbolDesa=insertarNodoArbolDesafio(arbolDesa,desafio);
-
-    desafio.idDesafio=5;
-    desafio.tipoDesafio='P';
-    strcpy(desafio.descripcionDesafio,"Encontraste el final boss!, el dragon rojo...\n");
-    desafio.dificultadDesafio=1;
-    strcpy(desafio.monstruo.nombreMonstruo,"Dragon Rojo");
-    desafio.monstruo.vidaBaseMonstruo=500;
-    desafio.monstruo.ataqueBaseMonstruo=15;
-    desafio.monstruo.puntosMonstruo=50;
-    strcpy(desafio.preguntaProxDesafio,"1.derecha\n2.izquierda\n\n");
-    desafio.desafioEliminado=0;
-
-    arbolDesa=insertarNodoArbolDesafio(arbolDesa,desafio);
-
-    desafio.idDesafio=7;
-    desafio.tipoDesafio='P';
-    strcpy(desafio.descripcionDesafio,"Encontraste el final boss!, el dragon rojo...\n");
-    desafio.dificultadDesafio=1;
-    strcpy(desafio.monstruo.nombreMonstruo,"Dragon Rojo");
-    desafio.monstruo.vidaBaseMonstruo=500;
-    desafio.monstruo.ataqueBaseMonstruo=15;
-    desafio.monstruo.puntosMonstruo=50;
-    strcpy(desafio.preguntaProxDesafio,"1.derecha\n2.izquierda\n\n");
-    desafio.desafioEliminado=0;
-
-    arbolDesa=insertarNodoArbolDesafio(arbolDesa,desafio);
-
-    */
-
 }
 
 void muestraArchiDesafios(){
     REGdesafio desafio;
     FILE *archi= fopen(DESAFIOS,"rb");
-    // printf("%d-%c-%s-%d-%d-%s,%d\n","");
     printf("----- DESAFIOS -----\n");
     while(fread(&desafio,sizeof(REGdesafio),1,archi)>0){
           printf("%d-%c-%s-%d-%d-%s,%d\n",desafio.idDesafio,desafio.tipoDesafio,desafio.descripcionDesafio,desafio.dificultadDesafio,desafio.idMonstruo,desafio.preguntaProxDesafio,desafio.desafioEliminado);
     }
     fclose(archi);
 }
+
 void muestraArchiMonstruos(){
     STmonstruo monstruo;
     FILE *archi= fopen("monstruos.dat","rb");
@@ -327,25 +185,10 @@ void altaREGdesafio(){
         fflush(stdin);
         scanf("%c",&control);
 
-        fwrite(&desafio,sizeof(REGdesafio),1,archi);
-
-        printf("\nDesea cargar otro?");
-        fflush(stdin);
-        scanf("%c",&control);
-
     }
     fclose(archi);
 }
 
-void mostrarREGDesafio(REGdesafio desafio){
-
-    printf("Id         : %d\n",desafio.idDesafio);
-    printf("Tipo       : %c\n",desafio.tipoDesafio);
-    printf("Descripcion: %s\n",desafio.descripcionDesafio);
-    printf("   ID. monstruo  : %s\n",desafio.idMonstruo);
-    printf("Preg.Prox.Desaf. : %s\n",desafio.preguntaProxDesafio);
-    printf("-----------------------------\n");
-}
 
 nodoArbolDesa* buscarDesafioEnArbolID (nodoArbolDesa* arbol, int id){
     nodoArbolDesa* rta = NULL;

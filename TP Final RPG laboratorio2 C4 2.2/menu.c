@@ -64,7 +64,20 @@ void logInUser (celda celdaArbolDesa[], nodoMonstruo* listaMonstruos){
 }
 
 void pantallaPrincipal(){
-    ///Pantalla titulo
+    int x=22;
+    int y=10;
+
+    char linea[114];
+
+    FILE *archi= fopen("pantalla principal.txt","r");
+
+    gotoxy(x,y);
+    while(fgets(&linea,sizeof(linea),archi)>0){
+        gotoxy(x,whereY());
+        printf("%s",linea);
+    }
+    fclose(archi);
+    printf("\n\n\n\n\n\n\n\n\n");
     system("pause");
 }
 
@@ -140,6 +153,7 @@ void menuUsuario (usuario jugador, celda celdaArbolDesa[], nodoMonstruo* listaMo
             }else{
 
 
+                system("cls");
                 mostrarUsuario(jugador);
 
                 /// ------------------------------------------------------
@@ -337,7 +351,6 @@ void ABMLdesafios(celda celdaArbolDesa[]){
                         reemplazo = REGparaReemplazar(id);
                         ///Lo reemplazo en el archivo y en cada arbol de los niveles.
                         buscarYReemplazarREGDesafio(id, reemplazo);
-                        muestraArchiDesafios();
                         system("pause");
                         reemplazarNodoDesafio(celdaArbolDesa[0].arbol, reemplazo);
                         reemplazarNodoDesafio(celdaArbolDesa[1].arbol, reemplazo);
@@ -419,8 +432,8 @@ void iniciarPrograma (){ ///Hay que cargar las estructuras desde los archivos cu
     nodoMonstruo * listaMonstruos = iniclista();
     listaMonstruos = pasarArchivoMonstruosToLista(listaMonstruos);
 
-    sprintf(string, "mode con: cols=%d lines=%d", 168,50);
-    system(string);
+    ///sprintf(string, "mode con: cols=%d lines=%d", 168,50);
+    ///system(string);
 
     pantallaPrincipal();
     menuPrincipal(celdaArbolDesa, listaMonstruos);

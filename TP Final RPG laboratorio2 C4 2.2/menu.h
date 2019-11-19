@@ -31,4 +31,12 @@ void iniciarPrograma();
 
 void administrarUsuarios ();
 
+int existeREGDesafioID(int id);
+
+REGdesafio REGparaReemplazar(int id);
+
+void buscarYReemplazarREGDesafio(int id, REGdesafio reemplazo);
+
+
+
 #endif // MENU_H_INCLUDED

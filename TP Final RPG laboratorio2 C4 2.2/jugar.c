@@ -121,7 +121,7 @@ int jugar(usuario*jugador,nodoArbolDesa*desafio, nodoArbolDesa* anterior, int*pu
                         }
                         break;
                     case 'M':
-                        printf("\nMORISTE\n");
+
                         dibujaPantallaMuerte();
                         system("pause");
 
