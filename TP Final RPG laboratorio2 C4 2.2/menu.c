@@ -64,7 +64,20 @@ void logInUser (celda celdaArbolDesa[], nodoMonstruo* listaMonstruos){
 }
 
 void pantallaPrincipal(){
-    ///Pantalla titulo
+    int x=22;
+    int y=10;
+
+    char linea[114];
+
+    FILE *archi= fopen("pantalla principal.txt","r");
+
+    gotoxy(x,y);
+    while(fgets(&linea,sizeof(linea),archi)>0){
+        gotoxy(x,whereY());
+        printf("%s",linea);
+    }
+    fclose(archi);
+    printf("\n\n\n\n\n\n\n\n\n");
     system("pause");
 }
 

@@ -63,12 +63,39 @@ printf("                                             ;       ;                  
 printf("                                                                              `:         : .::/                    \n");
 printf("                                                 ;                            ;;+_  :::. :..;;;                    \n");
 printf("                                                                               ;;;;;;,;;;;;;;;,;                    \n");
+printf("\n");
+printf("\n");
+printf("                                                                ___  ______________ _____ _____ _____ _____ \n");
+printf("                                                                |  \\/  |  _  | ___ \\_   _/  ___|_   _|  ___|\n");
+printf("                                                                | .  . | | | | |_/ / | | \\ `--.  | | | |__  \n");
+printf("                                                                | |\\/| | | | |    /  | |  `--. \\ | | |  __| \n");
+printf("                                                                | |  | \\ \\_/ / |\\ \\ _| |_/\\__/ / | | | |___ \n");
+printf("                                                                \\_|  |_/\\___/\\_| \\_|\\___/\\____/  \\_/ \\____/ \n");
 printf("\n\n\n\n\n\n\n\n\n\n\n\n");
 }
 
 
 
 void dibujaMonstruoDesdeTXT(int x, int y, char nombreMonstruo[]){
+    char nombreArchi[34];
+    char linea[81];
+
+    strcpy(nombreArchi,nombreMonstruo);
+    strcat(nombreArchi,".txt");
+
+    ///printf("Archi=%s\n\n",nombreArchi);
+
+    FILE *archi= fopen(nombreArchi,"r");
+
+    gotoxy(x,y);
+    while(fgets(&linea,sizeof(linea),archi)>0){
+        gotoxy(x,whereY());
+        printf("%s",linea);
+    }
+    fclose(archi);
+}
+
+void dibujaPantallaPresentaDesdeTXT(int x, int y, char nombreMonstruo[]){
     char nombreArchi[34];
     char linea[81];
 
