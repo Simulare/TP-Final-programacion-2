@@ -13,7 +13,6 @@ typedef struct{
     int dificultadDesafio; 	/// 1-2-3 (Facil-Medio-Dificil )
     STmonstruo monstruo;
     char preguntaProxDesafio[500];
-    int desafioEliminado;
 }STdesafio;
 
 typedef struct{
@@ -23,7 +22,6 @@ typedef struct{
     int dificultadDesafio; 	/// 1-2-3 (Facil-Medio-Dificil )
     int idMonstruo;
     char preguntaProxDesafio[500];
-    int desafioEliminado;
 }REGdesafio;
 
 
@@ -53,6 +51,6 @@ nodoArbolDesa* buscarDesafioEnArbolID (nodoArbolDesa* arbol, int id);
 REGdesafio REGparaReemplazar (int id);
 void reemplazarNodoDesafio (nodoArbolDesa* nodo, REGdesafio desafio);
 int existeREGDesafioID(int id);
-
+void imprimir (char texto[]);
 
 #endif // DESAFIOS_H_INCLUDED

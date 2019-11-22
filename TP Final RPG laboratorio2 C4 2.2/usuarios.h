@@ -4,7 +4,7 @@
 #include <stdlib.h>
 #include <string.h>
 #define USUARIOS "usuarios.dat"
-#define HP_BASE_USER 150
+#define HP_BASE_USER 1000
 #define ATQ_BASE_USER 10
 
 

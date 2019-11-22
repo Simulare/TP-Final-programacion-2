@@ -25,7 +25,11 @@ char pelear(usuario*jugador,nodoArbolDesa*desafio,int*turnos){
     int respuesta=0;
     int vidaInicialM = desafio->desafio.monstruo.vidaBaseMonstruo;
 
-    dibujaMonstruoDesdeTXT(70,10,desafio->desafio.monstruo.nombreMonstruo);
+    if (strcmpi(desafio->desafio.monstruo.nombreMonstruo,"nigromante") == 0) {
+        dibujaMonstruoDesdeTXT(70, 3 ,desafio->desafio.monstruo.nombreMonstruo);
+    }else{
+        dibujaMonstruoDesdeTXT(70, 10 ,desafio->desafio.monstruo.nombreMonstruo);
+    }
 
     while(resultPelea==' '){
         dibujaCaja(1,1,35,10);///caja de vida's
@@ -93,8 +97,8 @@ int jugar(usuario*jugador,nodoArbolDesa*desafio, nodoArbolDesa* anterior, int*pu
     int resultado=-1;
     if(desafio!=NULL){
         printf("---------------------------------------------------------\n");
-        printf("%s\n",desafio->desafio.descripcionDesafio);
-        printf("---------------------------------------------------------\n\n");
+        imprimir(desafio->desafio.descripcionDesafio);
+        printf("\n---------------------------------------------------------\n\n");
         system("pause");
         system("cls");
         switch(desafio->desafio.tipoDesafio){
@@ -106,14 +110,14 @@ int jugar(usuario*jugador,nodoArbolDesa*desafio, nodoArbolDesa* anterior, int*pu
                     case 'V':    ///Salio vivo
                         if(desafio->derecha!=NULL || desafio->izquierda!=NULL){
                             anterior = desafio;
-                            printf("%s\n",desafio->desafio.preguntaProxDesafio);
+                            imprimir(desafio->desafio.preguntaProxDesafio);
                             fflush(stdin);
                             printf("\n\n\nTu elecci%cn: ", 162);
                             scanf("%d",&camino);
                             if(camino==1){
-                                resultado=jugar(jugador,desafio->derecha, anterior,puntaje,turnosTotales);
-                            }else{
                                 resultado=jugar(jugador,desafio->izquierda, anterior,puntaje,turnosTotales);
+                            }else{
+                                resultado=jugar(jugador,desafio->derecha, anterior,puntaje,turnosTotales);
                             }
                         }else{
                             system("pause");
@@ -138,13 +142,13 @@ int jugar(usuario*jugador,nodoArbolDesa*desafio, nodoArbolDesa* anterior, int*pu
                         if(jugador->puntajeUsuario<0){
                             jugador->puntajeUsuario=0;  ///para que el puntaje no quede negativo
                         }
-                        printf("%s\n",anterior->desafio.preguntaProxDesafio);
+                        imprimir(anterior->desafio.preguntaProxDesafio);
                         fflush(stdin);
                         scanf("%d",&camino);
                         if(camino==1){
-                            resultado=jugar(jugador,anterior->derecha, anterior,puntaje,turnosTotales);
-                        }else{
                             resultado=jugar(jugador,anterior->izquierda, anterior,puntaje,turnosTotales);
+                        }else{
+                            resultado=jugar(jugador,anterior->derecha, anterior,puntaje,turnosTotales);
                         }
                         break;
                 }
@@ -152,18 +156,19 @@ int jugar(usuario*jugador,nodoArbolDesa*desafio, nodoArbolDesa* anterior, int*pu
             case 'R':       ///Recompensa
                 anterior = desafio;
                 printf("---------------------------------------------------------\n");
-                printf("%s\n",desafio->desafio.descripcionDesafio);
+                imprimir(desafio->desafio.descripcionDesafio);
                 recompensa(jugador);
                 printf("Vida: %d\n",jugador->vidaUsuario);
                 printf("---------------------------------------------------------\n");
 
-                printf("%s\n",desafio->desafio.preguntaProxDesafio);
+                imprimir(desafio->desafio.preguntaProxDesafio);
+                printf("\n\n\nTu elecci%cn: ", 162);
                 fflush(stdin);
                 scanf("%d",&camino);
                 if(camino==1){
-                    resultado=jugar(jugador,desafio->derecha, anterior,puntaje,turnosTotales);
-                }else{
                     resultado=jugar(jugador,desafio->izquierda, anterior,puntaje,turnosTotales);
+                }else{
+                    resultado=jugar(jugador,desafio->derecha, anterior,puntaje,turnosTotales);
                 }
                 system("pause");
                 break;

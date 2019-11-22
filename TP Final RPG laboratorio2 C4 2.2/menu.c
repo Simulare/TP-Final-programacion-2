@@ -142,8 +142,9 @@ void menuUsuario (usuario jugador, celda celdaArbolDesa[], nodoMonstruo* listaMo
             break;
         case 1:
             system("cls");
-            printf("\nElija una dificultad para jugar:\n\n[1]   Facil.\n[2]   Medio.\n[3]   Dificil.\n\n");
-            printf("\n\n\nIngrese una opci%cn: ", 162);
+            printf("\n      <<<DIFICULTAD>>>\n\n\n");
+            printf("Elija una dificultad para jugar:\n\n[1]   F%ccil.\n[2]   Medio.\n[3]   Dif%ccil.\n\n", 160, 161);
+            printf("\n\nIngrese una opci%cn: ", 162);
             fflush(stdin);
             scanf("%d",&dificultadElegida);
             if (dificultadElegida > 3){
@@ -420,7 +421,6 @@ void getfechayhora(char fechayhora[20]){
 
 void iniciarPrograma (){ ///Hay que cargar las estructuras desde los archivos cuando se inicia
     char string[30];
-
     celda celdaArbolDesa[3];
     pasarDesafiosArchivoToArbol(celdaArbolDesa);
 
