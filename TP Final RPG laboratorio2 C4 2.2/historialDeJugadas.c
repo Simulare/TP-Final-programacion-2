@@ -25,5 +25,6 @@ void muestraHistorialJugadas(int idUsuario){
         }
     }
     printf("-----------------------------------------------------------------\n");
+    fclose(archi);
 }
 

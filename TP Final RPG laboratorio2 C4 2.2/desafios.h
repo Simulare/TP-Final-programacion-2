@@ -44,7 +44,7 @@ nodoArbolDesa*insertarNodoArbolDesafio(nodoArbolDesa*arbol,STdesafio desafio);
 void mostrarNodoArbolDesafio(STdesafio);
 void listarArbolDesafio(nodoArbolDesa*arbol);
 void guardarDesafioEnArchivo (nodoArbolDesa* nuevo);
-nodoArbolDesa* pasarDesafiosArbolToArbol(nodoArbolDesa* arbol);
+void pasarDesafiosArchivoToArbol(celda adaArbolDesa[]);
 void altaREGdesafio();
 void muestraArchiDesafios();
 nodoArbolDesa* buscarDesafioEnArbolID (nodoArbolDesa* arbol, int id);

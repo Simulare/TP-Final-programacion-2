@@ -131,29 +131,10 @@ void recorreMostrarPuntajes()
 
 void cargarPuntajes(char nombre[],int puntaje)
 {
-//    printf("%s-%d\n",nombre,puntaje);
 
     nodoPuntajes * nuevo=inicListaPuntajes();
-//    printf("se inicializo la lista\n");
-//    system("pause");
-
     nuevo=crearNodoPuntajes(nombre,puntaje);
-//    printf("se creo el nodo\n");
-//    system("pause");
-
     nodoPuntajes * lista = abrirArchivoPuntajes();
-//    printf("se abrio archivopuntajes\n");
-//    system("pause");
-
-//    mostrarListaPuntajes(lista);
-
     lista=acomodarPuntaje(lista,nuevo);
-//    printf("se acomodo\n");
-//    system("pause");
-
-//    mostrarListaPuntajes(lista);
-
     guardarArchivoPuntajes(lista);
-//    printf("se guardo\n");
-//    system("pause");
 }

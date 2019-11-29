@@ -110,19 +110,25 @@ int jugar(usuario*jugador,nodoArbolDesa*desafio, nodoArbolDesa* anterior, int*pu
                     case 'V':    ///Salio vivo
                         if(desafio->derecha!=NULL || desafio->izquierda!=NULL){
                             anterior = desafio;
-                            imprimir(desafio->desafio.preguntaProxDesafio);
-                            fflush(stdin);
-                            printf("\n\n\nTu elecci%cn: ", 162);
-                            scanf("%d",&camino);
-                            if(camino==1){
-                                resultado=jugar(jugador,desafio->izquierda, anterior,puntaje,turnosTotales);
-                            }else{
-                                resultado=jugar(jugador,desafio->derecha, anterior,puntaje,turnosTotales);
-                            }
+                            do{
+                                imprimir(desafio->desafio.preguntaProxDesafio);
+                                fflush(stdin);
+                                printf("\n\n\nTu elecci%cn: ", 162);
+                                scanf("%d",&camino);
+                                if(camino==1){
+                                    resultado=jugar(jugador,desafio->izquierda, anterior,puntaje,turnosTotales);
+                                }else{
+                                    if (camino == 2){
+                                        resultado=jugar(jugador,desafio->derecha, anterior,puntaje,turnosTotales);
+                                    }else{
+                                        printf("\n\nOpci%cn incorrecta, vuelve a elegir.\n\n", 162);
+                                        system("pause");
+                                        system("cls");
+                                    }
+                                }
+                            }while (camino != 1 && camino != 2);
                         }else{
-                            system("pause");
-                            system("cls");
-                            printf("\n\nSaliste del dungeon...\n\nTu puntuaci%cn es: %d\n\n\n",162, jugador->puntajeUsuario);
+                            printf("\n\n----------- Conseguiste salir de la dungeon!! ----------- \n\nTu puntuaci%cn es: %d\n\n\n",162, jugador->puntajeUsuario);
                             dibujaMonstruoDesdeTXT(9, 7, "ganaste");
                             printf("\n\n\n");
                             system("pause");
@@ -138,18 +144,28 @@ int jugar(usuario*jugador,nodoArbolDesa*desafio, nodoArbolDesa* anterior, int*pu
                         break;
                     case 'H':
                         printf("\nDecidiste huir!!! Volver%cs al desafio anterior y podras decidir de nuevo que camino tomar.\nSe te restar%cn 50 de tu puntuaci%cn total.\n\n", 160, 160, 162);
+                        printf("\n---------------------------------------------------------\n\n");
                         jugador->puntajeUsuario = jugador->puntajeUsuario - 50;
                         if(jugador->puntajeUsuario<0){
                             jugador->puntajeUsuario=0;  ///para que el puntaje no quede negativo
                         }
-                        imprimir(anterior->desafio.preguntaProxDesafio);
-                        fflush(stdin);
-                        scanf("%d",&camino);
-                        if(camino==1){
-                            resultado=jugar(jugador,anterior->izquierda, anterior,puntaje,turnosTotales);
-                        }else{
-                            resultado=jugar(jugador,anterior->derecha, anterior,puntaje,turnosTotales);
-                        }
+                        do{
+                            imprimir(anterior->desafio.preguntaProxDesafio);
+                            printf("\n\n\nTu elecci%cn: ", 162);
+                            fflush(stdin);
+                            scanf("%d",&camino);
+                            if(camino==1){
+                                resultado=jugar(jugador,anterior->izquierda, anterior,puntaje,turnosTotales);
+                            }else{
+                                if (camino == 2){
+                                resultado=jugar(jugador,anterior->derecha, anterior,puntaje,turnosTotales);
+                                }else{
+                                    printf("\n\nOpci%cn incorrecta, vuelve a elegir.\n\n", 162);
+                                    system("pause");
+                                    system("cls");
+                                }
+                            }
+                        }while (camino !=1 && camino != 2);
                         break;
                 }
                 break;
@@ -158,19 +174,26 @@ int jugar(usuario*jugador,nodoArbolDesa*desafio, nodoArbolDesa* anterior, int*pu
                 printf("---------------------------------------------------------\n");
                 imprimir(desafio->desafio.descripcionDesafio);
                 recompensa(jugador);
-                printf("Vida: %d\n",jugador->vidaUsuario);
+                printf("\n\n\nTu vida: %d\n",jugador->vidaUsuario);
                 printf("---------------------------------------------------------\n");
 
-                imprimir(desafio->desafio.preguntaProxDesafio);
-                printf("\n\n\nTu elecci%cn: ", 162);
-                fflush(stdin);
-                scanf("%d",&camino);
-                if(camino==1){
-                    resultado=jugar(jugador,desafio->izquierda, anterior,puntaje,turnosTotales);
-                }else{
-                    resultado=jugar(jugador,desafio->derecha, anterior,puntaje,turnosTotales);
-                }
-                system("pause");
+                do{
+                    imprimir(desafio->desafio.preguntaProxDesafio);
+                    printf("\n\n\nTu elecci%cn: ", 162);
+                    fflush(stdin);
+                    scanf("%d",&camino);
+                    if(camino==1){
+                        resultado=jugar(jugador,desafio->izquierda, anterior,puntaje,turnosTotales);
+                    }else{
+                        if (camino == 2){
+                            resultado=jugar(jugador,desafio->derecha, anterior,puntaje,turnosTotales);
+                        }else{
+                            printf("\n\nOpci%cn incorrecta, vuelve a elegir.\n\n", 162);
+                            system("pause");
+                            system("cls");
+                        }
+                    }
+                }while (camino != 1 && camino != 2);
                 break;
         }
     }

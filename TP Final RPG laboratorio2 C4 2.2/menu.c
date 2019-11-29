@@ -119,7 +119,6 @@ void menuUsuario (usuario jugador, celda celdaArbolDesa[], nodoMonstruo* listaMo
     int op=-1;
     int dificultadElegida;
     while(op!=0){
-        ///usuario jugador;
         system("cls");
         printf("\n       <<< MENU DE USUARIO >>>\n\n");
         printf("\n\n[0]   Salir del usuario.\n[1]   Jugar.\n[2]   Ver ranking de puntajes.\n[3]   Ver historial de jugadas.\n");
@@ -153,11 +152,7 @@ void menuUsuario (usuario jugador, celda celdaArbolDesa[], nodoMonstruo* listaMo
                 system ("pause");
             }else{
 
-
                 system("cls");
-                mostrarUsuario(jugador);
-
-                /// ------------------------------------------------------
                 int resultado=0;
                 int puntaje=0;
                 int turnos=0;
@@ -328,9 +323,15 @@ void ABMLdesafios(celda celdaArbolDesa[]){
         switch (op){
             case 1:
                 system("cls");
-                altaREGdesafio();
-                printf("\n\nCargado exitosamente!!\n\n\n\n");
-                system("pause");
+                printf("\nAntes de dar de alta un desafio debe tener en cuenta lo siguiente:\n\n- Los desafios se ordenan como un ABB ordenado por id, por lo que la ubicaci%cn del desafio que cargue depende del id.\n- Para indicar que monstruo ir%c en el desafio debe saber con antelaci%cn la id del mismo (puede verlo en el listado de monstruos).\n- Al cargar un desafio lo hace en todos los niveles. Los valores del monstruo corresponden al nivel f%ccil y se aplican modificadores sobre los mismos para los otros niveles.\n\n\n", 162, 160,162, 160);
+                printf("Para cargar ingrese 's', presione cualquier tecla para volver: ");;
+                fflush(stdin);
+                scanf("%c", &confirm);
+                if (confirm == 's'){
+                    altaREGdesafio();
+                    pasarDesafiosArchivoToArbol(celdaArbolDesa);
+                    system("pause");
+                }
                 break;
 
             case 2:

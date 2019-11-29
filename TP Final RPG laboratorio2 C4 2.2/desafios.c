@@ -143,38 +143,39 @@ void altaREGdesafio(){
         printf("\nIdDesafio: ");
         fflush(stdin);
         scanf("%d",&desafio.idDesafio);
+        do{
+            printf("\nTipo desaf%co ('P' pelea/ 'R' recompensa): ", 161);
+            fflush(stdin);
+            scanf("%c",&desafio.tipoDesafio);
+        }while (desafio.tipoDesafio != 'P' && desafio.tipoDesafio != 'R');
 
-        printf("\nTipo desaf%co (P pelea/ R recompensa): ", 161);
-        fflush(stdin);
-        scanf("%c",&desafio.tipoDesafio);
-        if (desafio.tipoDesafio == 'P' || desafio.tipoDesafio == 'R'){
-            printf("\nDescripci%cn: ", 162);
+            printf("\nDescripci%cn ('+' para saltos de linea): ", 162);
             fflush(stdin);
             gets(desafio.descripcionDesafio);
 
-            printf("\nDificultad: ");
-            fflush(stdin);
-            scanf("%d",&desafio.dificultadDesafio);
+            desafio.dificultadDesafio = 1;
 
             if (desafio.tipoDesafio == 'P'){
-                printf("\nIdMonstruo: ");
-                fflush(stdin);
-                scanf("%d",&desafio.idMonstruo);
+                do{
+                    printf("\nIdMonstruo: ");
+                    fflush(stdin);
+                    scanf("%d",&desafio.idMonstruo);
+                    if (desafio.idMonstruo > cantMonstruosEnArchivo()){
+                        printf("\n....La id no corresponde a ningun monstruo, intente de nuevo....\n");
+                    }
+
+                }while (desafio.idMonstruo > cantMonstruosEnArchivo());
             }else{
                 desafio.idMonstruo = -1;
             }
 
-            printf("\nPregunta pr%cximo desafio: ", 162);
+            printf("\nPregunta pr%cximo desafio ('+' para saltos de linea): ", 162);
             fflush(stdin);
             gets(desafio.preguntaProxDesafio);
 
             fwrite(&desafio,sizeof(REGdesafio),1,archi);
 
-            printf("\n\nCargado exitosamente!!\n");
-        }else{
-            printf("\n\nOPCION INVALIDA. Los desaf%cos solo pueden ser de tipo 'R'(recompensa) o 'P' (pelea).\n\n\n", 161);
-            system("pause");
-        }
+            printf("\n\n-----Desafio cargado exitosamente!!-----\n\n\n");
 
     fclose(archi);
 }
